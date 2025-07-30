@@ -10,6 +10,7 @@ struct ReelPlayerView: View {
         ZStack {
             if let player = player {
                 VideoPlayer(player: player)
+                    .disabled(true)
                     .onAppear {
                         player.play()
                         NotificationCenter.default.addObserver(
