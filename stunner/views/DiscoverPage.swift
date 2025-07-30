@@ -8,16 +8,23 @@ struct DiscoverPage: View {
     ]
     
     @State private var showProductPage = false
+    @State private var shouldPlayReels = true
 
     var body: some View {
         GeometryReader { geo in
             ScrollView(.vertical, showsIndicators: false) {
                 LazyVStack(spacing: 0) {
                     ForEach(videoURLs, id: \.self) { url in
-                        ReelPlayerView(videoURL: url, showProductPage: $showProductPage)
+                        ReelPlayerView(videoURL: url, showProductPage: $showProductPage, shouldPlay: $shouldPlayReels)
                             .frame(width: geo.size.width, height: geo.size.height)
                     }
                 }
+            }
+            .onAppear {
+                shouldPlayReels = true
+            }
+            .onDisappear {
+                shouldPlayReels = false
             }
             .background(
                 NavigationLink(destination: ProductPage(), isActive: $showProductPage) {

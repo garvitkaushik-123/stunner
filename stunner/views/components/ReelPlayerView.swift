@@ -4,6 +4,7 @@ import AVKit
 struct ReelPlayerView: View {
     let videoURL: String
     @Binding var showProductPage: Bool
+    @Binding var shouldPlay: Bool
     @State private var player: AVPlayer?
 
     var body: some View {
@@ -12,14 +13,25 @@ struct ReelPlayerView: View {
                 VideoPlayer(player: player)
                     .disabled(true)
                     .onAppear {
-                        player.play()
+                        if shouldPlay {
+                            player.play()
+                        }
                         NotificationCenter.default.addObserver(
                             forName: .AVPlayerItemDidPlayToEndTime,
                             object: player.currentItem,
                             queue: .main
                         ) { _ in
                             player.seek(to: .zero)
+                            if shouldPlay {
+                                player.play()
+                            }
+                        }
+                    }
+                    .onChange(of: shouldPlay) { newValue in
+                        if newValue {
                             player.play()
+                        } else {
+                            player.pause()
                         }
                     }
                     .ignoresSafeArea()
