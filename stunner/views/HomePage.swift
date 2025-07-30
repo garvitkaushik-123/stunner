@@ -5,25 +5,25 @@ struct HomePage: View {
         if #available(iOS 16.0, *) {
             NavigationStack {
                 TabView {
-                    DiscoverView()
+                    DiscoverPage()
                         .tabItem {
                             Image(systemName: "sparkles.tv")
                             Text("Discover")
                         }
                     
-                    ShopView()
+                    ShopPage()
                         .tabItem {
                             Image(systemName: "bag.fill")
                             Text("Shop")
                         }
                     
-                    CartView()
+                    CartPage()
                         .tabItem {
                             Image(systemName: "cart.fill")
                             Text("Cart")
                         }
                     
-                    PlaceholderView(title: "Member")
+                    PlaceholderPage(title: "Member")
                         .tabItem {
                             Image(systemName: "person.crop.circle.fill")
                             Text("Member")

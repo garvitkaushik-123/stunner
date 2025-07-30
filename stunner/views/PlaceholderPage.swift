@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct PlaceholderView: View {
+struct PlaceholderPage: View {
     let title: String
 
     var body: some View {

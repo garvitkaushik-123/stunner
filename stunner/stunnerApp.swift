@@ -14,7 +14,7 @@ struct stunnerApp: App {
     var body: some Scene {
         WindowGroup {
             if showSplash {
-                SplashScreen(showSplash: $showSplash)
+                SplashScreenPage(showSplash: $showSplash)
             } else {
                 HomePage()
             }

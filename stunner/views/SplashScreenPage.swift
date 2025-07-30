@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct SplashScreen: View {
+struct SplashScreenPage: View {
     @Binding var showSplash: Bool
 
     var body: some View {

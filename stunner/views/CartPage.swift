@@ -1,10 +1,15 @@
 import SwiftUI
 
-struct CartView: View {
+struct CartPage: View {
     @StateObject private var viewModel = CartViewModel()
+    @State private var showingCheckout = false
     
     var body: some View {
         VStack(spacing: 0) {
+            NavigationLink(destination: CheckoutPage(), isActive: $showingCheckout) {
+                EmptyView()
+            }.hidden()
+            
             // Subtotal & Buy Button
             VStack(alignment: .leading, spacing: 12) {
                 Text("Subtotal (\(viewModel.cartItems.count) items): ₹\(String(format: "%.2f", viewModel.subtotal))")
@@ -12,7 +17,7 @@ struct CartView: View {
                     .bold()
                 
                 Button(action: {
-                    print("Proceed to buy tapped")
+                    showingCheckout = true
                 }) {
                     Text("Proceed to Buy")
                         .foregroundColor(.white)

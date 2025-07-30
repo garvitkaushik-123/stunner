@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ShopView: View {
+struct ShopPage: View {
     let verticalProducts = Product.sampleProducts
     let horizontalProducts = Product.sampleProducts.shuffled()
 

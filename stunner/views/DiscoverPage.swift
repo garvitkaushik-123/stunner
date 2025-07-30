@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct DiscoverView: View {
+struct DiscoverPage: View {
     let videoURLs = [
         "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
         "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",

@@ -9,7 +9,7 @@ struct ProductPage: View {
     
     var body: some View {
         ScrollView {
-            NavigationLink(destination: CartView(), isActive: $navigateToCart) {
+            NavigationLink(destination: CartPage(), isActive: $navigateToCart) {
                 EmptyView()
             }.hidden()
             
