@@ -9,17 +9,18 @@ struct DiscoverPage: View {
     
     @State private var showProductPage = false
     @State private var visibleReelIndex: Int = 0
+    @State private var isPageVisible: Bool = true
     
     var body: some View {
         GeometryReader { geo in
             ScrollView(.vertical, showsIndicators: false) {
                 LazyVStack(spacing: 0) {
-                    ForEach(Array(videoURLs.enumerated()), id: \ .element) { index, url in
+                    ForEach(Array(videoURLs.enumerated()), id: \.element) { index, url in
                         ReelVisibilityDetector(index: index, visibleReelIndex: $visibleReelIndex, parentSize: geo.size) {
                             ReelPlayerView(
                                 videoURL: url,
                                 showProductPage: $showProductPage,
-                                shouldPlay: .constant(index == visibleReelIndex)
+                                shouldPlay: .constant(index == visibleReelIndex && isPageVisible)
                             )
                             .frame(width: geo.size.width, height: geo.size.height)
                         }
@@ -32,6 +33,12 @@ struct DiscoverPage: View {
                 }
                 .hidden()
             )
+        }
+        .onAppear {
+            isPageVisible = true
+        }
+        .onDisappear {
+            isPageVisible = false
         }
     }
 }
