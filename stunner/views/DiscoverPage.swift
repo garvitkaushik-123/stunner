@@ -8,23 +8,23 @@ struct DiscoverPage: View {
     ]
     
     @State private var showProductPage = false
-    @State private var shouldPlayReels = true
-
+    @State private var visibleReelIndex: Int = 0
+    
     var body: some View {
         GeometryReader { geo in
             ScrollView(.vertical, showsIndicators: false) {
                 LazyVStack(spacing: 0) {
-                    ForEach(videoURLs, id: \.self) { url in
-                        ReelPlayerView(videoURL: url, showProductPage: $showProductPage, shouldPlay: $shouldPlayReels)
+                    ForEach(Array(videoURLs.enumerated()), id: \ .element) { index, url in
+                        ReelVisibilityDetector(index: index, visibleReelIndex: $visibleReelIndex, parentSize: geo.size) {
+                            ReelPlayerView(
+                                videoURL: url,
+                                showProductPage: $showProductPage,
+                                shouldPlay: .constant(index == visibleReelIndex)
+                            )
                             .frame(width: geo.size.width, height: geo.size.height)
+                        }
                     }
                 }
-            }
-            .onAppear {
-                shouldPlayReels = true
-            }
-            .onDisappear {
-                shouldPlayReels = false
             }
             .background(
                 NavigationLink(destination: ProductPage(), isActive: $showProductPage) {
@@ -33,5 +33,44 @@ struct DiscoverPage: View {
                 .hidden()
             )
         }
+    }
+}
+
+// Helper view to detect which reel is most visible
+struct ReelVisibilityDetector<Content: View>: View {
+    let index: Int
+    @Binding var visibleReelIndex: Int
+    let parentSize: CGSize
+    let content: () -> Content
+    
+    var body: some View {
+        content()
+            .background(
+                GeometryReader { proxy in
+                    Color.clear
+                        .preference(key: ReelVisiblePreferenceKey.self, value: [ReelVisibleData(index: index, frame: proxy.frame(in: .global))])
+                }
+            )
+            .onPreferenceChange(ReelVisiblePreferenceKey.self) { values in
+                guard let value = values.first else { return }
+                let midY = value.frame.midY
+                let screenMidY = UIScreen.main.bounds.midY
+                // If the center of this reel is closest to the screen center, set as visible
+                if abs(midY - screenMidY) < parentSize.height / 2 {
+                    visibleReelIndex = value.index
+                }
+            }
+    }
+}
+
+struct ReelVisibleData: Equatable {
+    let index: Int
+    let frame: CGRect
+}
+
+struct ReelVisiblePreferenceKey: PreferenceKey {
+    static var defaultValue: [ReelVisibleData] = []
+    static func reduce(value: inout [ReelVisibleData], nextValue: () -> [ReelVisibleData]) {
+        value.append(contentsOf: nextValue())
     }
 }
