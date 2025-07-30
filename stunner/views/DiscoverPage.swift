@@ -25,7 +25,6 @@ struct DiscoverPage: View {
                 }
                 .hidden()
             )
-            .ignoresSafeArea()
         }
     }
 }
