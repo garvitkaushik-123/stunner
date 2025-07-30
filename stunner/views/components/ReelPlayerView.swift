@@ -54,7 +54,7 @@ struct ReelPlayerView: View {
                             .cornerRadius(20)
                             .shadow(radius: 5)
                     }
-                    .padding(.bottom, 40)
+                    .padding(.bottom, 60)
                     .padding(.trailing, 20)
                 }
             }
@@ -67,3 +67,4 @@ struct ReelPlayerView: View {
         }
     }
 }
+
