@@ -31,16 +31,6 @@ struct CartPage: View {
                         Text("Shopping Cart")
                             .font(.visbyBold(size: 24))
                             .foregroundColor(.primary)
-                        
-                        Spacer()
-                        
-                        Button(action: {
-                            // TODO: Dismiss cart
-                        }) {
-                            Image(systemName: "xmark")
-                                .font(.system(size: 18, weight: .medium))
-                                .foregroundColor(.primary)
-                        }
                     }
                     .padding(.horizontal, 20)
                     .padding(.vertical, 16)

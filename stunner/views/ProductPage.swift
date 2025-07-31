@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ProductPage: View {
     let productImages = [
-        "lady", "bag1", "bag2", "bag3", "bag4", "bag5", "product5"
+        "lady", "bag1", "bag2", "bag3", "bag4"
     ]
     
     @State private var navigateToCart = false
@@ -30,21 +30,37 @@ struct ProductPage: View {
                             ForEach(0..<min(6, productImages.count), id: \.self) { index in
                                 Button(action: {
                                     print("Thumbnail tapped: \(index), image: \(productImages[index])")
-                                    withAnimation(.easeInOut(duration: 0.3)) {
-                                        selectedImageIndex = index
-                                    }
+                                    selectedImageIndex = index
+                                    print("Selected image index updated to: \(selectedImageIndex)")
                                 }) {
-                                    Image(productImages[index])
-                                        .resizable()
-                                        .scaledToFill()
-                                        .frame(width: 60, height: 60)
-                                        .clipped()
-                                        .cornerRadius(8)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 8)
-                                                .stroke(selectedImageIndex == index ? Color.blue : Color.clear, lineWidth: 2)
-                                        )
+                                    ZStack {
+                                        // Background color in case image fails to load
+                                        RoundedRectangle(cornerRadius: 8)
+                                            .fill(Color.gray.opacity(0.2))
+                                            .frame(width: 60, height: 60)
+                                        
+                                        // Image with error handling
+                                        Image(productImages[index])
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: 60, height: 60)
+                                            .clipped()
+                                            .cornerRadius(8)
+                                    }
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 8)
+                                            .stroke(selectedImageIndex == index ? Color.blue : Color.clear, lineWidth: 2)
+                                    )
+                                    .scaleEffect(selectedImageIndex == index ? 1.05 : 1.0)
+                                    .animation(.easeInOut(duration: 0.2), value: selectedImageIndex)
                                 }
+                                .highPriorityGesture(
+                                    TapGesture()
+                                        .onEnded { _ in
+                                            print("High priority tap detected on thumbnail: \(index)")
+                                            selectedImageIndex = index
+                                        }
+                                )
                             }
                         }
                         .padding(.leading, 24)
@@ -54,19 +70,20 @@ struct ProductPage: View {
                     .frame(width: 100)
                     
                     // Main Product Image
-                    VStack {
+                    ZStack {
+                        // Background color in case image fails to load
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(Color.gray.opacity(0.1))
+                            .frame(width: 280, height: 380)
+                        
                         Image(productImages[selectedImageIndex])
                             .resizable()
                             .scaledToFill()
                             .frame(width: 280, height: 380)
                             .clipped()
                             .cornerRadius(12)
-                            .onAppear {
-                                print("Main image loaded: \(productImages[selectedImageIndex])")
-                            }
                     }
                     .padding(.horizontal, 24)
-                    
                     Spacer()
                 }
                 .padding(.vertical, 24)
@@ -274,6 +291,9 @@ struct ProductPage: View {
                 .padding(.horizontal, 24)
                 .padding(.bottom, 40)
             }
+        }
+        .onTapGesture {
+            print("HI")
         }
         .navigationBarTitleDisplayMode(.inline)
         .background(
