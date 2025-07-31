@@ -11,7 +11,7 @@ internal import Combine
 class CartViewModel: ObservableObject {
     
     @Published var cartItems: [CartItem] = [
-        CartItem(name: "Noise Smart Watch", price: 1999.0, imageName: "watch1"),
+        CartItem(name: "Noise Smart Watch", price: 1999.0, imageName: "lady"),
         CartItem(name: "Redmi Earbuds", price: 899.0, imageName: "earbuds1")
     ]
     
