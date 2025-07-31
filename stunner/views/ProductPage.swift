@@ -29,6 +29,7 @@ struct ProductPage: View {
                         VStack(spacing: 8) {
                             ForEach(0..<min(6, productImages.count), id: \.self) { index in
                                 Button(action: {
+                                    print("Thumbnail tapped: \(index), image: \(productImages[index])")
                                     withAnimation(.easeInOut(duration: 0.3)) {
                                         selectedImageIndex = index
                                     }
@@ -53,13 +54,18 @@ struct ProductPage: View {
                     .frame(width: 100)
                     
                     // Main Product Image
-                    Image(productImages[selectedImageIndex])
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 280, height: 380)
-                        .clipped()
-                        .cornerRadius(12)
-                        .padding(.horizontal, 24)
+                    VStack {
+                        Image(productImages[selectedImageIndex])
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 280, height: 380)
+                            .clipped()
+                            .cornerRadius(12)
+                            .onAppear {
+                                print("Main image loaded: \(productImages[selectedImageIndex])")
+                            }
+                    }
+                    .padding(.horizontal, 24)
                     
                     Spacer()
                 }
@@ -275,6 +281,10 @@ struct ProductPage: View {
                 EmptyView()
             }.hidden()
         )
+        .onAppear {
+            print("ProductPage appeared with \(productImages.count) images")
+            print("Available images: \(productImages)")
+        }
     }
 }
 
