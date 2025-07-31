@@ -7,7 +7,7 @@ struct PlaceholderPage: View {
         ZStack {
             Color.flightGrey.ignoresSafeArea()
             Text("\(title) Page")
-                .font(.dmSans(size: 24))
+                .font(.visbyBold(size: 24))
                 .foregroundColor(.main)
                 .textCase(.uppercase)
         }

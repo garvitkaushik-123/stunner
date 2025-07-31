@@ -30,19 +30,19 @@ struct ProductPage: View {
                 // 2. Product Details
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Awesome Product Title")
-                        .font(.dmSans(size: 20))
+                        .font(.visbyBold(size: 20))
                         .foregroundColor(.primaryColor)
                         .textCase(.uppercase)
                     
                     Text("₹1,299")
-                        .font(.dmSans(size: 24))
+                        .font(.visbySemibold(size: 24))
                         .foregroundColor(.critical)
                     
                     Button(action: {
                         navigateToCart = true
                     }) {
                         Text("ADD TO CART")
-                            .font(.dmSans(size: 16))
+                            .font(.visbyMedium(size: 16))
                             .foregroundColor(.white)
                             .padding()
                             .frame(maxWidth: .infinity)
@@ -56,13 +56,30 @@ struct ProductPage: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 12) {
                         ForEach(images, id: \.self) { name in
-                            Image(name)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 100, height: 100)
-                                .cornerRadius(8)
+                            VStack(alignment: .leading, spacing: 4) {
+                                Image(name)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 120, height: 120)
+                                    .clipped()
+                                    .cornerRadius(8)
+                                
+                                Text("Product \(name)")
+                                    .font(.visbyRegular(size: 18))
+                                    .foregroundColor(.primary)
+                                
+                                Text("₹999")
+                                    .font(.visbyMedium(size: 16))
+                                    .foregroundColor(.critical)
+                                
+                                Text("Free Shipping")
+                                    .font(.visbyLight(size: 14))
+                                    .foregroundColor(.secondary)
+                            }
+                            .frame(width: 120)
                         }
-                    }.padding(.horizontal)
+                    }
+                    .padding(.horizontal)
                 }
                 
                 // 4. Reviews Section (static samples)

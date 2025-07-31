@@ -4,7 +4,7 @@ struct SplashScreenPage: View {
     @Binding var showSplash: Bool
     @State private var animateLetters = false
 
-    private let letters = Array("Be Stunning")
+    private let letters = Array("You are stunning")
 
     var body: some View {
         ZStack {
@@ -13,14 +13,14 @@ struct SplashScreenPage: View {
 
             VStack(spacing: 10) {
                 Text("STUNNER")
-                    .font(.dmSans(size: 36))
+                    .font(.visbyExtrabold(size: 36))
                     .foregroundColor(.white)
                     .textCase(.uppercase)
 
-                // Animated "Be Stunning" tagline
                 HStack(spacing: 0) {
                     ForEach(0..<letters.count, id: \.self) { index in
                         Text(String(letters[index]))
+                            .font(.visbyLight(size: 18))
                             .foregroundColor(.white)
                             .opacity(animateLetters ? 1 : 0)
                             .scaleEffect(animateLetters ? 1 : 0.7, anchor: .bottom)

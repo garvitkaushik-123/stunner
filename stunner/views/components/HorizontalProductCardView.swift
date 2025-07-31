@@ -12,23 +12,26 @@ struct HorizontalProductCardView: View {
     let product: Product
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
+        VStack(alignment: .leading, spacing: 8) {
             Image(product.imageName)
                 .resizable()
                 .scaledToFill()
-                .frame(width: 140, height: 140)
+                .frame(width: 150, height: 150)
                 .clipped()
-                .cornerRadius(8)
-
-            Text(product.name)
-                .font(.subheadline)
-                .lineLimit(1)
-
-            Text("₹\(product.price, specifier: "%.2f")")
-                .font(.caption)
-                .foregroundColor(.gray)
+                .cornerRadius(12)
+            
+            VStack(alignment: .leading, spacing: 4) {
+                Text(product.name)
+                    .font(.visbyMedium(size: 14))
+                    .foregroundColor(.primary)
+                    .lineLimit(2)
+                
+                Text("₹\(String(format: "%.2f", product.price))")
+                    .font(.visbyLight(size: 12))
+                    .foregroundColor(.secondary)
+            }
+            .padding(.horizontal, 8)
         }
-        .frame(width: 140)
     }
 }
 

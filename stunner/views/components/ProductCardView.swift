@@ -10,14 +10,19 @@ struct ProductCardView: View {
                 .scaledToFill()
                 .frame(height: 200)
                 .clipped()
-                .cornerRadius(10)
-
-            Text(product.name)
-                .font(.headline)
-
-            Text("₹\(product.price, specifier: "%.2f")")
-                .font(.subheadline)
-                .foregroundColor(.gray)
+                .cornerRadius(12)
+            
+            VStack(alignment: .leading, spacing: 4) {
+                Text(product.name)
+                    .font(.visbyMedium(size: 16))
+                    .foregroundColor(.primary)
+                
+                Text("₹\(String(format: "%.2f", product.price))")
+                    .font(.visbyRegular(size: 14))
+                    .foregroundColor(.secondary)
+            }
+            .padding(.horizontal, 8)
+            .padding(.bottom, 8)
         }
     }
 }

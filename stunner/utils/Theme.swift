@@ -39,4 +39,69 @@ extension Font {
     static func dmSans(size: CGFloat) -> Font {
         .custom("DM Sans", size: size)
     }
+    
+    // Visby Font Family Extensions
+    static func visbyThin(size: CGFloat) -> Font {
+        .custom("VisbyThin", size: size)
+    }
+    
+    static func visbyThinItalic(size: CGFloat) -> Font {
+        .custom("VisbyThin Italic", size: size)
+    }
+    
+    static func visbyLight(size: CGFloat) -> Font {
+        .custom("VisbyLight", size: size)
+    }
+    
+    static func visbyLightItalic(size: CGFloat) -> Font {
+        .custom("VisbyLight Italic", size: size)
+    }
+    
+    static func visbyRegular(size: CGFloat) -> Font {
+        .custom("VisbyRegular", size: size)
+    }
+    
+    static func visbyItalic(size: CGFloat) -> Font {
+        .custom("VisbyItalic", size: size)
+    }
+    
+    static func visbyMedium(size: CGFloat) -> Font {
+        .custom("VisbyMedium", size: size)
+    }
+    
+    static func visbyMediumItalic(size: CGFloat) -> Font {
+        .custom("VisbyMedium Italic", size: size)
+    }
+    
+    static func visbySemibold(size: CGFloat) -> Font {
+        .custom("VisbySemibold", size: size)
+    }
+    
+    static func visbySemiboldItalic(size: CGFloat) -> Font {
+        .custom("VisbySemibold Italic", size: size)
+    }
+    
+    static func visbyBold(size: CGFloat) -> Font {
+        .custom("VisbyBold", size: size)
+    }
+    
+    static func visbyBoldItalic(size: CGFloat) -> Font {
+        .custom("VisbyBold Italic", size: size)
+    }
+    
+    static func visbyExtrabold(size: CGFloat) -> Font {
+        .custom("VisbyExtrabold", size: size)
+    }
+    
+    static func visbyExtraboldItalic(size: CGFloat) -> Font {
+        .custom("VisbyExtrabold Italic", size: size)
+    }
+    
+    static func visbyHeavy(size: CGFloat) -> Font {
+        .custom("VisbyHeavy", size: size)
+    }
+    
+    static func visbyHeavyItalic(size: CGFloat) -> Font {
+        .custom("VisbyHeavy Italic", size: size)
+    }
 }
