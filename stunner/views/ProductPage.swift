@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ProductPage: View {
     let productImages = [
-        "lady", "bag1", "bag2", "bag3", "bag4", "product4", "product5"
+        "lady", "bag1", "bag2", "bag3", "bag4", "bag5", "product5"
     ]
     
     @State private var navigateToCart = false
