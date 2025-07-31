@@ -23,7 +23,7 @@ struct HomePage: View {
                             Text("Cart")
                         }
                     
-                    PlaceholderPage(title: "Member")
+                    MemberPage()
                         .tabItem {
                             Image(systemName: "person.crop.circle.fill")
                             Text("Member")
