@@ -1,11 +1,18 @@
 import SwiftUI
 
 struct DiscoverPage: View {
-    let videoURLs = [
-        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"
-    ]
+    let videoURLs: [String] = {
+        // Use local SampleVideo.mov file instead of remote URLs
+        if let videoURL = Bundle.main.url(forResource: "SampleVideo", withExtension: "mov") {
+            return [videoURL.absoluteString, "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"]
+        } else {
+            return [
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Beauty.mp4",
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"
+            ]
+        }
+    }()
     
     @State private var showProductPage = false
     @State private var visibleReelIndex: Int = 0
