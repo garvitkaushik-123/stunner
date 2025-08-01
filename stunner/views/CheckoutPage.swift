@@ -23,9 +23,9 @@ struct CheckoutPage: View {
     let CheckOutCountries = ["India", "United States", "Canada", "Germany", "Australia"]
     
     let CheckOutProducts: [CheckOutProduct] = [
-        CheckOutProduct(imageName: "selfcare1", name: "MacBook Pro", description: "Apple M3 Chip, 16GB RAM", price: 1999.99),
-        CheckOutProduct(imageName: "selfcare2", name: "AirPods Max", description: "Noise-cancelling over-ear headphones", price: 549.00),
-        CheckOutProduct(imageName: "selfcare3", name: "Apple Watch", description: "Series 9, 45mm", price: 429.00)
+        CheckOutProduct(imageName: "selfcare1", name: "KAMA AYURVEDA", description: "Rose & Jasmine Hair Cleanser", price: 1999.99),
+        CheckOutProduct(imageName: "selfcare2", name: "Clinique", description: "Clinical Serum Foundation SPF 20", price: 549.00),
+        CheckOutProduct(imageName: "selfcare3", name: "Uriage", description: "Depiderm Anti-Dark Spot Skin Serum", price: 429.00)
     ]
     
     var CheckOutTotalPrice: Double {
