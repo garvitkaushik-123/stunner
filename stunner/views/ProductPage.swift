@@ -186,21 +186,35 @@ struct ProductPage: View {
                         }
                     }
                     
-                    // Add to Cart Button
-                    Button(action: {
-                        navigateToCart = true
-                    }) {
-                        HStack {
-                            Image(systemName: "heart")
-                                .font(.system(size: 18))
-                            Text("ADD TO CART")
-                                .font(.visbyMedium(size: 16))
+                    // New Button Layout - Plus and Swipe to Buy
+                    HStack(spacing: 16) {
+                        // Plus Button
+                        Button(action: {
+                            navigateToCart = true
+                        }) {
+                            Image(systemName: "plus")
+                                .font(.system(size: 20, weight: .bold))
+                                .foregroundColor(.white)
+                                .frame(width: 50, height: 50)
+                                .background(Color.black)
+                                .clipShape(Circle())
                         }
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 18)
-                        .background(Color.black)
-                        .cornerRadius(10)
+                        
+                        // Swipe to Buy Button
+                        Button(action: {
+                            print("buy")
+                        }) {
+                            HStack {
+                                Spacer()
+                                Text("SWIPE TO BUY")
+                                    .font(.visbyMedium(size: 16))
+                                    .foregroundColor(.white)
+                                Spacer()
+                            }
+                            .frame(height: 50)
+                            .background(Color.blue)
+                            .cornerRadius(25)
+                        }
                     }
                     
                     // Offers
