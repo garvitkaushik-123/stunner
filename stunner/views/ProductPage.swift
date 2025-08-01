@@ -1,5 +1,76 @@
 import SwiftUI
 
+struct SwipeToBuyButton: View {
+    var action: () -> Void
+    @State private var offsetX: CGFloat = 0
+    @State private var isComplete = false
+    let circleSize: CGFloat = 44
+    let padding: CGFloat = 4
+
+    var body: some View {
+        GeometryReader { geometry in
+            let totalWidth = geometry.size.width
+            let dragLimit = totalWidth - circleSize - padding * 2
+
+            ZStack {
+                RoundedRectangle(cornerRadius: 25)
+                    .fill(isComplete ? Color.green : Color.blue)
+                    .frame(height: 50)
+                    .overlay(
+                        Text(isComplete ? "BOUGHT" : "SWIPE TO BUY")
+                            .font(.visbyMedium(size: 16))
+                            .foregroundColor(.white)
+                    )
+                
+                HStack {
+                    Circle()
+                        .fill(Color.white)
+                        .frame(width: circleSize, height: circleSize)
+                        .overlay(
+                            Image(systemName: isComplete ? "checkmark" : "chevron.right")
+                                .foregroundColor(isComplete ? .green : .blue)
+                                .font(.system(size: 22, weight: .bold))
+                        )
+                        .offset(x: offsetX)
+                        .gesture(
+                            DragGesture()
+                                .onChanged { value in
+                                    if !isComplete {
+                                        offsetX = max(0, min(value.translation.width, dragLimit))
+                                    }
+                                }
+                                .onEnded { _ in
+                                    if offsetX >= dragLimit {
+                                        withAnimation(.spring()) {
+                                            offsetX = dragLimit
+                                            isComplete = true
+                                        }
+                                        action()
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+                                            withAnimation {
+                                                offsetX = 0
+                                                isComplete = false
+                                            }
+                                        }
+                                    } else {
+                                        withAnimation {
+                                            offsetX = 0
+                                        }
+                                    }
+                                }
+                        )
+                    Spacer()
+                }
+                .padding(.leading, padding)
+            }
+            .frame(height: 50)
+        }
+        .frame(height: 50)
+        .padding(.horizontal, 16)
+    }
+}
+
+
 struct ProductPage: View {
     let productImages = [
         "lady", "bag1", "bag2", "bag3", "bag4"
@@ -201,19 +272,8 @@ struct ProductPage: View {
                         }
                         
                         // Swipe to Buy Button
-                        Button(action: {
+                        SwipeToBuyButton {
                             print("buy")
-                        }) {
-                            HStack {
-                                Spacer()
-                                Text("SWIPE TO BUY")
-                                    .font(.visbyMedium(size: 16))
-                                    .foregroundColor(.white)
-                                Spacer()
-                            }
-                            .frame(height: 50)
-                            .background(Color.blue)
-                            .cornerRadius(25)
                         }
                     }
                     
