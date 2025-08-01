@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		6E76C12D2E3A51EE00B79435 /* stunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = stunner.app; path = "/Users/garvit/Desktop/crackle_ios/Apps/stunner/build/Debug-iphoneos/stunner.app"; sourceTree = "<absolute>"; };
+		6EEF25262E3D424400922C28 /* stunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = stunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -33,6 +33,7 @@
 			isa = PBXGroup;
 			children = (
 				6E76C0E42E3906AA00B79435 /* stunner */,
+				6EEF25262E3D424400922C28 /* stunner.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,7 +59,7 @@
 			packageProductDependencies = (
 			);
 			productName = stunner;
-			productReference = 6E76C12D2E3A51EE00B79435 /* stunner.app */;
+			productReference = 6EEF25262E3D424400922C28 /* stunner.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */

@@ -3,8 +3,8 @@ import SwiftUI
 struct DiscoverPage: View {
     let videoURLs: [String] = {
         // Use local SampleVideo.mov file instead of remote URLs
-        if let videoURL = Bundle.main.url(forResource: "SampleVideo", withExtension: "mov") {
-            return [videoURL.absoluteString, "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"]
+        if let videoURL = Bundle.main.url(forResource: "SampleVideo", withExtension: "mov"), let videoURL1 = Bundle.main.url(forResource: "SampleVideo1", withExtension: "mov"), let videoURL2 = Bundle.main.url(forResource: "SampleVideo2", withExtension: "mov") {
+            return [videoURL.absoluteString, videoURL1.absoluteString, videoURL2.absoluteString]
         } else {
             return [
                 "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Beauty.mp4",
@@ -50,7 +50,6 @@ struct DiscoverPage: View {
     }
 }
 
-// Helper view to detect which reel is most visible
 struct ReelVisibilityDetector<Content: View>: View {
     let index: Int
     @Binding var visibleReelIndex: Int

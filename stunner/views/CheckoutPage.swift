@@ -35,8 +35,6 @@ struct CheckoutPage: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
-                
-                // 🛍️ Product List
                 Text("Your Items")
                     .font(.visbyBold(size: 22))
                 
