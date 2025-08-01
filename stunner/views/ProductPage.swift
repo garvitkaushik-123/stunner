@@ -92,9 +92,6 @@ struct ProductPage: View {
     private let horizontalPadding: CGFloat = 16
     
     var body: some View {
-        VStack(spacing: 0) {
-            StunnerHeader()
-            
             ScrollView {
                 VStack(spacing: 0) {
                     // Product Image Gallery and Details Section
@@ -379,15 +376,12 @@ struct ProductPage: View {
                     .padding(.bottom, 40)
                 }
             }
-            
-            Spacer()
-        }
-        .navigationBarTitleDisplayMode(.inline)
-        .background(
-            NavigationLink(destination: CartPage(), isActive: $navigateToCart) {
-                EmptyView()
-            }.hidden()
-        )
+            .navigationBarTitleDisplayMode(.inline)
+            .background(
+                NavigationLink(destination: CartPage(), isActive: $navigateToCart) {
+                    EmptyView()
+                }.hidden()
+            )
     }
 }
 
