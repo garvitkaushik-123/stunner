@@ -42,10 +42,6 @@ struct CartPage: View {
                                 .foregroundColor(.primary)
                         }
                         
-                        Text("Shopping Cart")
-                            .font(.visbyBold(size: 24))
-                            .foregroundColor(.primary)
-                        
                         Spacer()
                     }
                     .padding(.horizontal, 20)
