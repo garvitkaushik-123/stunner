@@ -1,93 +1,124 @@
 import SwiftUI
 
-struct CheckoutPage: View {
-    @State private var email: String = ""
-    @State private var phone: String = ""
-    @State private var firstName: String = ""
-    @State private var lastName: String = ""
-    @State private var address: String = ""
-    @State private var apartment: String = ""
-    @State private var city: String = ""
-    @State private var state: String = ""
-    @State private var pinCode: String = ""
-    @State private var country: String = "India"
-    @State private var totalPrice: Double = 1999.99
+struct CheckOutProduct: Identifiable {
+    let id = UUID()
+    let imageName: String
+    let name: String
+    let description: String
+    let price: Double
+}
 
-    let countries = ["India", "United States", "Canada", "Germany", "Australia"]
+struct CheckoutPage: View {
+    @State private var CheckOutEmail: String = ""
+    @State private var CheckOutPhone: String = ""
+    @State private var CheckOutFirstName: String = ""
+    @State private var CheckOutLastName: String = ""
+    @State private var CheckOutAddress: String = ""
+    @State private var CheckOutApartment: String = ""
+    @State private var CheckOutCity: String = ""
+    @State private var CheckOutState: String = ""
+    @State private var CheckOutPinCode: String = ""
+    @State private var CheckOutCountry: String = "India"
+    
+    let CheckOutCountries = ["India", "United States", "Canada", "Germany", "Australia"]
+    
+    let CheckOutProducts: [CheckOutProduct] = [
+        CheckOutProduct(imageName: "selfcare1", name: "MacBook Pro", description: "Apple M3 Chip, 16GB RAM", price: 1999.99),
+        CheckOutProduct(imageName: "selfcare2", name: "AirPods Max", description: "Noise-cancelling over-ear headphones", price: 549.00),
+        CheckOutProduct(imageName: "selfcare3", name: "Apple Watch", description: "Series 9, 45mm", price: 429.00)
+    ]
+    
+    var CheckOutTotalPrice: Double {
+        CheckOutProducts.reduce(0) { $0 + $1.price }
+    }
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-                Text("Stunner")
-                    .font(.visbyExtrabold(size: 32))
-                    .frame(maxWidth: .infinity)
-                    .multilineTextAlignment(.center)
-
-                // Order Summary
-                VStack(alignment: .leading, spacing: 10) {
+            VStack(alignment: .leading, spacing: 24) {
+                
+                // 🛍️ Product List
+                Text("Your Items")
+                    .font(.visbyBold(size: 22))
+                
+                ForEach(CheckOutProducts) { product in
+                    HStack(alignment: .top, spacing: 16) {
+                        Image(product.imageName)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 60, height: 60)
+                            .clipped()
+                            .cornerRadius(12)
+                            .padding(4)
+                            .background(Color.gray.opacity(0.1))
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                        
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(product.name)
+                                .font(.visbyBold(size: 16))
+                            Text(product.description)
+                                .font(.visbyRegular(size: 14))
+                                .foregroundColor(.secondary)
+                            Text("₹\(String(format: "%.2f", product.price))")
+                                .font(.visbyMedium(size: 15))
+                                .foregroundColor(.primary)
+                        }
+                        Spacer()
+                    }
+                    .padding(.vertical, 8)
+                    Divider()
+                }
+                
+                // 💵 Order Summary
+                VStack(alignment: .leading, spacing: 8) {
                     Text("Order Summary")
                         .font(.visbyBold(size: 20))
-                    Text("Total Price: ₹\(String(format: "%.2f", totalPrice))")
+                    Text("Total: ₹\(String(format: "%.2f", CheckOutTotalPrice))")
                         .font(.visbyMedium(size: 18))
                 }
-
+                
                 Divider()
 
-                // Contact Details
-                VStack(alignment: .leading, spacing: 10) {
+                // 📧 Contact Details
+                VStack(alignment: .leading, spacing: 12) {
                     Text("Contact Details")
                         .font(.visbyBold(size: 20))
-                    TextField("Email", text: $email)
+                    TextField("Email", text: $CheckOutEmail)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .font(.visbyRegular(size: 16))
-                    TextField("Phone Number", text: $phone)
+                    TextField("Phone Number", text: $CheckOutPhone)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .keyboardType(.phonePad)
-                        .font(.visbyRegular(size: 16))
                 }
 
                 Divider()
 
-                // Delivery Details
-                VStack(alignment: .leading, spacing: 10) {
+                // 🚚 Delivery Info
+                VStack(alignment: .leading, spacing: 12) {
                     Text("Delivery Details")
                         .font(.visbyBold(size: 20))
-                    
-                    Picker("Country", selection: $country) {
-                        ForEach(countries, id: \.self) { country in
+
+                    Picker("Country", selection: $CheckOutCountry) {
+                        ForEach(CheckOutCountries, id: \.self) { country in
                             Text(country)
-                                .font(.visbyRegular(size: 16))
                         }
                     }
                     .pickerStyle(MenuPickerStyle())
 
-                    TextField("First Name", text: $firstName)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .font(.visbyRegular(size: 16))
-                    TextField("Last Name", text: $lastName)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .font(.visbyRegular(size: 16))
-                    TextField("Address", text: $address)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .font(.visbyRegular(size: 16))
-                    TextField("Apartment, Suite, etc.", text: $apartment)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .font(.visbyRegular(size: 16))
-                    TextField("City", text: $city)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .font(.visbyRegular(size: 16))
-                    TextField("State", text: $state)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .font(.visbyRegular(size: 16))
-                    TextField("Pin Code", text: $pinCode)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .keyboardType(.numberPad)
-                        .font(.visbyRegular(size: 16))
+                    Group {
+                        TextField("First Name", text: $CheckOutFirstName)
+                        TextField("Last Name", text: $CheckOutLastName)
+                        TextField("Address", text: $CheckOutAddress)
+                        TextField("Apartment, Suite, etc.", text: $CheckOutApartment)
+                        TextField("City", text: $CheckOutCity)
+                        TextField("State", text: $CheckOutState)
+                        TextField("Pin Code", text: $CheckOutPinCode)
+                            .keyboardType(.numberPad)
+                    }
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
                 }
 
                 Divider()
 
-                // Payment Section (Simple placeholder for now)
+                // 💳 Payment Placeholder
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Payment")
                         .font(.visbyBold(size: 20))
@@ -100,6 +131,5 @@ struct CheckoutPage: View {
             }
             .padding()
         }
-        .navigationBarTitle("Checkout", displayMode: .inline)
     }
 }
