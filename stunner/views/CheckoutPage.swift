@@ -34,7 +34,15 @@ struct CheckoutPage: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 24) {
+            VStack(alignment: .leading, spacing: 20) {
+                // STUNNER Header
+                StunnerHeader()
+                
+                Text("Stunner")
+                    .font(.visbyExtrabold(size: 32))
+                    .frame(maxWidth: .infinity)
+                    .multilineTextAlignment(.center)
+                
                 Text("Your Items")
                     .font(.visbyBold(size: 22))
                 

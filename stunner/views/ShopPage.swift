@@ -2,19 +2,23 @@ import SwiftUI
 
 struct ShopPage: View {
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 32) {
-                
-                ShopProductSectionView(title: "SELF CARE", products: sampleProducts1)
-                
-                ShopProductSectionView(title: "BEST SELLERS", products: sampleProducts2)
-                
-                ShopProductSectionView(title: "STUNNER DISCOUNT DEALS", products: sampleProducts3)
+        VStack(spacing: 0) {
+            // STUNNER Header
+            StunnerHeader()
+            ScrollView {
+                VStack(spacing: 16) {
+                    
+                    ShopProductSectionView(title: "SELF CARE", products: sampleProducts1)
+                    
+                    ShopProductSectionView(title: "BEST SELLERS", products: sampleProducts2)
+                    
+                    ShopProductSectionView(title: "STUNNER DISCOUNT DEALS", products: sampleProducts3)
+                }
+                .padding()
             }
-            .padding()
+            .navigationTitle("Products")
+            .navigationBarTitleDisplayMode(.inline)
         }
-        .navigationTitle("Products")
-        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

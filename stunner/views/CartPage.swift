@@ -27,25 +27,9 @@ struct CartPage: View {
                 Color(.systemGray6)
                     .ignoresSafeArea()
                 
-                VStack(spacing: 0) {
-                    // Header with back button
-                    HStack {
-                        Button(action: {
-                            // Dismiss action
-                            withAnimation {
-                                // This will work if presented modally
-                                presentationMode.wrappedValue.dismiss()
-                            }
-                        }) {
-                            Image(systemName: "chevron.left")
-                                .font(.system(size: 20, weight: .semibold))
-                                .foregroundColor(.primary)
-                        }
-                        
-                        Spacer()
-                    }
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 16)
+                VStack(spacing: 16) {
+                    // STUNNER Header
+                    StunnerHeader()
                     
                     // Cart Items List
                     ScrollView {

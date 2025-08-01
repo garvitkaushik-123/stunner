@@ -105,3 +105,26 @@ extension Font {
         .custom("VisbyHeavy Italic", size: size)
     }
 }
+
+struct StunnerHeader: View {
+    var body: some View {
+        HStack {
+            Spacer()
+            if #available(iOS 16.0, *) {
+                Text("STUNNER")
+                    .font(.visbyBold(size: 18))
+                    .foregroundColor(.primary)
+                    .textCase(.uppercase)
+                    .tracking(2)
+            } else {
+                Text("STUNNER")
+                    .font(.visbyBold(size: 18))
+                    .foregroundColor(.primary)
+                    .textCase(.uppercase)
+            }
+            Spacer()
+        }
+        .padding(.vertical, 12)
+        .background(Color.white)
+    }
+}

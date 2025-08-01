@@ -19,33 +19,40 @@ struct DiscoverPage: View {
     @State private var isPageVisible: Bool = true
     
     var body: some View {
-        GeometryReader { geo in
-            ScrollView(.vertical, showsIndicators: false) {
-                LazyVStack(spacing: 0) {
-                    ForEach(Array(videoURLs.enumerated()), id: \.element) { index, url in
-                        ReelVisibilityDetector(index: index, visibleReelIndex: $visibleReelIndex, parentSize: geo.size) {
-                            ReelPlayerView(
-                                videoURL: url,
-                                showProductPage: $showProductPage,
-                                shouldPlay: .constant(index == visibleReelIndex && isPageVisible)
-                            )
-                            .frame(width: geo.size.width, height: geo.size.height)
+        VStack(spacing: 0) {
+            
+            StunnerHeader()
+            
+            GeometryReader { geo in
+                ScrollView(.vertical, showsIndicators: false) {
+                    LazyVStack(spacing: 0) {
+                        ForEach(Array(videoURLs.enumerated()), id: \.element) { index, url in
+                            ReelVisibilityDetector(index: index, visibleReelIndex: $visibleReelIndex, parentSize: geo.size) {
+                                ReelPlayerView(
+                                    videoURL: url,
+                                    showProductPage: $showProductPage,
+                                    shouldPlay: .constant(index == visibleReelIndex && isPageVisible)
+                                )
+                                .frame(width: geo.size.width, height: geo.size.height)
+                            }
                         }
                     }
                 }
+                .background(
+                    NavigationLink(destination: ProductPage(), isActive: $showProductPage) {
+                        EmptyView()
+                    }
+                        .hidden()
+                )
             }
-            .background(
-                NavigationLink(destination: ProductPage(), isActive: $showProductPage) {
-                    EmptyView()
-                }
-                .hidden()
-            )
-        }
-        .onAppear {
-            isPageVisible = true
-        }
-        .onDisappear {
-            isPageVisible = false
+            .onAppear {
+                isPageVisible = true
+            }
+            .onDisappear {
+                isPageVisible = false
+            }
+            
+            Spacer()
         }
     }
 }
