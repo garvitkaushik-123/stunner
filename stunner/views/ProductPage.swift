@@ -129,9 +129,10 @@ struct ProductPage: View {
                         
                         Spacer()
                     }
-                    .frame(width: 80) // Reduced width to save space
+                    .frame(width: 80)
                     
-                    // Main Product Image
+                    Spacer()
+                    
                     ZStack {
                         RoundedRectangle(cornerRadius: 12)
                             .fill(Color.gray.opacity(0.1))
@@ -146,7 +147,6 @@ struct ProductPage: View {
                     }
                     .padding(.trailing, horizontalPadding)
                     
-                    Spacer()
                 }
                 .padding(.vertical, 24)
                 
