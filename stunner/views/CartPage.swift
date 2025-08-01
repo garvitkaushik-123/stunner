@@ -1,9 +1,11 @@
 import SwiftUI
+import SwiftUI
 
 struct CartPage: View {
     @ObservedObject var viewModel = CartViewModel()
     @State private var showingCheckout = false
     @State private var agreedToTerms = false
+    @GestureState private var dragOffset = CGSize.zero
     
     // Sample cart items for the new design
     let cartItems = [
@@ -26,11 +28,25 @@ struct CartPage: View {
                     .ignoresSafeArea()
                 
                 VStack(spacing: 0) {
-                    // Header
+                    // Header with back button
                     HStack {
+                        Button(action: {
+                            // Dismiss action
+                            withAnimation {
+                                // This will work if presented modally
+                                presentationMode.wrappedValue.dismiss()
+                            }
+                        }) {
+                            Image(systemName: "chevron.left")
+                                .font(.system(size: 20, weight: .semibold))
+                                .foregroundColor(.primary)
+                        }
+                        
                         Text("Shopping Cart")
                             .font(.visbyBold(size: 24))
                             .foregroundColor(.primary)
+                        
+                        Spacer()
                     }
                     .padding(.horizontal, 20)
                     .padding(.vertical, 16)
@@ -125,6 +141,23 @@ struct CartPage: View {
                     .padding(.horizontal, 20)
                     .padding(.top, 16)
                 }
+                .offset(x: dragOffset.width, y: 0)
+                .animation(.interactiveSpring(), value: dragOffset)
+                .gesture(
+                    DragGesture()
+                        .updating($dragOffset) { value, state, _ in
+                            if value.startLocation.x < 50 && value.translation.width > 0 {
+                                state = value.translation
+                            }
+                        }
+                        .onEnded { value in
+                            if value.translation.width > 100 {
+                                withAnimation {
+                                    presentationMode.wrappedValue.dismiss()
+                                }
+                            }
+                        }
+                )
             }
         }
         .navigationBarHidden(true)
@@ -134,6 +167,8 @@ struct CartPage: View {
             }.hidden()
         )
     }
+    
+    @Environment(\.presentationMode) var presentationMode
 }
 
 // Cart Item Row Component
@@ -191,5 +226,12 @@ struct CartItemRow: View {
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 16)
+    }
+}
+
+// Preview
+struct CartPage_Previews: PreviewProvider {
+    static var previews: some View {
+        CartPage()
     }
 }
