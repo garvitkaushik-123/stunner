@@ -147,6 +147,7 @@ struct ProductPage: View {
                     }
                     .padding(.trailing, horizontalPadding)
                     
+                    Spacer()
                 }
                 .padding(.vertical, 24)
                 
