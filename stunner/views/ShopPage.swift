@@ -6,7 +6,7 @@ struct ShopPage: View {
             // STUNNER Header
             StunnerHeader()
             ScrollView {
-                VStack(spacing: 16) {
+                VStack(spacing: 32) {
                     
                     ShopProductSectionView(title: "SELF CARE", products: sampleProducts1)
                     
