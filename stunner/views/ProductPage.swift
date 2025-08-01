@@ -70,7 +70,6 @@ struct SwipeToBuyButton: View {
     }
 }
 
-
 struct ProductPage: View {
     let productImages = [
         "lady", "bag1", "bag2", "bag3", "bag4"
@@ -89,6 +88,9 @@ struct ProductPage: View {
     let currentPrice = 2399.0
     let discountPercentage = 20
     
+    // Horizontal padding constant for consistent margins
+    private let horizontalPadding: CGFloat = 16
+    
     var body: some View {
         ScrollView {
             VStack(spacing: 0) {
@@ -100,17 +102,13 @@ struct ProductPage: View {
                         VStack(spacing: 8) {
                             ForEach(0..<min(6, productImages.count), id: \.self) { index in
                                 Button(action: {
-                                    print("Thumbnail tapped: \(index), image: \(productImages[index])")
                                     selectedImageIndex = index
-                                    print("Selected image index updated to: \(selectedImageIndex)")
                                 }) {
                                     ZStack {
-                                        // Background color in case image fails to load
                                         RoundedRectangle(cornerRadius: 8)
                                             .fill(Color.gray.opacity(0.2))
                                             .frame(width: 60, height: 60)
                                         
-                                        // Image with error handling
                                         Image(productImages[index])
                                             .resizable()
                                             .scaledToFill()
@@ -125,36 +123,29 @@ struct ProductPage: View {
                                     .scaleEffect(selectedImageIndex == index ? 1.05 : 1.0)
                                     .animation(.easeInOut(duration: 0.2), value: selectedImageIndex)
                                 }
-                                .highPriorityGesture(
-                                    TapGesture()
-                                        .onEnded { _ in
-                                            print("High priority tap detected on thumbnail: \(index)")
-                                            selectedImageIndex = index
-                                        }
-                                )
                             }
                         }
-                        .padding(.leading, 24)
+                        .padding(.leading, horizontalPadding)
                         
                         Spacer()
                     }
-                    .frame(width: 100)
+                    .frame(width: 80) // Reduced width to save space
                     
                     // Main Product Image
                     ZStack {
-                        // Background color in case image fails to load
                         RoundedRectangle(cornerRadius: 12)
                             .fill(Color.gray.opacity(0.1))
-                            .frame(width: 280, height: 380)
+                            .frame(width: UIScreen.main.bounds.width - 140, height: 380) // Dynamic width
                         
                         Image(productImages[selectedImageIndex])
                             .resizable()
                             .scaledToFill()
-                            .frame(width: 280, height: 380)
+                            .frame(width: UIScreen.main.bounds.width - 140, height: 380)
                             .clipped()
                             .cornerRadius(12)
                     }
-                    .padding(.horizontal, 24)
+                    .padding(.trailing, horizontalPadding)
+                    
                     Spacer()
                 }
                 .padding(.vertical, 24)
@@ -166,6 +157,7 @@ struct ProductPage: View {
                         .font(.visbyBold(size: 24))
                         .foregroundColor(.primary)
                         .textCase(.uppercase)
+                        .padding(.horizontal, horizontalPadding)
                     
                     // Stock Status
                     HStack {
@@ -176,6 +168,7 @@ struct ProductPage: View {
                             .font(.visbyMedium(size: 14))
                             .foregroundColor(.green)
                     }
+                    .padding(.horizontal, horizontalPadding)
                     
                     // Pricing
                     VStack(alignment: .leading, spacing: 8) {
@@ -202,6 +195,7 @@ struct ProductPage: View {
                             .font(.visbyLight(size: 12))
                             .foregroundColor(.secondary)
                     }
+                    .padding(.horizontal, horizontalPadding)
                     
                     // Payment Option
                     HStack {
@@ -213,6 +207,7 @@ struct ProductPage: View {
                             .font(.system(size: 16))
                             .foregroundColor(.blue)
                     }
+                    .padding(.horizontal, horizontalPadding)
                     
                     // Color Selection
                     VStack(alignment: .leading, spacing: 12) {
@@ -236,6 +231,7 @@ struct ProductPage: View {
                             }
                         }
                     }
+                    .padding(.horizontal, horizontalPadding)
                     
                     // Delivery Check
                     VStack(alignment: .leading, spacing: 12) {
@@ -244,6 +240,7 @@ struct ProductPage: View {
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .font(.visbyRegular(size: 16))
                                 .keyboardType(.numberPad)
+                                .frame(maxWidth: .infinity)
                             
                             Button("CHECK") {
                                 // TODO: Implement pincode check
@@ -256,10 +253,13 @@ struct ProductPage: View {
                             .cornerRadius(8)
                         }
                     }
+                    .padding(.horizontal, horizontalPadding)
                     
                     // New Button Layout - Plus and Swipe to Buy
                     HStack(spacing: 16) {
                         // Plus Button
+                        
+                        
                         Button(action: {
                             navigateToCart = true
                         }) {
@@ -271,11 +271,15 @@ struct ProductPage: View {
                                 .clipShape(Circle())
                         }
                         
+                        Spacer()
+                        
                         // Swipe to Buy Button
                         SwipeToBuyButton {
                             print("buy")
                         }
+                        
                     }
+                    .padding(.horizontal, horizontalPadding)
                     
                     // Offers
                     VStack(alignment: .leading, spacing: 12) {
@@ -303,6 +307,7 @@ struct ProductPage: View {
                             }
                         }
                     }
+                    .padding(.horizontal, horizontalPadding)
                     
                     // Collapsible Sections
                     VStack(spacing: 0) {
@@ -316,9 +321,11 @@ struct ProductPage: View {
                                 .foregroundColor(.secondary)
                                 .padding(.top, 12)
                         }
+                        .padding(.horizontal, horizontalPadding)
                         
                         Divider()
                             .padding(.vertical, 8)
+                            .padding(.horizontal, horizontalPadding)
                         
                         // Shipping & Returns
                         CollapsibleSection(
@@ -338,9 +345,11 @@ struct ProductPage: View {
                             }
                             .padding(.top, 12)
                         }
+                        .padding(.horizontal, horizontalPadding)
                         
                         Divider()
                             .padding(.vertical, 8)
+                            .padding(.horizontal, horizontalPadding)
                         
                         // More Information
                         CollapsibleSection(
@@ -360,14 +369,11 @@ struct ProductPage: View {
                             }
                             .padding(.top, 12)
                         }
+                        .padding(.horizontal, horizontalPadding)
                     }
                 }
-                .padding(.horizontal, 24)
                 .padding(.bottom, 40)
             }
-        }
-        .onTapGesture {
-            print("HI")
         }
         .navigationBarTitleDisplayMode(.inline)
         .background(
@@ -375,10 +381,6 @@ struct ProductPage: View {
                 EmptyView()
             }.hidden()
         )
-        .onAppear {
-            print("ProductPage appeared with \(productImages.count) images")
-            print("Available images: \(productImages)")
-        }
     }
 }
 
