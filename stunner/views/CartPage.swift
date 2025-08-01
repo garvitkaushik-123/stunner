@@ -8,10 +8,10 @@ struct CartPage: View {
     // Sample cart items for the new design
     let cartItems = [
         CartItem(name: "Contrasting sheepskin", price: 60.00, imageName: "product1"),
-        CartItem(name: "Suede leggings", price: 60.00, imageName: "product2"),
-        CartItem(name: "Faux-leather trousers", price: 60.00, imageName: "product3"),
-        CartItem(name: "Biker-style leggings", price: 60.00, imageName: "product4"),
-        CartItem(name: "Jacquard fluid trousers", price: 60.00, imageName: "product5")
+        CartItem(name: "Suede leggings", price: 60.00, imageName: "product1"),
+        CartItem(name: "Faux-leather trousers", price: 60.00, imageName: "product1"),
+        CartItem(name: "Biker-style leggings", price: 60.00, imageName: "product1"),
+        CartItem(name: "Jacquard fluid trousers", price: 60.00, imageName: "product1")
     ]
     
     var subtotal: Double {

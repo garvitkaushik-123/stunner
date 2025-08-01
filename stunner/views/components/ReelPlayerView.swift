@@ -1,5 +1,16 @@
 import SwiftUI
 import AVKit
+import UIKit
+
+struct ShareSheet: UIViewControllerRepresentable {
+    var activityItems: [Any]
+    var applicationActivities: [UIActivity]? = nil
+
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        UIActivityViewController(activityItems: activityItems, applicationActivities: applicationActivities)
+    }
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
+}
 
 struct ReelPlayerView: View {
     let videoURL: String
@@ -8,6 +19,7 @@ struct ReelPlayerView: View {
     @State private var player: AVPlayer?
     @State private var isLiked: Bool = false
     @State private var likeCount: Int = Int.random(in: 100...9999) // Random like count for demo
+    @State private var isShareSheetPresented = false
 
     var body: some View {
         ZStack {
@@ -99,6 +111,21 @@ struct ReelPlayerView: View {
                                 .font(.visbyMedium(size: 12))
                                 .foregroundColor(.white)
                         }
+                        
+                        // Share button
+                        VStack(spacing: 4) {
+                            Button(action: {
+                                isShareSheetPresented = true
+                            }) {
+                                Image(systemName: "square.and.arrow.up")
+                                    .font(.system(size: 28))
+                                    .foregroundColor(.white)
+                            }
+                            
+                            Text("Share")
+                                .font(.visbyMedium(size: 12))
+                                .foregroundColor(.white)
+                        }
                     }
                     .padding(.trailing, 20)
                 }
@@ -112,6 +139,8 @@ struct ReelPlayerView: View {
                 self.player = avPlayer
             }
         }
+        .sheet(isPresented: $isShareSheetPresented) {
+            ShareSheet(activityItems: [videoURL])
+        }
     }
 }
-
