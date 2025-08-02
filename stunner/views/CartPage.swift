@@ -7,13 +7,11 @@ struct CartPage: View {
     @State private var agreedToTerms = false
     @GestureState private var dragOffset = CGSize.zero
     
-    // Sample cart items for the new design
     let cartItems = [
         CartItem(name: "Contrasting sheepskin", price: 60.00, imageName: "product1"),
-        CartItem(name: "Suede leggings", price: 60.00, imageName: "product1"),
-        CartItem(name: "Faux-leather trousers", price: 60.00, imageName: "product1"),
-        CartItem(name: "Biker-style leggings", price: 60.00, imageName: "product1"),
-        CartItem(name: "Jacquard fluid trousers", price: 60.00, imageName: "product1")
+        CartItem(name: "Clinique", price: 1999.99, imageName: "selfcare2"),
+        CartItem(name: "KAMA AYURVEDA", price: 549.00, imageName: "selfcare1"),
+        CartItem(name: "Uriage", price: 429.00, imageName: "selfcare3")
     ]
     
     var subtotal: Double {

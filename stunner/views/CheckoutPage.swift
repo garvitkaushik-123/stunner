@@ -23,6 +23,7 @@ struct CheckoutPage: View {
     let CheckOutCountries = ["India", "United States", "Canada", "Germany", "Australia"]
     
     let CheckOutProducts: [CheckOutProduct] = [
+        CheckOutProduct(imageName: "product1", name: "Contrasting sheepskin", description: "Contrasting sheepskin", price: 60.00),
         CheckOutProduct(imageName: "selfcare1", name: "KAMA AYURVEDA", description: "Rose & Jasmine Hair Cleanser", price: 1999.99),
         CheckOutProduct(imageName: "selfcare2", name: "Clinique", description: "Clinical Serum Foundation SPF 20", price: 549.00),
         CheckOutProduct(imageName: "selfcare3", name: "Uriage", description: "Depiderm Anti-Dark Spot Skin Serum", price: 429.00)
