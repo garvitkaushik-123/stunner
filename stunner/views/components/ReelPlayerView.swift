@@ -136,7 +136,7 @@ struct ReelPlayerView: View {
                                 .foregroundColor(.white)
                         }
                         
-                        Text("\(Int.random(in: 10...500))")
+                        Text("\(6)")
                             .font(.system(size: 12, weight: .medium))
                             .foregroundColor(.white)
                     }
