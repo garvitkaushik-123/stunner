@@ -122,5 +122,5 @@ let sampleProducts2 = [
 let sampleProducts3 = [
     ShopProduct(name: "TOM FORD BOIS PARFUM", brand: "TOM FORD", imageName: "product1", originalPrice: 17000, discountedPrice: 12999, deliveryTime: "2 HRS"),
     ShopProduct(name: "Earbuds 101", brand: "BOAT", imageName: "stundeal6", originalPrice: 17000, discountedPrice: 12999, deliveryTime: "2 HRS"),
-    ShopProduct(name: "Rolex 52", brand: "Rolex", imageName: "stundeal5", originalPrice: 17000, discountedPrice: 12999, deliveryTime: "2 HRS"),
+    ShopProduct(name: "Full Sleeves Night Suit", brand: "Babyoye", imageName: "stundeal1", originalPrice: 17000, discountedPrice: 12999, deliveryTime: "2 HRS"),
 ]
