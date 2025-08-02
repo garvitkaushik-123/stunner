@@ -102,15 +102,49 @@ struct ProductPage: View {
             ScrollView {
                 VStack(spacing: 0) {
                     // Product Image Gallery and Details Section
-                    HStack(alignment: .top, spacing: 0) {
-                        // Left Section - Product Image Gallery
-                        VStack(spacing: 16) {
-                            // Thumbnail Images
-                            VStack(spacing: 8) {
-                                ForEach(0..<min(6, productImages.count), id: \.self) { index in
-                                    Button(action: {
-                                        selectedImageIndex = index
-                                    }) {
+                    ZStack {
+                        // Main content layer (z-index: 0)
+                        HStack(alignment: .top, spacing: 0) {
+                            // Left Section - Product Image Gallery (placeholder for spacing)
+                            VStack(spacing: 16) {
+                                // Thumbnail Images placeholder
+                                VStack(spacing: 8) {
+                                    ForEach(0..<min(6, productImages.count), id: \.self) { index in
+                                        RoundedRectangle(cornerRadius: 8)
+                                            .fill(Color.clear)
+                                            .frame(width: 60, height: 60)
+                                    }
+                                }
+                                .padding(.leading, horizontalPadding)
+                                
+                                Spacer()
+                            }
+                            .frame(width: 80)
+                            
+                            Spacer()
+                            
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 12)
+                                    .fill(Color.gray.opacity(0.1))
+                                    .frame(width: UIScreen.main.bounds.width - 140, height: 380) // Dynamic width
+                                
+                                Image(productImages[selectedImageIndex])
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: UIScreen.main.bounds.width - 140, height: 380)
+                                    .clipped()
+                                    .cornerRadius(12)
+                            }
+                            .padding(.trailing, horizontalPadding)
+                            
+                            Spacer()
+                        }
+                        
+                        // Thumbnail images layer (z-index: 1)
+                        HStack(alignment: .top, spacing: 0) {
+                            VStack(spacing: 16) {
+                                VStack(spacing: 8) {
+                                    ForEach(0..<min(6, productImages.count), id: \.self) { index in
                                         ZStack {
                                             RoundedRectangle(cornerRadius: 8)
                                                 .fill(Color.gray.opacity(0.2))
@@ -128,33 +162,29 @@ struct ProductPage: View {
                                                 .stroke(selectedImageIndex == index ? Color.black : Color.clear, lineWidth: 2)
                                         )
                                         .scaleEffect(selectedImageIndex == index ? 1.05 : 1.0)
-                                        .animation(.easeInOut(duration: 0.2), value: selectedImageIndex)
+                                        .contentShape(Rectangle())
+                                        .onTapGesture {
+                                            withAnimation(.easeInOut(duration: 0.2)) {
+                                                selectedImageIndex = index
+                                            }
+                                        }
                                     }
                                 }
+                                .padding(.leading, horizontalPadding)
+                                
+                                Spacer()
                             }
-                            .padding(.leading, horizontalPadding)
+                            .frame(width: 80)
+                            
+                            Spacer()
+                            
+                            // Empty space to maintain layout
+                            Spacer()
+                                .frame(width: UIScreen.main.bounds.width - 140)
                             
                             Spacer()
                         }
-                        .frame(width: 80)
-                        
-                        Spacer()
-                        
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 12)
-                                .fill(Color.gray.opacity(0.1))
-                                .frame(width: UIScreen.main.bounds.width - 140, height: 380) // Dynamic width
-                            
-                            Image(productImages[selectedImageIndex])
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: UIScreen.main.bounds.width - 140, height: 380)
-                                .clipped()
-                                .cornerRadius(12)
-                        }
-                        .padding(.trailing, horizontalPadding)
-                        
-                        Spacer()
+                        .zIndex(1)
                     }
                     .padding(.vertical, 24)
                     
