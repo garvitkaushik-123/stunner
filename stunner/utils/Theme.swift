@@ -128,18 +128,10 @@ struct StunnerHeader: View {
             
             Spacer()
             
-            if #available(iOS 16.0, *) {
-                Text("STUNNER")
-                    .font(.visbyBold(size: 18))
-                    .foregroundColor(.primary)
-                    .textCase(.uppercase)
-                    .tracking(2)
-            } else {
-                Text("STUNNER")
-                    .font(.visbyBold(size: 18))
-                    .foregroundColor(.primary)
-                    .textCase(.uppercase)
-            }
+            Image("logo")
+                .resizable()
+                .scaledToFit()
+                .frame(height: 24)
             
             Spacer()
             

@@ -31,8 +31,7 @@ struct BrandPage: View {
                 VStack(alignment: .leading, spacing: 16) {
                     // Top-left brand title
                 Text("Miraggio")
-                    .font(.title)
-                    .fontWeight(.bold)
+                    .font(.visbyBold(size: 28))
                     .padding(.leading)
                     .padding(.top, 16)
                 
@@ -49,8 +48,7 @@ struct BrandPage: View {
                             
                             // Name
                             Text(product.name)
-                                .font(.footnote)
-                                .fontWeight(.semibold)
+                                .font(.visbySemibold(size: 14))
                                 .multilineTextAlignment(.center)
                                 .lineLimit(2)
                                 .frame(maxWidth: .infinity)
@@ -58,11 +56,10 @@ struct BrandPage: View {
                             // Price section
                             HStack(spacing: 6) {
                                 Text(product.price)
-                                    .font(.subheadline)
+                                    .font(.visbyRegular(size: 15))
                                 Text(product.discount)
-                                    .font(.subheadline)
+                                    .font(.visbySemibold(size: 15))
                                     .foregroundColor(.green)
-                                    .fontWeight(.semibold)
                             }
                         }
                         .padding()

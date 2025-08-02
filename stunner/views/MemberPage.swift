@@ -29,7 +29,7 @@ struct MemberPage: View {
                 
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Enter Phone Number")
-                        .font(.headline)
+                        .font(.visbySemibold(size: 18))
                         .foregroundColor(.gray)
                     
                     TextField("e.g. 9876543210", text: $phoneNumber)
@@ -45,7 +45,7 @@ struct MemberPage: View {
                         isFocused = false
                     }) {
                         Text("Submit")
-                            .fontWeight(.semibold)
+                            .font(.visbySemibold(size: 16))
                             .frame(maxWidth: .infinity)
                             .padding()
                             .background(Color.primaryColor)

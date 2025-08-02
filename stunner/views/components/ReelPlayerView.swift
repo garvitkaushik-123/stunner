@@ -67,7 +67,7 @@ struct ReelPlayerView: View {
                         // Account name
                         NavigationLink(destination: BrandPage()) {
                             Text("Miraggio")
-                                .font(.system(size: 16, weight: .medium))
+                                .font(.visbyMedium(size: 16))
                                 .foregroundColor(.white)
                         }
                         .buttonStyle(PlainButtonStyle())
@@ -79,7 +79,7 @@ struct ReelPlayerView: View {
                             }
                         }) {
                             Text(isFollowing ? "Following" : "Follow")
-                                .font(.system(size: 12, weight: .medium))
+                                .font(.visbyMedium(size: 12))
                                 .foregroundColor(isFollowing ? .white : .black)
                                 .padding(.horizontal, 12)
                                 .padding(.vertical, 4)
@@ -122,7 +122,7 @@ struct ReelPlayerView: View {
                         }
                         
                         Text("\(likeCount)")
-                            .font(.system(size: 12, weight: .medium))
+                            .font(.visbyMedium(size: 12))
                             .foregroundColor(.white)
                     }
                     
@@ -137,7 +137,7 @@ struct ReelPlayerView: View {
                         }
                         
                         Text("\(6)")
-                            .font(.system(size: 12, weight: .medium))
+                            .font(.visbyMedium(size: 12))
                             .foregroundColor(.white)
                     }
                     
@@ -152,7 +152,7 @@ struct ReelPlayerView: View {
                         }
                         
                         Text("Share")
-                            .font(.system(size: 12, weight: .medium))
+                            .font(.visbyMedium(size: 12))
                             .foregroundColor(.white)
                     }
                     
@@ -167,7 +167,7 @@ struct ReelPlayerView: View {
                         }
                         
                         Text("Shop")
-                            .font(.system(size: 12, weight: .medium))
+                            .font(.visbyMedium(size: 12))
                             .foregroundColor(.white)
                     }
                 }
@@ -214,7 +214,7 @@ struct CommentModalView: View {
                 Spacer()
             }
             Text("Comments")
-                .font(.headline)
+                .font(.visbySemibold(size: 18))
                 .padding(.top, 12)
             Divider()
             ScrollView {
@@ -225,13 +225,13 @@ struct CommentModalView: View {
                                 .fill(Color.black)
                                 .frame(width: 32, height: 32)
                                 .overlay(
-                                    Text(String(name.prefix(1)))
-                                        .foregroundColor(.white)
-                                        .font(.subheadline.bold())
+                                                                    Text(String(name.prefix(1)))
+                                    .foregroundColor(.white)
+                                    .font(.visbyBold(size: 15))
                                 )
                             VStack(alignment: .leading, spacing: 4) {
-                                Text(name).font(.subheadline.bold())
-                                Text(text).font(.subheadline)
+                                Text(name).font(.visbyBold(size: 15))
+                                Text(text).font(.visbyRegular(size: 15))
                             }
                             Spacer()
                         }

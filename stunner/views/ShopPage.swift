@@ -30,7 +30,7 @@ struct ShopProductSectionView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text(title)
-                .font(.system(size: 18, weight: .semibold))
+                .font(.visbySemibold(size: 18))
                 .padding(.horizontal, 4)
             
             ScrollView(.horizontal, showsIndicators: false) {
@@ -60,7 +60,7 @@ struct ShopProductCardView: View {
                 
                 if let badge = product.deliveryTime {
                     Text(badge)
-                        .font(.system(size: 10, weight: .semibold))
+                        .font(.visbySemibold(size: 10))
                         .padding(.horizontal, 6)
                         .padding(.vertical, 2)
                         .background(Color.black)
@@ -71,21 +71,21 @@ struct ShopProductCardView: View {
             }
             
             Text(product.brand.uppercased())
-                .font(.system(size: 12, weight: .medium))
+                .font(.visbyMedium(size: 12))
                 .foregroundColor(.gray)
             
             Text(product.name)
-                .font(.system(size: 14, weight: .semibold))
+                .font(.visbySemibold(size: 14))
                 .lineLimit(2)
             
             HStack(spacing: 6) {
                 Text("Rs. \(product.originalPrice, specifier: "%.0f")")
-                    .font(.system(size: 12))
+                    .font(.visbyRegular(size: 12))
                     .strikethrough()
                     .foregroundColor(.gray)
                 
                 Text("Rs. \(product.discountedPrice, specifier: "%.0f")")
-                    .font(.system(size: 14, weight: .bold))
+                    .font(.visbyBold(size: 14))
                     .foregroundColor(.black)
             }
         }
