@@ -98,6 +98,21 @@ struct ReelPlayerView: View {
                                 .foregroundColor(.white)
                         }
                         
+                        // Share button
+                        VStack(spacing: 4) {
+                            Button(action: {
+                                isShareSheetPresented = true
+                            }) {
+                                Image(systemName: "square.and.arrow.up")
+                                    .font(.system(size: 28))
+                                    .foregroundColor(.white)
+                            }
+                            
+                            Text("Share")
+                                .font(.visbyMedium(size: 12))
+                                .foregroundColor(.white)
+                        }
+                        
                         // Shop button
                         VStack(spacing: 4) {
                             Button(action: {
@@ -113,20 +128,6 @@ struct ReelPlayerView: View {
                                 .foregroundColor(.white)
                         }
                         
-                        // Share button
-                        VStack(spacing: 4) {
-                            Button(action: {
-                                isShareSheetPresented = true
-                            }) {
-                                Image(systemName: "square.and.arrow.up")
-                                    .font(.system(size: 28))
-                                    .foregroundColor(.white)
-                            }
-                            
-                            Text("Share")
-                                .font(.visbyMedium(size: 12))
-                                .foregroundColor(.white)
-                        }
                     }
                     .padding(.trailing, 20)
                 }
