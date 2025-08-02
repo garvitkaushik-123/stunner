@@ -60,13 +60,13 @@ struct ShopProductCardView: View {
                 
                 if let badge = product.deliveryTime {
                     Text(badge)
-                        .font(.system(size: 12, weight: .bold))
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 4)
+                        .font(.system(size: 10, weight: .semibold))
+                        .padding(.horizontal, 6)
+                        .padding(.vertical, 2)
                         .background(Color.black)
                         .foregroundColor(.white)
-                        .cornerRadius(4)
-                        .padding(6)
+                        .cornerRadius(3)
+                        .padding(5)
                 }
             }
             
@@ -124,3 +124,4 @@ let sampleProducts3 = [
     ShopProduct(name: "Earbuds 101", brand: "BOAT", imageName: "stundeal6", originalPrice: 17000, discountedPrice: 12999, deliveryTime: "2 HRS"),
     ShopProduct(name: "Full Sleeves Night Suit", brand: "Babyoye", imageName: "stundeal1", originalPrice: 17000, discountedPrice: 12999, deliveryTime: "2 HRS"),
 ]
+

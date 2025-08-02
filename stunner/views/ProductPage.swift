@@ -14,7 +14,7 @@ struct SwipeToBuyButton: View {
 
             ZStack {
                 RoundedRectangle(cornerRadius: 25)
-                    .fill(isComplete ? Color.green : Color.blue)
+                    .fill(isComplete ? Color.green : Color.black)
                     .frame(height: 50)
                     .overlay(
                         Text(isComplete ? "BOUGHT" : "SWIPE TO BUY")
@@ -28,7 +28,7 @@ struct SwipeToBuyButton: View {
                         .frame(width: circleSize, height: circleSize)
                         .overlay(
                             Image(systemName: isComplete ? "checkmark" : "chevron.right")
-                                .foregroundColor(isComplete ? .green : .blue)
+                                .foregroundColor(isComplete ? .green : .black)
                                 .font(.system(size: 22, weight: .bold))
                         )
                         .offset(x: offsetX)
@@ -118,7 +118,7 @@ struct ProductPage: View {
                                         }
                                         .overlay(
                                             RoundedRectangle(cornerRadius: 8)
-                                                .stroke(selectedImageIndex == index ? Color.blue : Color.clear, lineWidth: 2)
+                                                .stroke(selectedImageIndex == index ? Color.black : Color.clear, lineWidth: 2)
                                         )
                                         .scaleEffect(selectedImageIndex == index ? 1.05 : 1.0)
                                         .animation(.easeInOut(duration: 0.2), value: selectedImageIndex)
@@ -226,7 +226,7 @@ struct ProductPage: View {
                                             .frame(width: 36, height: 36)
                                             .overlay(
                                                 RoundedRectangle(cornerRadius: 6)
-                                                    .stroke(selectedColor == color ? Color.blue : Color.clear, lineWidth: 2)
+                                                    .stroke(selectedColor == color ? Color.black : Color.clear, lineWidth: 2)
                                             )
                                     }
                                 }
@@ -250,7 +250,7 @@ struct ProductPage: View {
                                 .foregroundColor(.white)
                                 .padding(.horizontal, 20)
                                 .padding(.vertical, 10)
-                                .background(Color.blue)
+                                .background(Color.black)
                                 .cornerRadius(8)
                             }
                         }

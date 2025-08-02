@@ -175,7 +175,7 @@ struct ReelPlayerView: View {
                     VStack(alignment: .leading, spacing: 16) {
                         ForEach(comments, id: \.0) { name, text in
                             HStack(alignment: .top, spacing: 8) {
-                                Circle().fill(Color.blue).frame(width: 32, height: 32).overlay(Text(String(name.prefix(1))).foregroundColor(.white).font(.subheadline.bold()))
+                                Circle().fill(Color.black).frame(width: 32, height: 32).overlay(Text(String(name.prefix(1))).foregroundColor(.white).font(.subheadline.bold()))
                                 VStack(alignment: .leading, spacing: 4) {
                                     Text(name).font(.subheadline.bold())
                                     Text(text).font(.subheadline)
