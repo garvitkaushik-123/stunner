@@ -9,6 +9,8 @@ struct CheckOutProduct: Identifiable {
 }
 
 struct CheckoutPage: View {
+    @Environment(\.presentationMode) var presentationMode
+    
     @State private var CheckOutEmail: String = ""
     @State private var CheckOutPhone: String = ""
     @State private var CheckOutFirstName: String = ""
@@ -32,9 +34,14 @@ struct CheckoutPage: View {
     var CheckOutTotalPrice: Double {
         CheckOutProducts.reduce(0) { $0 + $1.price }
     }
-
+    
     var body: some View {
-        ScrollView {
+        VStack(spacing: 0) {
+            StunnerHeader(showBackButton: true) {
+                presentationMode.wrappedValue.dismiss()
+            }
+            
+            ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
                     Text("Your Items")
                         .font(.visbyBold(size: 22))
@@ -131,4 +138,6 @@ struct CheckoutPage: View {
                 .padding()
             }
         }
+        .navigationBarHidden(true)
+    }
 }

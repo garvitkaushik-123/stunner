@@ -107,9 +107,27 @@ extension Font {
 }
 
 struct StunnerHeader: View {
+    var showBackButton: Bool = false
+    var onBackButtonTapped: (() -> Void)?
+    
     var body: some View {
         HStack {
+            if showBackButton {
+                Button(action: {
+                    onBackButtonTapped?()
+                }) {
+                    Image(systemName: "chevron.left")
+                        .font(.system(size: 18, weight: .medium))
+                        .foregroundColor(.primary)
+                }
+                .frame(width: 44, height: 44)
+            } else {
+                Spacer()
+                    .frame(width: 44, height: 44)
+            }
+            
             Spacer()
+            
             if #available(iOS 16.0, *) {
                 Text("STUNNER")
                     .font(.visbyBold(size: 18))
@@ -122,7 +140,11 @@ struct StunnerHeader: View {
                     .foregroundColor(.primary)
                     .textCase(.uppercase)
             }
+            
             Spacer()
+            
+            Spacer()
+                .frame(width: 44, height: 44)
         }
         .padding(.vertical, 12)
         .background(Color.white)

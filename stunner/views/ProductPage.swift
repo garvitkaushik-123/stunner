@@ -71,6 +71,8 @@ struct SwipeToBuyButton: View {
 }
 
 struct ProductPage: View {
+    @Environment(\.presentationMode) var presentationMode
+    
     let productImages = [
         "lady", "bag1", "bag2", "bag3", "bag4"
     ]
@@ -92,6 +94,11 @@ struct ProductPage: View {
     private let horizontalPadding: CGFloat = 16
     
     var body: some View {
+        VStack(spacing: 0) {
+            StunnerHeader(showBackButton: true) {
+                presentationMode.wrappedValue.dismiss()
+            }
+            
             ScrollView {
                 VStack(spacing: 0) {
                     // Product Image Gallery and Details Section
@@ -376,51 +383,52 @@ struct ProductPage: View {
                     .padding(.bottom, 40)
                 }
             }
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarHidden(true)
             .background(
                 NavigationLink(destination: CartPage(), isActive: $navigateToCart) {
                     EmptyView()
                 }.hidden()
             )
-    }
-}
-
-// Collapsible Section Component
-struct CollapsibleSection<Content: View>: View {
-    let title: String
-    @Binding var isExpanded: Bool
-    let content: Content
-    
-    init(title: String, isExpanded: Binding<Bool>, @ViewBuilder content: () -> Content) {
-        self.title = title
-        self._isExpanded = isExpanded
-        self.content = content()
+        }
     }
     
-    var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            Button(action: {
-                withAnimation(.easeInOut(duration: 0.3)) {
-                    isExpanded.toggle()
+    // Collapsible Section Component
+    struct CollapsibleSection<Content: View>: View {
+        let title: String
+        @Binding var isExpanded: Bool
+        let content: Content
+        
+        init(title: String, isExpanded: Binding<Bool>, @ViewBuilder content: () -> Content) {
+            self.title = title
+            self._isExpanded = isExpanded
+            self.content = content()
+        }
+        
+        var body: some View {
+            VStack(alignment: .leading, spacing: 0) {
+                Button(action: {
+                    withAnimation(.easeInOut(duration: 0.3)) {
+                        isExpanded.toggle()
+                    }
+                }) {
+                    HStack {
+                        Text(title)
+                            .font(.visbyMedium(size: 16))
+                            .foregroundColor(.primary)
+                        
+                        Spacer()
+                        
+                        Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
+                            .font(.system(size: 14))
+                            .foregroundColor(.secondary)
+                    }
+                    .padding(.vertical, 16)
                 }
-            }) {
-                HStack {
-                    Text(title)
-                        .font(.visbyMedium(size: 16))
-                        .foregroundColor(.primary)
-                    
-                    Spacer()
-                    
-                    Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
-                        .font(.system(size: 14))
-                        .foregroundColor(.secondary)
+                
+                if isExpanded {
+                    content
+                        .padding(.bottom, 16)
                 }
-                .padding(.vertical, 16)
-            }
-            
-            if isExpanded {
-                content
-                    .padding(.bottom, 16)
             }
         }
     }
