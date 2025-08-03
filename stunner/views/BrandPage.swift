@@ -28,66 +28,70 @@ struct BrandPage: View {
     ]
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
-                HStack {
-                    Text("MIRAGGIO")
-                        .font(.title3)
-                        .fontWeight(.semibold)
-                    
-                    Button(action: {}) {
-                        Text("FOLLOW")
-                            .font(.caption)
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 4)
-                            .background(Color(hex: "#E9E9E9"))
-                            .cornerRadius(4)
-                    }
-                    
-                    Spacer()
-                    
-                    Text("23 ITEM(s)")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-                }
-                .padding(.horizontal)
-
-                // Items Grid
-                LazyVGrid(columns: columns, spacing: 24) {
-                    ForEach(productData, id: \.id) { item in
-                        VStack(spacing: 8) {
-                            Image(item.imageName)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(height: 130)
-                                .background(Color.white)
-                            
-                            Text(item.title)
-                                .font(.footnote)
-                                .foregroundColor(.black)
-                            
-                            HStack(spacing: 4) {
-                                Text("₹\(item.price)")
-                                    .font(.footnote)
-                                    .fontWeight(.semibold)
-                                
-                                Text("₹\(item.originalPrice)")
-                                    .font(.footnote)
-                                    .foregroundColor(.gray)
-                                    .strikethrough()
-                                
-                                Text("20% OFF")
-                                    .font(.footnote)
-                                    .foregroundColor(.gray)
-                            }
+        VStack(spacing: 16) {
+            // STUNNER Header
+            StunnerHeader()
+            ScrollView {
+                VStack(alignment: .leading, spacing: 16) {
+                    HStack {
+                        Text("MIRAGGIO")
+                            .font(.title3)
+                            .fontWeight(.semibold)
+                        
+                        Button(action: {}) {
+                            Text("FOLLOW")
+                                .font(.caption)
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 4)
+                                .background(Color(hex: "#E9E9E9"))
+                                .cornerRadius(4)
                         }
-                        .padding()
-                        .background(Color(hex: "#FFFFFF"))
-                        .cornerRadius(10)
-                        .shadow(color: Color.gray.opacity(0.1), radius: 2, x: 0, y: 1)
+                        
+                        Spacer()
+                        
+                        Text("23 ITEM(s)")
+                            .font(.caption)
+                            .foregroundColor(.gray)
                     }
+                    .padding(.horizontal)
+                    
+                    // Items Grid
+                    LazyVGrid(columns: columns, spacing: 24) {
+                        ForEach(productData, id: \.id) { item in
+                            VStack(spacing: 8) {
+                                Image(item.imageName)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(height: 130)
+                                    .background(Color.white)
+                                
+                                Text(item.title)
+                                    .font(.footnote)
+                                    .foregroundColor(.black)
+                                
+                                HStack(spacing: 4) {
+                                    Text("₹\(item.price)")
+                                        .font(.footnote)
+                                        .fontWeight(.semibold)
+                                    
+                                    Text("₹\(item.originalPrice)")
+                                        .font(.footnote)
+                                        .foregroundColor(.gray)
+                                        .strikethrough()
+                                    
+                                    Text("20% OFF")
+                                        .font(.footnote)
+                                        .foregroundColor(.gray)
+                                }
+                            }
+                            .padding()
+                            .background(Color(hex: "#FFFFFF"))
+                            .cornerRadius(10)
+                            .shadow(color: Color.gray.opacity(0.1), radius: 2, x: 0, y: 1)
+                        }
+                    }
+                    .padding(.horizontal)
                 }
-                .padding(.horizontal)
             }
         }
         .background(Color(hex: "#E9E9E9"))
