@@ -69,21 +69,22 @@ struct ReelPlayerView: View {
                             Text("Miraggio")
                                 .font(.visbyMedium(size: 15))
                                 .foregroundColor(.white)
-                                .tracking(0.3) // 2% of 15 = 0.3
+                                .tracking(0.3)
                         }
                         .buttonStyle(PlainButtonStyle())
 
-                        // Follow button with width 65, height 22.65, Visby Semibold 10, letter spacing 5% (0.5)
                         Button(action: {
                             withAnimation {
                                 isFollowing.toggle()
                             }
                         }) {
-                            Text(isFollowing ? "Following" : "Follow")
+                            Text(isFollowing ? "FOLLOWING" : "FOLLOW")
                                 .font(.visbySemibold(size: 10))
                                 .foregroundColor(isFollowing ? .white : .black)
-                                .tracking(0.5) // 5% of 10 = 0.5
+                                .tracking(0.5)
                                 .frame(width: 65, height: 22.65)
+                                .multilineTextAlignment(.center)
+                                .baselineOffset(-1)
                                 .background(isFollowing ? Color.clear : Color.white)
                                 .cornerRadius(4)
                                 .overlay(

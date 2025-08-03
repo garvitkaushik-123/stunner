@@ -15,9 +15,9 @@ extension Color {
     static let yellow = Color(hex: "#f0a750")
     static let pink = Color(hex: "#ec749d")
     static let blue = Color(hex: "#0c74d6")
+    static let discover = Color(hex: "#969696")
     static let backdrop = Color.black.opacity(0.2)
 }
-
 
 extension Color {
     init(hex: String) {
@@ -131,7 +131,7 @@ struct StunnerHeader: View {
             Image("logo1")
                 .resizable()
                 .scaledToFit()
-                .frame(height: 24)
+                .frame(width: 153, height: 15)
             
             Spacer()
             
