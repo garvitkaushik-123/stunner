@@ -66,19 +66,13 @@ struct ReelPlayerView: View {
                             .overlay(Circle().stroke(Color.white, lineWidth: 1))
                         
                         // Account name
-//                        NavigationLink(destination: BrandPage(brandName: reelData.brandName.uppercased())) {
-//
-                        Button(action: {
-                            showBrandPage = true
-                        }) {
-                            Text(reelData.brandName)
-                                .font(.visbyMedium(size: 15))
+                        NavigationLink(destination: BrandPage()) {
+                            Text("Miraggio")
+                                .font(.visbyMedium(size: 16))
                                 .foregroundColor(.white)
-                                .tracking(0.3)
                         }
-
                         .buttonStyle(PlainButtonStyle())
-
+                        
                         Button(action: {
                             withAnimation {
                                 isFollowing.toggle()
