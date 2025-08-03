@@ -15,6 +15,7 @@ struct ShareSheet: UIViewControllerRepresentable {
 struct ReelPlayerView: View {
     let reelData: ReelData
     @Binding var showProductPage: Bool
+    @Binding var showBrandPage: Bool
     @Binding var shouldPlay: Bool
     @State private var player: AVPlayer?
     @State private var isLiked: Bool = false
@@ -65,12 +66,17 @@ struct ReelPlayerView: View {
                             .overlay(Circle().stroke(Color.white, lineWidth: 1))
                         
                         // Account name
-                        NavigationLink(destination: BrandPage(brandName: reelData.brandName.uppercased())) {
+//                        NavigationLink(destination: BrandPage(brandName: reelData.brandName.uppercased())) {
+//
+                        Button(action: {
+                            showBrandPage = true
+                        }) {
                             Text(reelData.brandName)
                                 .font(.visbyMedium(size: 15))
                                 .foregroundColor(.white)
                                 .tracking(0.3)
                         }
+
                         .buttonStyle(PlainButtonStyle())
 
                         Button(action: {
@@ -265,24 +271,25 @@ struct CommentModalView: View {
 }
 
 
-struct ReelPlayerView_Previews: PreviewProvider {
-    static var previews: some View {
-        PreviewWrapper()
-    }
-    
-    struct PreviewWrapper: View {
-        @State private var showProductPage = false
-        @State private var shouldPlay = false
-        
-        var body: some View {
-            ReelPlayerView(
-                reelData: ReelData(videoURL: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Beauty.mp4", brandName: "Miraggio", brandImage: "miraggio"),
-                showProductPage: $showProductPage,
-                shouldPlay: $shouldPlay
-            )
-        }
-    }
-}
+//struct ReelPlayerView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PreviewWrapper()
+//    }
+//    
+//    struct PreviewWrapper: View {
+//        @State private var showProductPage = false
+//        @State private var shouldPlay = false
+//        
+//        var body: some View {
+//            ReelPlayerView(
+//                reelData: ReelData(videoURL: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Beauty.mp4", brandName: "Miraggio", brandImage: "miraggio"),
+//                showProductPage: $showProductPage,
+//                showBrandPage: $showProductPage,
+//                shouldPlay: $shouldPlay
+//            )
+//        }
+//    }
+//}
 
 struct CommentModalView_Previews: PreviewProvider {
     static var previews: some View {

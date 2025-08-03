@@ -13,15 +13,13 @@ struct DiscoverPage: View {
             return [
                 ReelData(videoURL: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Beauty.mp4", brandName: "Miraggio", brandImage: "miraggio"),
                 ReelData(videoURL: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", brandName: "Blair", brandImage: "blair"),
-                ReelData(videoURL: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4", brandName: "Callie", brandImage: "callie"),
-                ReelData(videoURL: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Beauty.mp4", brandName: "Martina", brandImage: "martina"),
-                ReelData(videoURL: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", brandName: "River", brandImage: "river"),
-                ReelData(videoURL: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4", brandName: "Hazelnut", brandImage: "hazelnut")
+                ReelData(videoURL: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4", brandName: "Callie", brandImage: "callie")
             ]
         }
     }()
     
     @State private var showProductPage = false
+    @State private var showBrandPage: Bool = false
     @State private var visibleReelIndex: Int = 0
     @State private var isPageVisible: Bool = true
     
@@ -38,6 +36,7 @@ struct DiscoverPage: View {
                                 ReelPlayerView(
                                     reelData: reel,
                                     showProductPage: $showProductPage,
+                                    showBrandPage: $showBrandPage,
                                     shouldPlay: .constant(index == visibleReelIndex && isPageVisible)
                                 )
                                 .frame(width: geo.size.width, height: geo.size.height)
@@ -45,6 +44,12 @@ struct DiscoverPage: View {
                         }
                     }
                 }
+                .background(
+                    NavigationLink(destination: BrandPage(), isActive: $showBrandPage) {
+                        EmptyView()
+                    }
+                        .hidden()
+                )
                 .background(
                     NavigationLink(destination: ProductPage(), isActive: $showProductPage) {
                         EmptyView()

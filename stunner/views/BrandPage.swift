@@ -21,6 +21,8 @@ let productData: [ProductItem] = [
 ]
 
 struct BrandPage: View {
+    @Environment(\.presentationMode) var presentationMode
+
     let brandName: String
     
     init(brandName: String = "MIRAGGIO") {
@@ -33,9 +35,11 @@ struct BrandPage: View {
     ]
     
     var body: some View {
-        VStack(spacing: 16) {
-            // STUNNER Header
-            StunnerHeader()
+        VStack(spacing: 0) {
+            StunnerHeader(showBackButton: true) {
+                presentationMode.wrappedValue.dismiss()
+            }
+            
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
                     HStack {
@@ -102,3 +106,10 @@ struct BrandPage: View {
         .background(Color(hex: "#E9E9E9"))
     }
 }
+
+// Preview
+//struct BrandPage_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BrandPage()
+//    }
+//}
