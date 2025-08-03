@@ -13,7 +13,7 @@ struct ShareSheet: UIViewControllerRepresentable {
 }
 
 struct ReelPlayerView: View {
-    let videoURL: String
+    let reelData: ReelData
     @Binding var showProductPage: Bool
     @Binding var shouldPlay: Bool
     @State private var player: AVPlayer?
@@ -57,7 +57,7 @@ struct ReelPlayerView: View {
                 VStack(alignment: .leading, spacing: 8) {
                     HStack(spacing: 8) {
                         // Account image
-                        Image("miraggio")
+                        Image(reelData.brandImage)
                             .resizable()
                             .scaledToFill()
                             .frame(width: 42, height: 42)
@@ -65,8 +65,8 @@ struct ReelPlayerView: View {
                             .overlay(Circle().stroke(Color.white, lineWidth: 1))
                         
                         // Account name
-                        NavigationLink(destination: BrandPage()) {
-                            Text("Miraggio")
+                        NavigationLink(destination: BrandPage(brandName: reelData.brandName.uppercased())) {
+                            Text(reelData.brandName)
                                 .font(.visbyMedium(size: 15))
                                 .foregroundColor(.white)
                                 .tracking(0.3)
@@ -179,12 +179,12 @@ struct ReelPlayerView: View {
         }
         .onAppear {
             if player == nil {
-                let avPlayer = AVPlayer(url: URL(string: videoURL)!)
+                let avPlayer = AVPlayer(url: URL(string: reelData.videoURL)!)
                 self.player = avPlayer
             }
         }
         .sheet(isPresented: $isShareSheetPresented) {
-            ShareSheet(activityItems: [videoURL])
+            ShareSheet(activityItems: [reelData.videoURL])
         }
         .sheet(isPresented: $isCommentSheetPresented) {
             CommentModalView()
@@ -276,7 +276,7 @@ struct ReelPlayerView_Previews: PreviewProvider {
         
         var body: some View {
             ReelPlayerView(
-                videoURL: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Beauty.mp4",
+                reelData: ReelData(videoURL: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Beauty.mp4", brandName: "Miraggio", brandImage: "miraggio"),
                 showProductPage: $showProductPage,
                 shouldPlay: $shouldPlay
             )

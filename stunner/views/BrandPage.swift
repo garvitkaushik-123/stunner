@@ -21,6 +21,11 @@ let productData: [ProductItem] = [
 ]
 
 struct BrandPage: View {
+    let brandName: String
+    
+    init(brandName: String = "MIRAGGIO") {
+        self.brandName = brandName
+    }
     
     let columns = [
         GridItem(.flexible(), spacing: 16),
@@ -34,7 +39,7 @@ struct BrandPage: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
                     HStack {
-                        Text("MIRAGGIO")
+                        Text(brandName)
                             .font(.title3)
                             .fontWeight(.semibold)
                         
