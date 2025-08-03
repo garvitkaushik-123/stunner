@@ -42,6 +42,7 @@ struct BrandPage: View {
                             Image(product.imageName)
                                 .resizable()
                                 .scaledToFit()
+
                                 .frame(height: 160)
                                 .background(Color.gray.opacity(0.1))
                                 .cornerRadius(8)

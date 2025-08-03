@@ -10,9 +10,22 @@
 		6EEF25262E3D424400922C28 /* stunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = stunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		6E7DFF7B2E3F6CD700E5C214 /* Exceptions for "stunner" folder in "stunner" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 6E76C0E12E3906AA00B79435 /* stunner */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		6E76C0E42E3906AA00B79435 /* stunner */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				6E7DFF7B2E3F6CD700E5C214 /* Exceptions for "stunner" folder in "stunner" target */,
+			);
 			path = stunner;
 			sourceTree = "<group>";
 		};
@@ -249,6 +262,7 @@
 				DEVELOPMENT_TEAM = LP8MX2Q64C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = stunner/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -284,6 +298,7 @@
 				DEVELOPMENT_TEAM = LP8MX2Q64C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = stunner/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

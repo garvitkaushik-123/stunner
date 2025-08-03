@@ -5,7 +5,7 @@ extension Color {
     static let main = Color(hex: "#181818")
     static let secondary = Color(hex: "#4d4e4f")
     static let secondary2 = Color(hex: "#a0a0a0")
-    static let white = Color(hex: "#ffffff")
+    static let white = Color(hex: "#f1f1f1")
     static let lightGrey = Color(hex: "#eeeeee")
     static let flightGrey = Color(hex: "#f9f9f9")
     static let surface = Color(hex: "#f7f7f7")
@@ -128,7 +128,7 @@ struct StunnerHeader: View {
             
             Spacer()
             
-            Image("logo")
+            Image("logo1")
                 .resizable()
                 .scaledToFit()
                 .frame(height: 24)

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>VisbyMedium.otf</string>
+		<string>VisbyBold Italic.otf</string>
+		<string>VisbyBold.otf</string>
+		<string>VisbyExtrabold.otf</string>
+		<string>VisbyExtrabold Italic.otf</string>
+		<string>VisbyHeavy.otf</string>
+		<string>VisbyHeavy Italic.otf</string>
+		<string>VisbyItalic.otf</string>
+		<string>VisbyLight.otf</string>
+		<string>VisbyLight Italic.otf</string>
+		<string>VisbyMedium.otf</string>
+		<string>VisbyRegular.otf</string>
+		<string>VisbySemibold.otf</string>
+		<string>VisbySemibold Italic.otf</string>
+		<string>VisbyThin.otf</string>
+		<string>VisbyThin Italic.otf</string>
+	</array>
+</dict>
+</plist>
