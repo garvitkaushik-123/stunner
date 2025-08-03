@@ -67,22 +67,23 @@ struct ReelPlayerView: View {
                         // Account name
                         NavigationLink(destination: BrandPage()) {
                             Text("Miraggio")
-                                .font(.visbyMedium(size: 16))
+                                .font(.visbyMedium(size: 15))
                                 .foregroundColor(.white)
+                                .tracking(0.3) // 2% of 15 = 0.3
                         }
                         .buttonStyle(PlainButtonStyle())
-                        
-                        // Follow button
+
+                        // Follow button with width 65, height 22.65, Visby Semibold 10, letter spacing 5% (0.5)
                         Button(action: {
                             withAnimation {
                                 isFollowing.toggle()
                             }
                         }) {
                             Text(isFollowing ? "Following" : "Follow")
-                                .font(.visbyMedium(size: 12))
+                                .font(.visbySemibold(size: 10))
                                 .foregroundColor(isFollowing ? .white : .black)
-                                .padding(.horizontal, 12)
-                                .padding(.vertical, 4)
+                                .tracking(0.5) // 5% of 10 = 0.5
+                                .frame(width: 65, height: 22.65)
                                 .background(isFollowing ? Color.clear : Color.white)
                                 .cornerRadius(4)
                                 .overlay(
@@ -104,7 +105,7 @@ struct ReelPlayerView: View {
                 
                 VStack(spacing: 20) {
                     // Like button
-                    VStack(spacing: 4) {
+                    VStack(spacing: 0.55) {
                         Button(action: {
                             withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) {
                                 isLiked.toggle()
@@ -122,12 +123,12 @@ struct ReelPlayerView: View {
                         }
                         
                         Text("\(likeCount)")
-                            .font(.visbyMedium(size: 12))
+                            .font(.visbySemibold(size: 11))
                             .foregroundColor(.white)
                     }
                     
                     // Comment button
-                    VStack(spacing: 4) {
+                    VStack(spacing: 0.55) {
                         Button(action: {
                             isCommentSheetPresented = true
                         }) {
@@ -137,12 +138,12 @@ struct ReelPlayerView: View {
                         }
                         
                         Text("\(96)")
-                            .font(.visbyMedium(size: 12))
+                            .font(.visbySemibold(size: 11))
                             .foregroundColor(.white)
                     }
                     
                     // Share button
-                    VStack(spacing: 4) {
+                    VStack(spacing: 0.55) {
                         Button(action: {
                             isShareSheetPresented = true
                         }) {
@@ -152,12 +153,12 @@ struct ReelPlayerView: View {
                         }
                         
                         Text("Share")
-                            .font(.visbyMedium(size: 12))
+                            .font(.visbySemibold(size: 11))
                             .foregroundColor(.white)
                     }
                     
                     // Shop button
-                    VStack(spacing: 4) {
+                    VStack(spacing: 0.55) {
                         Button(action: {
                             showProductPage = true
                         }) {
@@ -167,7 +168,7 @@ struct ReelPlayerView: View {
                         }
                         
                         Text("Shop")
-                            .font(.visbyMedium(size: 12))
+                            .font(.visbySemibold(size: 11))
                             .foregroundColor(.white)
                     }
                 }
@@ -259,5 +260,31 @@ struct CommentModalView: View {
         }
         .background(Color(UIColor.systemBackground))
         .cornerRadius(16)
+    }
+}
+
+
+struct ReelPlayerView_Previews: PreviewProvider {
+    static var previews: some View {
+        PreviewWrapper()
+    }
+    
+    struct PreviewWrapper: View {
+        @State private var showProductPage = false
+        @State private var shouldPlay = false
+        
+        var body: some View {
+            ReelPlayerView(
+                videoURL: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Beauty.mp4",
+                showProductPage: $showProductPage,
+                shouldPlay: $shouldPlay
+            )
+        }
+    }
+}
+
+struct CommentModalView_Previews: PreviewProvider {
+    static var previews: some View {
+        CommentModalView()
     }
 }
