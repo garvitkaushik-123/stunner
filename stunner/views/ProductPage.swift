@@ -245,6 +245,7 @@ struct ProductPage: View {
                                 .tracking(0.02 * 11)
                                 .foregroundColor(Color.discover)
                                 .padding(.top, 12)
+                            
 //                            Image(systemName: "info.circle")
 //                                .font(.system(size: 11))
 //                                .foregroundColor(.blue)
@@ -379,14 +380,17 @@ struct ProductPage: View {
                             ) {
                                 VStack(alignment: .leading, spacing: 12) {
                                     Text("• Free shipping on orders above ₹999")
-                                        .font(.visbyRegular(size: 14))
-                                        .foregroundColor(.secondary)
+                                        .font(.visbyMedium(size: 11))
+                                        .tracking(0.02 * 11)
+                                        .foregroundColor(Color.discover)
                                     Text("• 30-day return policy")
-                                        .font(.visbyRegular(size: 14))
-                                        .foregroundColor(.secondary)
+                                        .font(.visbyMedium(size: 11))
+                                        .tracking(0.02 * 11)
+                                        .foregroundColor(Color.discover)
                                     Text("• Express delivery available")
-                                        .font(.visbyRegular(size: 14))
-                                        .foregroundColor(.secondary)
+                                        .font(.visbyMedium(size: 11))
+                                        .tracking(0.02 * 11)
+                                        .foregroundColor(Color.discover)
                                 }
                                 .padding(.top, 12)
                             }
@@ -403,14 +407,17 @@ struct ProductPage: View {
                             ) {
                                 VStack(alignment: .leading, spacing: 12) {
                                     Text("Material: Premium leather and canvas")
-                                        .font(.visbyRegular(size: 14))
-                                        .foregroundColor(.secondary)
+                                        .font(.visbyMedium(size: 11))
+                                        .tracking(0.02 * 11)
+                                        .foregroundColor(Color.discover)
                                     Text("Dimensions: 25cm x 15cm x 8cm")
-                                        .font(.visbyRegular(size: 14))
-                                        .foregroundColor(.secondary)
+                                        .font(.visbyMedium(size: 11))
+                                        .tracking(0.02 * 11)
+                                        .foregroundColor(Color.discover)
                                     Text("Weight: 450g")
-                                        .font(.visbyRegular(size: 14))
-                                        .foregroundColor(.secondary)
+                                        .font(.visbyMedium(size: 11))
+                                        .tracking(0.02 * 11)
+                                        .foregroundColor(Color.discover)
                                 }
                                 .padding(.top, 12)
                             }
