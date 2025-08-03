@@ -19,6 +19,7 @@ extension Color {
     static let backdrop = Color.black.opacity(0.2)
     static let product = Color(hex: "#555555")
     static let originalPrice = Color(hex: "#969696")
+    static let stunner = Color(hex: "#fafafafa")
 }
 
 extension Color {
@@ -141,6 +142,6 @@ struct StunnerHeader: View {
                 .frame(width: 44, height: 44)
         }
         .padding(.vertical, 12)
-        .background(Color.white)
+        .background(Color.stunner)
     }
 }

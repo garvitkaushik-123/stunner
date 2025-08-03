@@ -10,7 +10,7 @@ struct SplashScreenPage: View {
 
     var body: some View {
         ZStack {
-            Color.white
+            Color.stunner
                 .ignoresSafeArea()
 
             GeometryReader { geometry in

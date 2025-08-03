@@ -70,7 +70,7 @@ struct BrandPage: View {
             }
         }
         }
-        .background(Color.white)
+        .background(Color.stunner)
         .navigationBarHidden(true)
 
     }

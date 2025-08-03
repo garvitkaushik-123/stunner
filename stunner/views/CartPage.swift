@@ -41,7 +41,7 @@ struct CartPage: View {
                                 }
                             }
                         }
-                        .background(Color.white)
+                        .background(Color.stunner)
                         .cornerRadius(12)
                         .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: 2)
                         .padding(.horizontal, 20)
@@ -113,7 +113,7 @@ struct CartPage: View {
                         .padding(.horizontal, 20)
                         .padding(.bottom, 20)
                     }
-                    .background(Color.white)
+                    .background(Color.stunner)
                     .cornerRadius(12)
                     .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: 2)
                     .padding(.horizontal, 20)
