@@ -13,14 +13,19 @@ struct SwipeToBuyButton: View {
             let dragLimit = totalWidth - circleSize - padding * 2
 
             ZStack {
+                // Background rectangle
                 RoundedRectangle(cornerRadius: 25)
                     .fill(isComplete ? Color.green : Color.black)
                     .frame(height: 50)
-                    .overlay(
-                        Text(isComplete ? "BOUGHT" : "SWIPE TO BUY")
-                            .font(.visbyMedium(size: 16))
-                            .foregroundColor(.white)
-                    )
+                
+                // Text centered in available space (one line)
+                Text(isComplete ? "" : "SWIPE TO ADD")
+                    .font(.visbySemibold(size: 15))
+                    .tracking(0.3 * 15)
+                    .foregroundColor(.white)
+                    .fixedSize()
+                    .frame(maxWidth: .infinity)
+                    .padding(.leading, circleSize + padding * 2)
                 
                 HStack {
                     Circle()
@@ -45,8 +50,8 @@ struct SwipeToBuyButton: View {
                                             offsetX = dragLimit
                                             isComplete = true
                                         }
-                                        action()
-                                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                            action()
                                             withAnimation {
                                                 offsetX = 0
                                                 isComplete = false
@@ -223,13 +228,6 @@ struct ProductPage: View {
                                     .tracking(20.0 * 0)
                                     .strikethrough()
                                 
-                                Text("\(discountPercentage)% OFF")
-                                    .font(.visbyMedium(size: 14))
-                                    .foregroundColor(.white)
-                                    .padding(.horizontal, 8)
-                                    .padding(.vertical, 4)
-                                    .background(Color.red)
-                                    .cornerRadius(4)
                             }
                             
                             Text("(Inclusive of all taxes)")
@@ -252,73 +250,11 @@ struct ProductPage: View {
                         }
                         .padding(.horizontal, horizontalPadding)
                         
-                        // Color Selection
-                        VStack(alignment: .leading, spacing: 12) {
-                            Text("Color: \(selectedColor)")
-                                .font(.visbyMedium(size: 16))
-                                .foregroundColor(.primary)
-                            
-                            HStack(spacing: 16) {
-                                ForEach(colors, id: \.self) { color in
-                                    Button(action: {
-                                        selectedColor = color
-                                    }) {
-                                        RoundedRectangle(cornerRadius: 6)
-                                            .fill(color == "Green" ? Color.green : Color(red: 0.9, green: 0.8, blue: 0.7))
-                                            .frame(width: 36, height: 36)
-                                            .overlay(
-                                                RoundedRectangle(cornerRadius: 6)
-                                                    .stroke(selectedColor == color ? Color.black : Color.clear, lineWidth: 2)
-                                            )
-                                    }
-                                }
-                            }
-                        }
-                        .padding(.horizontal, horizontalPadding)
-                        
-                        // Delivery Check
-                        VStack(alignment: .leading, spacing: 12) {
-                            HStack {
-                                TextField("Enter your pincode", text: $pincode)
-                                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                                    .font(.visbyRegular(size: 16))
-                                    .keyboardType(.numberPad)
-                                    .frame(maxWidth: .infinity)
-                                
-                                Button("CHECK") {
-                                    // TODO: Implement pincode check
-                                }
-                                .font(.visbyMedium(size: 14))
-                                .foregroundColor(.white)
-                                .padding(.horizontal, 20)
-                                .padding(.vertical, 10)
-                                .background(Color.black)
-                                .cornerRadius(8)
-                            }
-                        }
-                        .padding(.horizontal, horizontalPadding)
-                        
                         // New Button Layout - Plus and Swipe to Buy
                         HStack(spacing: 16) {
-                            // Plus Button
-                            
-                            
-                            Button(action: {
-                                navigateToCart = true
-                            }) {
-                                Image(systemName: "plus")
-                                    .font(.system(size: 20, weight: .bold))
-                                    .foregroundColor(.white)
-                                    .frame(width: 50, height: 50)
-                                    .background(Color.black)
-                                    .clipShape(Circle())
-                            }
-                            
-                            Spacer()
-                            
                             // Swipe to Buy Button
                             SwipeToBuyButton {
-                                print("buy")
+                                navigateToCart = true
                             }
                             
                         }
