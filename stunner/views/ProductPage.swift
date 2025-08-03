@@ -74,7 +74,7 @@ struct ProductPage: View {
     @Environment(\.presentationMode) var presentationMode
     
     let productImages = [
-        "lady", "bag1", "bag2", "bag3", "bag4"
+        "bag1", "lady" , "bag2", "bag3", "bag4"
     ]
     
     @State private var navigateToCart = false
@@ -192,8 +192,9 @@ struct ProductPage: View {
                     VStack(alignment: .leading, spacing: 24) {
                         // Product Name
                         Text("SOLEIL CROSSBODY BAG")
-                            .font(.visbyBold(size: 24))
-                            .foregroundColor(.primary)
+                            .font(.visbyMedium(size: 20))
+                            .foregroundColor(Color.product)
+                            .tracking(20.0 * 0.08)
                             .textCase(.uppercase)
                             .padding(.horizontal, horizontalPadding)
                         
@@ -212,12 +213,14 @@ struct ProductPage: View {
                         VStack(alignment: .leading, spacing: 8) {
                             HStack {
                                 Text("₹\(String(format: "%.0f", currentPrice))")
-                                    .font(.visbyBold(size: 28))
-                                    .foregroundColor(.primary)
+                                    .font(.visbySemibold(size: 18))
+                                    .foregroundColor(.black)
+                                    .tracking(20.0 * 0)
                                 
                                 Text("₹\(String(format: "%.0f", originalPrice))")
-                                    .font(.visbyRegular(size: 18))
-                                    .foregroundColor(.secondary)
+                                    .font(.visbyMedium(size: 12))
+                                    .foregroundColor(Color.originalPrice)
+                                    .tracking(20.0 * 0)
                                     .strikethrough()
                                 
                                 Text("\(discountPercentage)% OFF")
@@ -238,12 +241,13 @@ struct ProductPage: View {
                         // Payment Option
                         HStack {
                             Text("or Pay ₹800 now & rest later via Miraggio Pay Later")
-                                .font(.visbyRegular(size: 14))
-                                .foregroundColor(.secondary)
-                            
-                            Image(systemName: "info.circle")
-                                .font(.system(size: 16))
-                                .foregroundColor(.blue)
+                                .font(.visbyMedium(size: 11))
+                                .tracking(0.02 * 11)
+                                .foregroundColor(Color.discover)
+                                .padding(.top, 12)
+//                            Image(systemName: "info.circle")
+//                                .font(.system(size: 11))
+//                                .foregroundColor(.blue)
                         }
                         .padding(.horizontal, horizontalPadding)
                         
@@ -331,8 +335,10 @@ struct ProductPage: View {
                                         .font(.visbyRegular(size: 14))
                                         .foregroundColor(.secondary)
                                     Text("Get ₹200 off on orders above ₹3999. Use code: TREAT")
-                                        .font(.visbyRegular(size: 14))
-                                        .foregroundColor(.secondary)
+                                        .font(.visbyMedium(size: 11))
+                                        .tracking(0.02 * 11)
+                                        .foregroundColor(Color.discover)
+                                        .padding(.top, 12)
                                 }
                                 
                                 HStack(alignment: .top) {
@@ -340,14 +346,14 @@ struct ProductPage: View {
                                         .font(.visbyRegular(size: 14))
                                         .foregroundColor(.secondary)
                                     Text("Additional 5% off up to ₹100 on all prepaid orders")
-                                        .font(.visbyRegular(size: 14))
-                                        .foregroundColor(.secondary)
+                                        .font(.visbyMedium(size: 11))
+                                        .tracking(0.02 * 11)
+                                        .foregroundColor(Color.discover)
                                 }
                             }
                         }
                         .padding(.horizontal, horizontalPadding)
                         
-                        // Collapsible Sections
                         VStack(spacing: 0) {
                             // Description
                             CollapsibleSection(
@@ -355,8 +361,9 @@ struct ProductPage: View {
                                 isExpanded: $isDescriptionExpanded
                             ) {
                                 Text("The Soleil Crossbody Bag features a modern design with vertical stripes, premium leather strap, and the iconic Miraggio logo. Perfect for everyday use with ample storage space and comfortable crossbody wear.")
-                                    .font(.visbyRegular(size: 14))
-                                    .foregroundColor(.secondary)
+                                    .font(.visbyMedium(size: 11))
+                                    .tracking(0.02 * 11)
+                                    .foregroundColor(Color.discover)
                                     .padding(.top, 12)
                             }
                             .padding(.horizontal, horizontalPadding)

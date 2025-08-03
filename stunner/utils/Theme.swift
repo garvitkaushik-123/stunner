@@ -17,6 +17,8 @@ extension Color {
     static let blue = Color(hex: "#0c74d6")
     static let discover = Color(hex: "#969696")
     static let backdrop = Color.black.opacity(0.2)
+    static let product = Color(hex: "#555555")
+    static let originalPrice = Color(hex: "#969696")
 }
 
 extension Color {

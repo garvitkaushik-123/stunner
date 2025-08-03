@@ -4,7 +4,6 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>VisbyMedium.otf</string>
 		<string>VisbyBold Italic.otf</string>
 		<string>VisbyBold.otf</string>
 		<string>VisbyExtrabold.otf</string>
