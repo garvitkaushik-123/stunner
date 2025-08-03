@@ -33,8 +33,6 @@ struct HomePage: View {
                     .accentColor(.main)
                 }
             }
-        } else {
-            // Fallback on earlier versions
         }
     }
 }
