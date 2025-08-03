@@ -136,7 +136,7 @@ struct ReelPlayerView: View {
                                 .foregroundColor(.white)
                         }
                         
-                        Text("\(6)")
+                        Text("\(96)")
                             .font(.visbyMedium(size: 12))
                             .foregroundColor(.white)
                     }
@@ -186,6 +186,8 @@ struct ReelPlayerView: View {
         }
         .sheet(isPresented: $isCommentSheetPresented) {
             CommentModalView()
+                .presentationDetents([.fraction(0.6)])
+                .presentationDragIndicator(.visible)
         }
     }
 }
@@ -199,7 +201,8 @@ struct CommentModalView: View {
         ("Arjun", "Such cool vibes!"),
         ("Mira", "Love the background track ✨"),
         ("Dev", "Nice editing!"),
-        ("Aisha", "Want to see more like this!")
+        ("Aisha", "Want to see more like this!"),
+        ("Garvit", "Stunning!")
     ]
     
     var body: some View {
@@ -225,9 +228,9 @@ struct CommentModalView: View {
                                 .fill(Color.black)
                                 .frame(width: 32, height: 32)
                                 .overlay(
-                                                                    Text(String(name.prefix(1)))
-                                    .foregroundColor(.white)
-                                    .font(.visbyBold(size: 15))
+                                    Text(String(name.prefix(1)))
+                                        .foregroundColor(.white)
+                                        .font(.visbyBold(size: 15))
                                 )
                             VStack(alignment: .leading, spacing: 4) {
                                 Text(name).font(.visbyBold(size: 15))
