@@ -150,7 +150,7 @@ struct ProductPage: View {
                                 VStack(spacing: 8) {
                                     ForEach(0..<min(6, productImages.count), id: \.self) { index in
                                         ZStack {
-                                            RoundedRectangle(cornerRadius: 8)
+                                            RoundedRectangle(cornerRadius: 0)
                                                 .fill(Color.gray.opacity(0.2))
                                                 .frame(width: 60, height: 60)
                                             
