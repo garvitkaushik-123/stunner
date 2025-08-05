@@ -10,8 +10,6 @@ struct BrandProduct: Identifiable {
     let discount: String
 }
 
-import SwiftUI
-
 struct BrandProductCard: View {
     let product: BrandProduct
 

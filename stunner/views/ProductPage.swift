@@ -79,7 +79,7 @@ struct ProductPage: View {
     @Environment(\.presentationMode) var presentationMode
     
     let productImages = [
-        "bag1", "lady" , "bag2", "bag3", "bag4"
+        "bag1", "lady" , "bag2", "bag3"
     ]
     
     @State private var navigateToCart = false
@@ -412,3 +412,8 @@ struct ProductPage: View {
     }
 }
 
+struct ProductPage_Previews: PreviewProvider {
+    static var previews: some View {
+        ProductPage()
+    }
+}
