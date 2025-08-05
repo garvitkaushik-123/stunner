@@ -5,6 +5,7 @@ struct ShopPage: View {
         VStack(spacing: 0) {
             // STUNNER Header
             StunnerHeader()
+            
             ScrollView {
                 VStack(spacing: 32) {
                     
@@ -56,7 +57,7 @@ struct ShopProductCardView: View {
                     .aspectRatio(1, contentMode: .fill)
                     .frame(width: 160, height: 180)
                     .clipped()
-                    .cornerRadius(12)
+                    .cornerRadius(0)
                 
                 if let badge = product.deliveryTime {
                     Text(badge)
@@ -125,3 +126,21 @@ let sampleProducts3 = [
     ShopProduct(name: "Full Sleeves Night Suit", brand: "Babyoye", imageName: "stundeal1", originalPrice: 17000, discountedPrice: 12999, deliveryTime: "2 HRS"),
 ]
 
+
+#Preview {
+    NavigationView {
+        ShopPage()
+    }
+}
+
+#Preview {
+    ShopProductSectionView(title: "SELF CARE", products: sampleProducts1)
+        .previewLayout(.sizeThatFits)
+        .padding()
+}
+
+#Preview {
+    ShopProductCardView(product: sampleProducts1[0])
+        .previewLayout(.sizeThatFits)
+        .padding()
+}

@@ -67,7 +67,7 @@ struct ReelPlayerView: View {
                         
                         // Account name
                         NavigationLink(destination: BrandPage()) {
-                            Text("Miraggio")
+                            Text(reelData.brandName)
                                 .font(.visbyMedium(size: 16))
                                 .foregroundColor(.white)
                         }

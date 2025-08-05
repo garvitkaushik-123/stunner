@@ -138,7 +138,6 @@ struct ProductPage: View {
                                     .scaledToFill()
                                     .frame(width: UIScreen.main.bounds.width - 140, height: 380)
                                     .clipped()
-                                    .cornerRadius(12)
                             }
                             .padding(.trailing, horizontalPadding)
                             
@@ -160,7 +159,6 @@ struct ProductPage: View {
                                                 .scaledToFill()
                                                 .frame(width: 60, height: 60)
                                                 .clipped()
-                                                .cornerRadius(8)
                                         }
                                         .overlay(
                                             RoundedRectangle(cornerRadius: 8)
