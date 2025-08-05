@@ -161,7 +161,7 @@ struct ProductPage: View {
                                                 .clipped()
                                         }
                                         .overlay(
-                                            RoundedRectangle(cornerRadius: 8)
+                                            RoundedRectangle(cornerRadius: 0)
                                                 .stroke(selectedImageIndex == index ? Color.black : Color.clear, lineWidth: 2)
                                         )
                                         .scaleEffect(selectedImageIndex == index ? 1.05 : 1.0)
