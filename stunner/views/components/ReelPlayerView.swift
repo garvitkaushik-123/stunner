@@ -75,7 +75,7 @@ struct ReelPlayerView: View {
                         
                         Button(action: {
                             withAnimation {
-                                isFollowing.toggle()
+//                                isFollowing.toggle()
                             }
                         }) {
                             Text(isFollowing ? "FOLLOWING" : "FOLLOW")
