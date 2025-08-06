@@ -167,21 +167,16 @@ class ShopProduct: Identifiable, ObservableObject {
 }
 
 let sampleProducts1: [ShopProduct] = [
-    ShopProduct(name: "Rose & Jasmine Cleanser", brand: "KAMA AYURVEDA", imageName: "selfcare1", originalPrice: 699, discountedPrice: 529, deliveryTime: "60 MINS"),
-    ShopProduct(name: "Clinical Serum Foundation SPF 20", brand: "Clinique", imageName: "selfcare2", originalPrice: 1999, discountedPrice: 1699, deliveryTime: "2 HRS"),
-    ShopProduct(name: "Depiderm Anti-Dark Spot Skin Serum", brand: "Uriage", imageName: "selfcare3", originalPrice: 1999, discountedPrice: 1699, deliveryTime: "2 HRS"),
-    ShopProduct(name: "Foaming Cleanser & Face Wash", brand: "Olay", imageName: "selfcare4", originalPrice: 1999, discountedPrice: 1699, deliveryTime: "2 HRS")
+    ShopProduct(name: "Rose & Jasmine Cleanser", brand: "KAMA AYURVEDA", imageName: "shop1", originalPrice: 699, discountedPrice: 529, deliveryTime: "60 MINS"),
+    ShopProduct(name: "Clinical Serum Foundation SPF 20", brand: "Clinique", imageName: "shop2", originalPrice: 1999, discountedPrice: 1699, deliveryTime: "2 HRS")
 ]
 
 let sampleProducts2: [ShopProduct] = [
-    ShopProduct(name: "Full Sleeves Night Suit", brand: "Babyoye", imageName: "stundeal1", originalPrice: 12999, discountedPrice: 11099, deliveryTime: "60 MINS"),
-    ShopProduct(name: "ARKS Baseball cap", brand: "ARKS", imageName: "stundeal2", originalPrice: 12999, discountedPrice: 11099, deliveryTime: "60 MINS"),
-    ShopProduct(name: "Stanley Quencher", brand: "Stanley", imageName: "stundeal4", originalPrice: 12999, discountedPrice: 11099, deliveryTime: "60 MINS"),
-    ShopProduct(name: "CHAPTER 2 BLACK JACKET", brand: "CHAPTER 2", imageName: "stundeal3", originalPrice: 5490, discountedPrice: 5050, deliveryTime: "60 MINS")
+    ShopProduct(name: "Full Sleeves Night Suit", brand: "Babyoye", imageName: "shop2", originalPrice: 12999, discountedPrice: 11099, deliveryTime: "60 MINS"),
+    ShopProduct(name: "ARKS Baseball cap", brand: "ARKS", imageName: "shop3", originalPrice: 12999, discountedPrice: 11099, deliveryTime: "60 MINS"),
 ]
 
 let sampleProducts3: [ShopProduct] = [
-    ShopProduct(name: "TOM FORD BOIS PARFUM", brand: "TOM FORD", imageName: "product1", originalPrice: 17000, discountedPrice: 12999, deliveryTime: "2 HRS"),
-    ShopProduct(name: "Earbuds 101", brand: "BOAT", imageName: "stundeal6", originalPrice: 17000, discountedPrice: 12999, deliveryTime: "2 HRS"),
-    ShopProduct(name: "Full Sleeves Night Suit", brand: "Babyoye", imageName: "stundeal1", originalPrice: 17000, discountedPrice: 12999, deliveryTime: "2 HRS")
+    ShopProduct(name: "TOM FORD BOIS PARFUM", brand: "TOM FORD", imageName: "shop3", originalPrice: 17000, discountedPrice: 12999, deliveryTime: "2 HRS"),
+    ShopProduct(name: "Earbuds 101", brand: "BOAT", imageName: "shop1", originalPrice: 17000, discountedPrice: 12999, deliveryTime: "2 HRS"),
 ]
