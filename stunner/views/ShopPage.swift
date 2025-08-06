@@ -14,7 +14,19 @@ struct ShopPage: View {
             StunnerHeader(showBackButton: true) {
                 presentationMode.wrappedValue.dismiss()
             }
-
+            
+            HStack {
+                Image(systemName: "magnifyingglass")
+                    .foregroundColor(.gray)
+                TextField("Search products", text: .constant(""))
+            }
+            .padding(10)
+            .background(Color.white)
+            .cornerRadius(8)
+            .padding(.horizontal, 12)
+            
+            Spacer().frame(height: 16)
+            
             ScrollView {
                 VStack(alignment: .leading, spacing: 60) {
                     ShopSectionGrid(title: "SELF CARE", products: Array(sampleProducts1.prefix(2)))
