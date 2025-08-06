@@ -23,7 +23,7 @@ struct BrandProductCard: View {
                 Image(systemName: "plus")
                     .font(.system(size: 16, weight: .bold))
                     .foregroundColor(.black)
-                    .padding(8)
+                    .padding(16)
             }
 
             VStack(spacing: 4) {

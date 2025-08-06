@@ -16,7 +16,7 @@ struct ShopPage: View {
             }
 
             ScrollView {
-                VStack(alignment: .leading, spacing: 24) {
+                VStack(alignment: .leading, spacing: 60) {
                     ShopSectionGrid(title: "SELF CARE", products: Array(sampleProducts1.prefix(2)))
                     ShopSectionGrid(title: "BEST SELLERS", products: Array(sampleProducts2.prefix(2)))
                     ShopSectionGrid(title: "STUNNER DISCOUNT DEALS", products: Array(sampleProducts3.prefix(2)))
@@ -40,17 +40,18 @@ struct ShopSectionGrid: View {
     ]
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading) {
             Text(title)
                 .font(.visbyMedium(size: 15))
                 .tracking(0.08 * 15)
-            
-            LazyVGrid(columns: columns, spacing: 40) {
+                .background(Color.stunner)
+            Spacer().frame(height: 20)
+            LazyVGrid(columns: columns) {
                 ForEach(products) { product in
                     ShopProductCard(product: product)
                 }
-            }
-        }
+            }.background(Color.stunner)
+        }.background(Color.stunner)
     }
 }
 
@@ -60,37 +61,65 @@ struct ShopProductCard: View {
 
     var body: some View {
         VStack(spacing: 12) {
-            ZStack(alignment: .bottomTrailing) {
+            ZStack(alignment: .topLeading) {
                 Image(product.imageName)
                     .resizable()
                     .scaledToFit()
 
-                Image(systemName: "plus")
-                    .font(.system(size: 16, weight: .bold))
-                    .foregroundColor(.black)
-                    .padding(8)
+                if let deliveryTime = product.deliveryTime {
+                    Text(deliveryTime)
+                        .font(.visbyMedium(size: 9))
+                        .foregroundColor(Color.originalPrice)
+                        .padding(.horizontal, 6)
+                        .padding(.vertical, 2)
+                        .padding(8)
+                }
+
+                // Move the plus icon to bottomTrailing inside a nested ZStack
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        Image(systemName: "plus")
+                            .font(.system(size: 16, weight: .bold))
+                            .foregroundColor(.black)
+                            .padding(16)
+                    }
+                }
             }
 
-            VStack(spacing: 4) {
-                Text(product.name.uppercased())
-                    .font(.visbyMedium(size: 11))
-                    .tracking(0.08 * 11)
+            VStack(spacing: 6) {
+                // Brand name
+                Text(product.brand.uppercased())
+                    .font(.visbyMedium(size: 12))
+                    .tracking(0.08 * 10)
                     .multilineTextAlignment(.center)
 
-                HStack(spacing: 8) {
+                // Product name
+                Text(product.name)
+                    .font(.visbyRegular(size: 8))
+                    .tracking(0.03 * 8)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(Color.discover)
+
+                // Price + discount
+                HStack(spacing: 6) {
                     Text("₹\(Int(product.discountedPrice))")
                         .font(.visbyMedium(size: 9))
 
                     Text("₹\(Int(product.originalPrice))")
-                        .font(.visbyMedium(size: 9))
+                        .font(.visbyRegular(size: 9))
                         .strikethrough()
-                        .foregroundColor(Color(hex: "b0b0b0"))
+                        .foregroundColor(Color.discover)
 
                     let discount = Int(100 - (product.discountedPrice / product.originalPrice) * 100)
+                    
                     Text("\(discount)% OFF")
                         .font(.visbyMedium(size: 9))
+                        .tracking(0.03 * 9)
                 }
             }
+
         }
     }
 }
@@ -138,7 +167,7 @@ class ShopProduct: Identifiable, ObservableObject {
 }
 
 let sampleProducts1: [ShopProduct] = [
-    ShopProduct(name: "Rose & Jasmine Hair Cleanser", brand: "KAMA AYURVEDA", imageName: "selfcare1", originalPrice: 699, discountedPrice: 529, deliveryTime: "60 MINS"),
+    ShopProduct(name: "Rose & Jasmine Cleanser", brand: "KAMA AYURVEDA", imageName: "selfcare1", originalPrice: 699, discountedPrice: 529, deliveryTime: "60 MINS"),
     ShopProduct(name: "Clinical Serum Foundation SPF 20", brand: "Clinique", imageName: "selfcare2", originalPrice: 1999, discountedPrice: 1699, deliveryTime: "2 HRS"),
     ShopProduct(name: "Depiderm Anti-Dark Spot Skin Serum", brand: "Uriage", imageName: "selfcare3", originalPrice: 1999, discountedPrice: 1699, deliveryTime: "2 HRS"),
     ShopProduct(name: "Foaming Cleanser & Face Wash", brand: "Olay", imageName: "selfcare4", originalPrice: 1999, discountedPrice: 1699, deliveryTime: "2 HRS")
