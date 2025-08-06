@@ -97,7 +97,7 @@ struct ShopProductCard: View {
 
                 // Product name
                 Text(product.name)
-                    .font(.visbyRegular(size: 8))
+                    .font(.visbyMedium(size: 8))
                     .tracking(0.03 * 8)
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color.discover)
