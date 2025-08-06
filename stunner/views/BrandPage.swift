@@ -104,15 +104,13 @@ struct BrandPage: View {
     @Environment(\.presentationMode) var presentationMode
 
     let products = [
-        BrandProduct(imageName: "hazelnut", name: "HAZELNUT BAG", price: "₹4,499", originalPrice: "₹4,999", discount: "10% OFF"),
-        BrandProduct(imageName: "martina", name: "BLAIR HANDBAG", price: "₹3,149", originalPrice: "₹4,499", discount: "30% OFF"),
-        BrandProduct(imageName: "callie", name: "CALLIE SATCHEL BAG", price: "₹3,299", originalPrice: "₹5,999", discount: "45% OFF"),
-        BrandProduct(imageName: "callie", name: "CALLIE SATCHEL BAG", price: "₹3,299", originalPrice: "₹5,999", discount: "45% OFF"),
-        BrandProduct(imageName: "callie", name: "CALLIE SATCHEL BAG", price: "₹3,299", originalPrice: "₹5,999", discount: "45% OFF"),
-        BrandProduct(imageName: "callie", name: "CALLIE SATCHEL BAG", price: "₹3,299", originalPrice: "₹5,999", discount: "45% OFF"),
-        BrandProduct(imageName: "callie", name: "CALLIE SATCHEL BAG", price: "₹3,299", originalPrice: "₹5,999", discount: "45% OFF"),
-        BrandProduct(imageName: "callie", name: "CALLIE SATCHEL BAG", price: "₹3,299", originalPrice: "₹5,999", discount: "45% OFF"),
-        BrandProduct(imageName: "river", name: "RIVER SATCHEL BAG", price: "₹1,799", originalPrice: "₹4,499", discount: "60% OFF")
+        BrandProduct(imageName: "mg1", name: "HAZELNUT BAG", price: "₹4,499", originalPrice: "₹4,999", discount: "10% OFF"),
+        BrandProduct(imageName: "mg3", name: "BLAIR HANDBAG", price: "₹3,149", originalPrice: "₹4,499", discount: "30% OFF"),
+        BrandProduct(imageName: "mg4", name: "CALLIE SATCHEL BAG", price: "₹3,299", originalPrice: "₹5,999", discount: "45% OFF"),
+        BrandProduct(imageName: "mg5", name: "CALLIE SATCHEL BAG", price: "₹3,299", originalPrice: "₹5,999", discount: "45% OFF"),
+        BrandProduct(imageName: "mg6", name: "CALLIE SATCHEL BAG", price: "₹3,299", originalPrice: "₹5,999", discount: "45% OFF"),
+        BrandProduct(imageName: "mg7", name: "CALLIE SATCHEL BAG", price: "₹3,299", originalPrice: "₹5,999", discount: "45% OFF"),
+        BrandProduct(imageName: "mg8", name: "CALLIE SATCHEL BAG", price: "₹3,299", originalPrice: "₹5,999", discount: "45% OFF")
     ]
 
     let columns = [

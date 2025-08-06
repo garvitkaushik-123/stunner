@@ -8,6 +8,32 @@ import SwiftUI
 @main
 struct stunnerApp: App {
     @State private var showSplash = true
+    
+    init() {
+        let customFont = UIFont(name: "VisbyMedium", size: 10)!
+
+        let normalAttributes: [NSAttributedString.Key: Any] = [
+            .font: customFont,
+            .foregroundColor: UIColor(hex: "#000")
+        ]
+
+        let selectedAttributes: [NSAttributedString.Key: Any] = [
+            .font: customFont,
+            .foregroundColor: UIColor(hex: "#181818")
+        ]
+
+        let appearance = UITabBarItem.appearance()
+        appearance.setTitleTextAttributes(normalAttributes, for: .normal)
+        appearance.setTitleTextAttributes(selectedAttributes, for: .selected)
+        
+        
+        let tabBarAppearance = UITabBarAppearance()
+//        tabBarAppearance.configureWithOpaqueBackground()
+        tabBarAppearance.backgroundColor = .white
+
+        UITabBar.appearance().standardAppearance = tabBarAppearance
+//        UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+    }
 
     var body: some Scene {
         WindowGroup {
