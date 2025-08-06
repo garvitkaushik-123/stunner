@@ -102,7 +102,7 @@ struct ReelPlayerView: View {
                 
                 VStack(spacing: 20) {
                     // Like button
-                    VStack(spacing: 0.75) {
+                    VStack(spacing: 0.85) {
                         Button(action: {
                             withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) {
                                 isLiked.toggle()
@@ -125,7 +125,7 @@ struct ReelPlayerView: View {
                     }
                     
                     // Comment button
-                    VStack(spacing: 0.75) {
+                    VStack(spacing: 0.85) {
                         Button(action: {
                             isCommentSheetPresented = true
                         }) {
@@ -140,7 +140,7 @@ struct ReelPlayerView: View {
                     }
                     
                     // Share button
-                    VStack(spacing: 0.75) {
+                    VStack(spacing: 0.85) {
                         Button(action: {
                             isShareSheetPresented = true
                         }) {
@@ -155,7 +155,7 @@ struct ReelPlayerView: View {
                     }
                     
                     // Shop button
-                    VStack(spacing: 0.55) {
+                    VStack(spacing: 0.85) {
                         Button(action: {
                             showProductPage = true
                         }) {
