@@ -19,8 +19,6 @@ struct BrandProductCard: View {
                 Image(product.imageName)
                     .resizable()
                     .scaledToFit()
-                    .frame(height: 200)
-                    .background(Color.white)
 
                 Image(systemName: "plus")
                     .font(.system(size: 16, weight: .bold))
@@ -33,7 +31,6 @@ struct BrandProductCard: View {
                     .font(.visbyMedium(size: 11))
                     .tracking(0.08 * 11)
                     .multilineTextAlignment(.center)
-                    .frame(maxWidth: .infinity)
                 
                 HStack(spacing: 8) {
                     Text(product.price)
@@ -52,7 +49,6 @@ struct BrandProductCard: View {
                 }
             }
         }
-        .padding()
     }
 }
 
@@ -61,7 +57,7 @@ struct BrandHeaderBar: View {
         HStack {
             // Brand Name
             Text("MIRAGGIO")
-                .font(.system(size: 20, weight: .bold))
+                .font(.visbyBold(size: 20))
                 .foregroundColor(.black)
 
             // Follow Button
@@ -69,16 +65,15 @@ struct BrandHeaderBar: View {
                 // Add your follow action here
             }) {
                 Text("FOLLOW")
-                    .font(.system(size: 14, weight: .medium))
-                    .foregroundColor(.black)
-                    .padding(.vertical, 6)
+                    .font(.visbySemibold(size: 10))
+                    .tracking(0.05 * 10)
+                    .foregroundColor(Color.black)
+                    .padding(.vertical, 8)
                     .padding(.horizontal, 16)
                     .background(Color.gray.opacity(0.2))
-                    .cornerRadius(6)
+                    .multilineTextAlignment(.center)
             }
-
             Spacer()
-
             // Item Count
             Text("23 ITEM(s)")
                 .font(.visbyMedium(size: 9))
@@ -86,7 +81,6 @@ struct BrandHeaderBar: View {
                 .foregroundColor(.black)
         }
         .padding(.vertical, 10)
-        .padding(.horizontal, 20)
     }
 }
 
@@ -113,11 +107,18 @@ struct BrandPage: View {
         BrandProduct(imageName: "hazelnut", name: "HAZELNUT BAG", price: "₹4,499", originalPrice: "₹4,999", discount: "10% OFF"),
         BrandProduct(imageName: "martina", name: "BLAIR HANDBAG", price: "₹3,149", originalPrice: "₹4,499", discount: "30% OFF"),
         BrandProduct(imageName: "callie", name: "CALLIE SATCHEL BAG", price: "₹3,299", originalPrice: "₹5,999", discount: "45% OFF"),
+        BrandProduct(imageName: "callie", name: "CALLIE SATCHEL BAG", price: "₹3,299", originalPrice: "₹5,999", discount: "45% OFF"),
+        BrandProduct(imageName: "callie", name: "CALLIE SATCHEL BAG", price: "₹3,299", originalPrice: "₹5,999", discount: "45% OFF"),
+        BrandProduct(imageName: "callie", name: "CALLIE SATCHEL BAG", price: "₹3,299", originalPrice: "₹5,999", discount: "45% OFF"),
+        BrandProduct(imageName: "callie", name: "CALLIE SATCHEL BAG", price: "₹3,299", originalPrice: "₹5,999", discount: "45% OFF"),
+        BrandProduct(imageName: "callie", name: "CALLIE SATCHEL BAG", price: "₹3,299", originalPrice: "₹5,999", discount: "45% OFF"),
         BrandProduct(imageName: "river", name: "RIVER SATCHEL BAG", price: "₹1,799", originalPrice: "₹4,499", discount: "60% OFF")
     ]
 
-    let columns = [GridItem(.flexible()), GridItem(.flexible())]
-
+    let columns = [
+        GridItem(.flexible(), spacing: 12),
+        GridItem(.flexible(), spacing: 0)
+    ]
     var body: some View {
         VStack(spacing: 0) {
             StunnerHeader(showBackButton: true) {
@@ -129,17 +130,22 @@ struct BrandPage: View {
                     
                     BrandHeaderBar()
 
-                    LazyVGrid(columns: columns, spacing: 20) {
+                    LazyVGrid(columns: columns, spacing: 40) {
                         ForEach(products) { product in
                             BrandProductCard(product: product)
                         }
                     }
-                    .padding(.horizontal)
                 }
-            }
+            }.padding(.horizontal, 12)
         }
-        .background(Color.white)
+        .background(Color.stunner)
         .navigationBarHidden(true)
+    }
+}
+
+struct BrandPage_Previews: PreviewProvider {
+    static var previews: some View {
+        BrandPage()
     }
 }
 
