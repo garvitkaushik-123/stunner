@@ -42,7 +42,7 @@ struct ProductPage: View {
                                     ForEach(0..<min(6, productImages.count), id: \.self) { index in
                                         RoundedRectangle(cornerRadius: 8)
                                             .fill(Color.clear)
-                                            .frame(width: 60, height: 60)
+                                            .frame(width: 60, height: 90)
                                     }
                                 }
                                 .padding(.leading, horizontalPadding)
@@ -61,7 +61,7 @@ struct ProductPage: View {
                                 Image(productImages[selectedImageIndex])
                                     .resizable()
                                     .scaledToFill()
-                                    .frame(width: UIScreen.main.bounds.width - 140, height: 380)
+                                    .frame(width: UIScreen.main.bounds.width - 140, height: 384)
                                     .clipped()
                             }
                             .padding(.trailing, horizontalPadding)
@@ -77,12 +77,12 @@ struct ProductPage: View {
                                         ZStack {
                                             RoundedRectangle(cornerRadius: 0)
                                                 .fill(Color.gray.opacity(0.2))
-                                                .frame(width: 60, height: 60)
+                                                .frame(width: 60, height: 90)
                                             
                                             Image(productImages[index])
                                                 .resizable()
                                                 .scaledToFill()
-                                                .frame(width: 60, height: 60)
+                                                .frame(width: 60, height: 90)
                                                 .clipped()
                                         }
                                         .overlay(
@@ -117,7 +117,7 @@ struct ProductPage: View {
                     .padding(.vertical, 24)
                     
                     // Right Section - Product Details
-                    VStack(alignment: .leading, spacing: 24) {
+                    VStack(alignment: .leading, spacing: 16) {
                         // Product Name
                         Text("SOLEIL CROSSBODY BAG")
                             .font(.visbyMedium(size: 20))
@@ -126,50 +126,35 @@ struct ProductPage: View {
                             .textCase(.uppercase)
                             .padding(.horizontal, horizontalPadding)
                         
-                        // Stock Status
-                        HStack {
-                            Circle()
-                                .fill(Color.green)
-                                .frame(width: 8, height: 8)
-                            Text("In Stock")
-                                .font(.visbyMedium(size: 14))
-                                .foregroundColor(.green)
-                        }
-                        .padding(.horizontal, horizontalPadding)
-                        
-                        // Pricing
-                        VStack(alignment: .leading, spacing: 8) {
-                            HStack {
-                                Text("₹\(String(format: "%.0f", currentPrice))")
-                                    .font(.visbySemibold(size: 18))
+                        // Star Rating
+                        HStack(spacing: 0) {
+                            ForEach(0..<4) { _ in
+                                Image(systemName: "star.fill")
+                                    .resizable()
+                                    .frame(width: 12, height: 12)
                                     .foregroundColor(.black)
-                                    .tracking(20.0 * 0)
-                                
-                                Text("₹\(String(format: "%.0f", originalPrice))")
-                                    .font(.visbyMedium(size: 12))
-                                    .foregroundColor(Color.originalPrice)
-                                    .tracking(20.0 * 0)
-                                    .strikethrough()
-                                
+                                Spacer().frame(width: 6)
                             }
-                            
-                            Text("(Inclusive of all taxes)")
-                                .font(.visbyLight(size: 12))
-                                .foregroundColor(.secondary)
                         }
                         .padding(.horizontal, horizontalPadding)
+
+                        Spacer().frame(height: 5)
                         
-                        // Payment Option
-                        HStack {
-                            Text("or Pay ₹800 now & rest later via Miraggio Pay Later")
-                                .font(.visbyMedium(size: 11))
-                                .tracking(0.02 * 11)
-                                .foregroundColor(Color.discover)
-                                .padding(.top, 12)
+                        // Pricing Style from Figma
+                        HStack(spacing: 8) {
+                            Text("₹\(String(format: "%.0f", originalPrice))")
+                                .font(.visbyMedium(size: 12))
+                                .foregroundColor(Color.originalPrice)
+                                .strikethrough()
                             
-//                            Image(systemName: "info.circle")
-//                                .font(.system(size: 11))
-//                                .foregroundColor(.blue)
+                            Image(systemName: "tag.fill")
+                                .resizable()
+                                .frame(width: 18, height: 18)
+                                .foregroundColor(.black)
+                            
+                            Text("INR 2,399")
+                                .font(.visbySemibold(size: 18))
+                                .foregroundColor(.black)
                         }
                         .padding(.horizontal, horizontalPadding)
                         
@@ -182,37 +167,16 @@ struct ProductPage: View {
                             
                         }
                         .padding(.horizontal, horizontalPadding)
+                        .padding(.top, 15)
                         
-                        // Offers
-                        VStack(alignment: .leading, spacing: 12) {
-                            Text("Offers")
-                                .font(.visbyBold(size: 16))
-                                .foregroundColor(.primary)
-                            
-                            VStack(alignment: .leading, spacing: 8) {
-                                HStack(alignment: .top) {
-                                    Text("•")
-                                        .font(.visbyRegular(size: 14))
-                                        .foregroundColor(.secondary)
-                                    Text("Get ₹200 off on orders above ₹3999. Use code: TREAT")
-                                        .font(.visbyMedium(size: 11))
-                                        .tracking(0.02 * 11)
-                                        .foregroundColor(Color.discover)
-                                        .padding(.top, 12)
-                                }
-                                
-                                HStack(alignment: .top) {
-                                    Text("•")
-                                        .font(.visbyRegular(size: 14))
-                                        .foregroundColor(.secondary)
-                                    Text("Additional 5% off up to ₹100 on all prepaid orders")
-                                        .font(.visbyMedium(size: 11))
-                                        .tracking(0.02 * 11)
-                                        .foregroundColor(Color.discover)
-                                }
-                            }
-                        }
-                        .padding(.horizontal, horizontalPadding)
+                        // Mood Text (Replacing Offers Section)
+                        Text("Sun-chaser. Light packer. All-round vibe curator. Soleil is the friend you call when the city feels loud and the ocean is calling.")
+                            .font(.visbyMedium(size: 11))
+                            .tracking(0.02 * 11)
+                            .foregroundColor(Color.discover)
+                            .lineSpacing(6)
+                            .padding(.horizontal, 30)
+                            .padding(.top, 15)
                         
                         VStack(spacing: 0) {
                             // Description
@@ -227,6 +191,7 @@ struct ProductPage: View {
                                     .padding(.top, 12)
                             }
                             .padding(.horizontal, horizontalPadding)
+                            .padding(.top, 15)
                             
                             Divider()
                                 .padding(.vertical, 8)
