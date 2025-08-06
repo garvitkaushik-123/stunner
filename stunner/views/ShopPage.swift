@@ -172,11 +172,11 @@ let sampleProducts1: [ShopProduct] = [
 ]
 
 let sampleProducts2: [ShopProduct] = [
-    ShopProduct(name: "Full Sleeves Night Suit", brand: "Babyoye", imageName: "shop2", originalPrice: 12999, discountedPrice: 11099, deliveryTime: "60 MINS"),
-    ShopProduct(name: "ARKS Baseball cap", brand: "ARKS", imageName: "shop3", originalPrice: 12999, discountedPrice: 11099, deliveryTime: "60 MINS"),
+    ShopProduct(name: "Full Sleeves Night Suit", brand: "Babyoye", imageName: "shop1", originalPrice: 12999, discountedPrice: 11099, deliveryTime: "60 MINS"),
+    ShopProduct(name: "ARKS Baseball cap", brand: "ARKS", imageName: "shop2", originalPrice: 12999, discountedPrice: 11099, deliveryTime: "60 MINS"),
 ]
 
 let sampleProducts3: [ShopProduct] = [
-    ShopProduct(name: "TOM FORD BOIS PARFUM", brand: "TOM FORD", imageName: "shop3", originalPrice: 17000, discountedPrice: 12999, deliveryTime: "2 HRS"),
-    ShopProduct(name: "Earbuds 101", brand: "BOAT", imageName: "shop1", originalPrice: 17000, discountedPrice: 12999, deliveryTime: "2 HRS"),
+    ShopProduct(name: "TOM FORD BOIS PARFUM", brand: "TOM FORD", imageName: "shop1", originalPrice: 17000, discountedPrice: 12999, deliveryTime: "2 HRS"),
+    ShopProduct(name: "Earbuds 101", brand: "BOAT", imageName: "shop2", originalPrice: 17000, discountedPrice: 12999, deliveryTime: "2 HRS"),
 ]
