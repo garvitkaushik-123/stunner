@@ -252,7 +252,7 @@ struct ProductPage: View {
                     EmptyView()
                 }.hidden()
             )
-        }
+        }.background(Color.stunner)
     }
     
     // Collapsible Section Component

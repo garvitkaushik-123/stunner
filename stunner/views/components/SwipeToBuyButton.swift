@@ -52,10 +52,12 @@ struct SwipeToBuyButton: View {
                                         }
                                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                             action()
-                                            withAnimation {
-                                                offsetX = 0
-                                                isComplete = false
-                                            }
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                                    withAnimation {
+                                                        offsetX = 0
+                                                        isComplete = false
+                                                    }
+                                                }
                                         }
                                     } else {
                                         withAnimation {
