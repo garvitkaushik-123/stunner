@@ -14,19 +14,19 @@ struct HomePage: View {
 
                             ShopPage()
                                 .tabItem {
-                                    Image(systemName: "bag.fill")
+                                    Image(systemName: "bag")
                                     Text("Shop")
                                 }
 
                             CartPage()
                                 .tabItem {
-                                    Image(systemName: "cart.fill")
+                                    Image(systemName: "cart")
                                     Text("Cart")
                                 }
 
                             MemberPage()
                                 .tabItem {
-                                    Image(systemName: "person.crop.circle.fill")
+                                    Image(systemName: "person.crop.circle")
                                     Text("Member")
                                 }
                         }
