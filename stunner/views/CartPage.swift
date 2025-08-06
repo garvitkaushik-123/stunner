@@ -10,7 +10,7 @@ struct CartPage: View {
     let cartItems = [
         CartItem(name: "Contrasting sheepskin", price: 60.00, imageName: "product1"),
         CartItem(name: "Clinique", price: 1999.99, imageName: "selfcare2"),
-        CartItem(name: "KAMA AYURVEDA", price: 549.00, imageName: "selfcare1"),
+        CartItem(name: "Kama Ayurveda", price: 549.00, imageName: "selfcare1"),
         CartItem(name: "Uriage", price: 429.00, imageName: "selfcare3")
     ]
     

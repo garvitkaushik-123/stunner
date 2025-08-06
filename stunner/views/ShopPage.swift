@@ -167,7 +167,7 @@ class ShopProduct: Identifiable, ObservableObject {
 }
 
 let sampleProducts1: [ShopProduct] = [
-    ShopProduct(name: "Rose & Jasmine Cleanser", brand: "KAMA AYURVEDA", imageName: "shop1", originalPrice: 699, discountedPrice: 529, deliveryTime: "60 MINS"),
+    ShopProduct(name: "Rose & Jasmine Cleanser", brand: "Kama Ayurveda", imageName: "shop1", originalPrice: 699, discountedPrice: 529, deliveryTime: "60 MINS"),
     ShopProduct(name: "Clinical Serum Foundation SPF 20", brand: "Clinique", imageName: "shop2", originalPrice: 1999, discountedPrice: 1699, deliveryTime: "2 HRS")
 ]
 

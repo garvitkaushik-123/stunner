@@ -8,7 +8,7 @@ struct HomePage: View {
                         TabView {
                             DiscoverPage()
                                 .tabItem {
-                                    Image(systemName: "sparkles.tv")
+                                    Image(systemName: "magnifyingglass")
                                     Text("Discover")
                                 }
 
