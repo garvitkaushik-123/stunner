@@ -179,16 +179,16 @@ class ShopProduct: Identifiable, ObservableObject {
 }
 
 let sampleProducts1: [ShopProduct] = [
-    ShopProduct(name: "Rose & Jasmine Cleanser", brand: "Kama Ayurveda", imageName: "shop1", originalPrice: 699, discountedPrice: 529, deliveryTime: "60 MINS"),
-    ShopProduct(name: "Clinical Serum Foundation SPF 20", brand: "Clinique", imageName: "shop2", originalPrice: 1999, discountedPrice: 1699, deliveryTime: "2 HRS")
+    ShopProduct(name: "Clinical Serum Foundation SPF 20", brand: "Clinique", imageName: "shop1", originalPrice: 699, discountedPrice: 529, deliveryTime: "60 MINS"),
+    ShopProduct(name: "Western Sprint Shirt", brand: "Babyoye", imageName: "shop2", originalPrice: 1999, discountedPrice: 1699, deliveryTime: "2 HRS")
 ]
 
 let sampleProducts2: [ShopProduct] = [
-    ShopProduct(name: "Full Sleeves Night Suit", brand: "Babyoye", imageName: "shop1", originalPrice: 12999, discountedPrice: 11099, deliveryTime: "60 MINS"),
-    ShopProduct(name: "ARKS Baseball cap", brand: "ARKS", imageName: "shop2", originalPrice: 12999, discountedPrice: 11099, deliveryTime: "60 MINS"),
+    ShopProduct(name: "Summer Sunglasses", brand: "Rayban", imageName: "temp1", originalPrice: 12999, discountedPrice: 11099, deliveryTime: "60 MINS"),
+    ShopProduct(name: "Sports Sneakers", brand: "Comet", imageName: "temp3", originalPrice: 12999, discountedPrice: 11099, deliveryTime: "60 MINS"),
 ]
 
 let sampleProducts3: [ShopProduct] = [
-    ShopProduct(name: "TOM FORD BOIS PARFUM", brand: "TOM FORD", imageName: "shop1", originalPrice: 17000, discountedPrice: 12999, deliveryTime: "2 HRS"),
-    ShopProduct(name: "Earbuds 101", brand: "BOAT", imageName: "shop2", originalPrice: 17000, discountedPrice: 12999, deliveryTime: "2 HRS"),
+    ShopProduct(name: "TOM FORD BOIS PARFUM", brand: "TOM FORD", imageName: "temp2", originalPrice: 17000, discountedPrice: 12999, deliveryTime: "2 HRS"),
+    ShopProduct(name: "Black Jacket", brand: "Chapter 2", imageName: "temp5", originalPrice: 17000, discountedPrice: 12999, deliveryTime: "2 HRS"),
 ]

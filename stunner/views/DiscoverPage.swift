@@ -26,7 +26,7 @@ struct DiscoverPage: View {
     var body: some View {
         VStack(spacing: 0) {
             
-            StunnerHeader()
+            StunnerHeader1()
             
             GeometryReader { geo in
                 ScrollView(.vertical, showsIndicators: false) {

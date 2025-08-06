@@ -128,6 +128,49 @@ extension Font {
     }
 }
 
+struct StunnerHeader1: View {
+    var onHamburgerTapped: (() -> Void)?
+    var onSearchTapped: (() -> Void)?
+    
+    var body: some View {
+        HStack {
+            // Left: Hamburger icon
+            Button(action: {
+                onHamburgerTapped?()
+            }) {
+                Image(systemName: "line.horizontal.3")
+                    .font(.system(size: 18, weight: .medium))
+                    .foregroundColor(.primary)
+            }
+            .frame(width: 44, height: 44)
+
+            Spacer()
+
+            // Center: Logo
+            Image("logo1")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 153, height: 15)
+
+            Spacer()
+
+            // Right: Search icon
+            Button(action: {
+                onSearchTapped?()
+            }) {
+                Image(systemName: "magnifyingglass")
+                    .font(.system(size: 18, weight: .medium))
+                    .foregroundColor(.primary)
+            }
+            .frame(width: 44, height: 44)
+        }
+        .padding(.vertical, 12)
+        .background(Color.stunner)
+    }
+}
+
+
+
 struct StunnerHeader: View {
     var showBackButton: Bool = false
     var onBackButtonTapped: (() -> Void)?

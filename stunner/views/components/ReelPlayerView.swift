@@ -91,7 +91,7 @@ struct ReelPlayerView: View {
                     }
                     Spacer()
                 }
-                .padding(.top, 50)
+                .padding(.top, 20)
                 .padding(.leading, 16)
                 Spacer()
             }
@@ -101,8 +101,10 @@ struct ReelPlayerView: View {
                 Spacer()
                 
                 VStack(spacing: 20) {
+                    
+                    Spacer()
                     // Like button
-                    VStack(spacing: 0.55) {
+                    VStack(spacing: 0.85) {
                         Button(action: {
                             withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) {
                                 isLiked.toggle()
@@ -125,7 +127,7 @@ struct ReelPlayerView: View {
                     }
                     
                     // Comment button
-                    VStack(spacing: 0.55) {
+                    VStack(spacing: 0.85) {
                         Button(action: {
                             isCommentSheetPresented = true
                         }) {
@@ -140,7 +142,7 @@ struct ReelPlayerView: View {
                     }
                     
                     // Share button
-                    VStack(spacing: 0.55) {
+                    VStack(spacing: 0.85) {
                         Button(action: {
                             isShareSheetPresented = true
                         }) {
@@ -155,7 +157,7 @@ struct ReelPlayerView: View {
                     }
                     
                     // Shop button
-                    VStack(spacing: 0.55) {
+                    VStack(spacing: 0.85) {
                         Button(action: {
                             showProductPage = true
                         }) {
@@ -168,8 +170,11 @@ struct ReelPlayerView: View {
                             .font(.visbySemibold(size: 11))
                             .foregroundColor(.stunner)
                     }
+                    
+                    Spacer().frame(height: 20)
                 }
                 .padding(.trailing, 20)
+                .padding(.top, 20)
                 .zIndex(50)
             }
         }
