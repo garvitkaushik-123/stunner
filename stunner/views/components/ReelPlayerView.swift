@@ -63,13 +63,13 @@ struct ReelPlayerView: View {
                             .scaledToFill()
                             .frame(width: 42, height: 42)
                             .clipShape(Circle())
-                            .overlay(Circle().stroke(Color.white, lineWidth: 1))
+                            .overlay(Circle().stroke(Color.stunner, lineWidth: 1))
                         
                         // Account name
                         NavigationLink(destination: BrandPage()) {
                             Text(reelData.brandName)
                                 .font(.visbyMedium(size: 16))
-                                .foregroundColor(.white)
+                                .foregroundColor(.stunner)
                         }
                         .buttonStyle(PlainButtonStyle())
                         
@@ -80,17 +80,13 @@ struct ReelPlayerView: View {
                         }) {
                             Text(isFollowing ? "FOLLOWING" : "FOLLOW")
                                 .font(.visbySemibold(size: 10))
-                                .foregroundColor(isFollowing ? .white : .black)
+                                .foregroundColor(isFollowing ? .stunner : .black)
                                 .tracking(0.5)
                                 .frame(width: 65, height: 22.65)
                                 .multilineTextAlignment(.center)
                                 .baselineOffset(-1)
-                                .background(isFollowing ? Color.clear : Color.white)
-                                .cornerRadius(4)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 4)
-                                        .stroke(isFollowing ? Color.white : Color.clear, lineWidth: 1)
-                                )
+                                .background(isFollowing ? Color.clear : Color.stunner)
+                                
                         }
                     }
                     Spacer()
@@ -119,13 +115,13 @@ struct ReelPlayerView: View {
                         }) {
                             Image(systemName: isLiked ? "heart.fill" : "heart")
                                 .font(.system(size: 28))
-                                .foregroundColor(isLiked ? .red : .white)
+                                .foregroundColor(isLiked ? .red : .stunner)
                                 .scaleEffect(isLiked ? 1.2 : 1.0)
                         }
                         
                         Text("\(likeCount)")
                             .font(.visbySemibold(size: 11))
-                            .foregroundColor(.white)
+                            .foregroundColor(.stunner)
                     }
                     
                     // Comment button
@@ -135,12 +131,12 @@ struct ReelPlayerView: View {
                         }) {
                             Image(systemName: "message")
                                 .font(.system(size: 28))
-                                .foregroundColor(.white)
+                                .foregroundColor(.stunner)
                         }
                         
                         Text("\(96)")
                             .font(.visbySemibold(size: 11))
-                            .foregroundColor(.white)
+                            .foregroundColor(.stunner)
                     }
                     
                     // Share button
@@ -150,12 +146,12 @@ struct ReelPlayerView: View {
                         }) {
                             Image(systemName: "square.and.arrow.up")
                                 .font(.system(size: 28))
-                                .foregroundColor(.white)
+                                .foregroundColor(.stunner)
                         }
                         
                         Text("Share")
                             .font(.visbySemibold(size: 11))
-                            .foregroundColor(.white)
+                            .foregroundColor(.stunner)
                     }
                     
                     // Shop button
@@ -165,12 +161,12 @@ struct ReelPlayerView: View {
                         }) {
                             Image(systemName: "bag")
                                 .font(.system(size: 28))
-                                .foregroundColor(.white)
+                                .foregroundColor(.stunner)
                         }
                         
                         Text("Shop")
                             .font(.visbySemibold(size: 11))
-                            .foregroundColor(.white)
+                            .foregroundColor(.stunner)
                     }
                 }
                 .padding(.trailing, 20)
@@ -231,7 +227,7 @@ struct CommentModalView: View {
                                 .frame(width: 32, height: 32)
                                 .overlay(
                                     Text(String(name.prefix(1)))
-                                        .foregroundColor(.white)
+                                        .foregroundColor(.stunner)
                                         .font(.visbyBold(size: 15))
                                 )
                             VStack(alignment: .leading, spacing: 4) {

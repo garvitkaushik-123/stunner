@@ -103,7 +103,7 @@ struct CartPage: View {
                         }) {
                             Text("Check Out Now")
                                 .font(.visbyMedium(size: 16))
-                                .foregroundColor(.white)
+                                .foregroundColor(.stunner)
                                 .frame(maxWidth: .infinity)
                                 .padding(.vertical, 16)
                                 .background(agreedToTerms ? Color.black : Color.gray)

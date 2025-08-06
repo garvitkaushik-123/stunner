@@ -224,7 +224,7 @@ struct BrandPage_Previews: PreviewProvider {
 //                                    .resizable()
 //                                    .aspectRatio(contentMode: .fit)
 //                                    .frame(height: 130)
-//                                    .background(Color.white)
+//                                    .background(Color.stunner)
 //                                
 //                                Text(item.title)
 //                                    .font(.footnote)

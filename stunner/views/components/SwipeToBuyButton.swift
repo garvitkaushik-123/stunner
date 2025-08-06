@@ -22,14 +22,14 @@ struct SwipeToBuyButton: View {
                 Text(isComplete ? "" : "SWIPE TO ADD")
                     .font(.visbySemibold(size: 15))
                     .tracking(0.3 * 15)
-                    .foregroundColor(.white)
+                    .foregroundColor(.stunner)
                     .fixedSize()
                     .frame(maxWidth: .infinity)
                     .padding(.leading, circleSize + padding * 2)
                 
                 HStack {
                     Circle()
-                        .fill(Color.white)
+                        .fill(Color.stunner)
                         .frame(width: circleSize, height: circleSize)
                         .overlay(
                             Image(systemName: isComplete ? "checkmark" : "chevron.right")

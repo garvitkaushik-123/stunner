@@ -49,7 +49,7 @@ struct MemberPage: View {
                             .frame(maxWidth: .infinity)
                             .padding()
                             .background(Color.primaryColor)
-                            .foregroundColor(.white)
+                            .foregroundColor(.stunner)
                             .cornerRadius(12)
                     }
                     .padding(.top, 8)
