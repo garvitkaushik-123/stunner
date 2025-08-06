@@ -4,7 +4,7 @@ struct ProductPage: View {
     @Environment(\.presentationMode) var presentationMode
     
     let productImages = [
-        "bag1", "lady" , "bag2", "bag3"
+        "bag3", "lady" , "bag2", "bag1"
     ]
     
     @State private var navigateToCart = false
@@ -114,8 +114,7 @@ struct ProductPage: View {
                         }
                         .zIndex(1)
                     }
-                    .padding(.vertical, 24)
-                    
+                    Spacer().frame(height: 16)
                     // Right Section - Product Details
                     VStack(alignment: .leading, spacing: 16) {
                         // Product Name
@@ -137,8 +136,6 @@ struct ProductPage: View {
                             }
                         }
                         .padding(.horizontal, horizontalPadding)
-
-                        Spacer().frame(height: 5)
                         
                         // Pricing Style from Figma
                         HStack(spacing: 8) {
@@ -158,13 +155,8 @@ struct ProductPage: View {
                         }
                         .padding(.horizontal, horizontalPadding)
                         
-                        // New Button Layout - Plus and Swipe to Buy
-                        HStack(spacing: 16) {
-                            // Swipe to Buy Button
-                            SwipeToBuyButton {
-                                navigateToCart = true
-                            }
-                            
+                        SwipeToBuyButton {
+                            navigateToCart = true
                         }
                         .padding(.horizontal, horizontalPadding)
                         .padding(.top, 15)
@@ -175,8 +167,11 @@ struct ProductPage: View {
                             .tracking(0.02 * 11)
                             .foregroundColor(Color.discover)
                             .lineSpacing(6)
-                            .padding(.horizontal, 30)
+                            .padding(.horizontal, horizontalPadding)
                             .padding(.top, 15)
+                        
+                        
+                        Spacer().frame(height: 20)
                         
                         VStack(spacing: 0) {
                             // Description
@@ -191,7 +186,7 @@ struct ProductPage: View {
                                     .padding(.top, 12)
                             }
                             .padding(.horizontal, horizontalPadding)
-                            .padding(.top, 15)
+                            .padding(.top, 20)
                             
                             Divider()
                                 .padding(.vertical, 8)
@@ -249,7 +244,7 @@ struct ProductPage: View {
                         }
                     }
                     .padding(.bottom, 40)
-                }
+                }.padding(.top, 5)
             }
             .navigationBarHidden(true)
             .background(

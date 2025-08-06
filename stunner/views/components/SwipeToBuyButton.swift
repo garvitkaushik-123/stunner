@@ -71,6 +71,5 @@ struct SwipeToBuyButton: View {
             .frame(height: 50)
         }
         .frame(height: 50)
-        .padding(.horizontal, 6)
     }
 }
