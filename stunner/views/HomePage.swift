@@ -18,6 +18,12 @@ struct HomePage: View {
                                     Text("Shop")
                                 }
 
+                            ServicePage()
+                                .tabItem {
+                                    Image(systemName: "heart.text.square")
+                                    Text("Services")
+                                }
+
                             CartPage()
                                 .tabItem {
                                     Image(systemName: "cart")
