@@ -18,11 +18,11 @@ struct ServicePage: View {
     }
 
     private let services: [ServiceItem] = [
-        ServiceItem(title: "Women's Salon & Spa", imageName: "service1", hasSale: true),
+        ServiceItem(title: "Women's Salon & Spa", imageName: "service1", hasSale: false),
         ServiceItem(title: "Hare Dressing & beauty", imageName: "service2", hasSale: false),
         ServiceItem(title: "Cleaning & Pest Control", imageName: "service3", hasSale: false),
         ServiceItem(title: "Electrician,\nPlumber & Carpenter", imageName: "service4", hasSale: false),
-        ServiceItem(title: "Native Water Purifier", imageName: "service5", hasSale: true),
+        ServiceItem(title: "Native Water Purifier", imageName: "service5", hasSale: false),
         ServiceItem(title: "Painting & Waterproofing", imageName: "service6", hasSale: false),
         ServiceItem(title: "AC & Appliance Repair", imageName: "service7", hasSale: false),
         ServiceItem(title: "Wall makeover by Revamp", imageName: "service8", hasSale: false),
@@ -136,19 +136,24 @@ struct ServicePage: View {
                     Text("Offers & discounts")
                         .font(.visbySemibold(size: 18))
                         .foregroundColor(.black)
-
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(Color.gray.opacity(0.1))
-                        .frame(height: 140)
-                        .overlay(
-                            Text("Your offers banner here")
-                                .font(.visbyMedium(size: 14))
-                                .foregroundColor(.gray)
-                        )
+                    
+                    OffersSection()
                 }
                 .padding(.horizontal, 16)
                 .padding(.top, 30)
                 .padding(.bottom, 50)
+//
+//                    RoundedRectangle(cornerRadius: 12)
+//                        .fill(Color.gray.opacity(0.1))
+//                        .frame(height: 140)
+//                        .overlay(
+//                            Text("Your offers banner here")
+//                                .font(.visbyMedium(size: 14))
+//                                .foregroundColor(.gray)
+//                        )
+//                }
+                
+                
             }
         }
         .background(Color.stunner.ignoresSafeArea())
