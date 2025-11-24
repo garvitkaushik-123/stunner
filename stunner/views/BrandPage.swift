@@ -101,6 +101,8 @@ struct BrandHeaderBar: View {
 
 // MARK: - Main View
 struct BrandPage: View {
+    let index: Int
+    
     @Environment(\.presentationMode) var presentationMode
 
     let products = [
@@ -138,12 +140,15 @@ struct BrandPage: View {
         }
         .background(Color.stunner)
         .navigationBarHidden(true)
+        .onAppear {
+            print("BrandPage index:", index)
+        }
     }
 }
 
 struct BrandPage_Previews: PreviewProvider {
     static var previews: some View {
-        BrandPage()
+        BrandPage(index: 0)
     }
 }
 

@@ -11,12 +11,15 @@ struct ShareSheet: UIViewControllerRepresentable {
     }
     func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
 }
-
 struct ReelPlayerView: View {
     let reelData: ReelData
     @Binding var showProductPage: Bool
     @Binding var showBrandPage: Bool
     @Binding var shouldPlay: Bool
+
+    // ADD THIS ↓↓↓
+    var onBrandTap: (() -> Void)? = nil
+    
     @State private var player: AVPlayer?
     @State private var isLiked: Bool = false
     @State private var likeCount: Int = Int.random(in: 100...9999)
@@ -26,38 +29,34 @@ struct ReelPlayerView: View {
 
     var body: some View {
         ZStack {
+            
+            // Background Video Player
             if let player = player {
                 VideoPlayer(player: player)
                     .disabled(true)
                     .onAppear {
-                        if shouldPlay {
-                            player.play()
-                        }
+                        if shouldPlay { player.play() }
                         NotificationCenter.default.addObserver(
                             forName: .AVPlayerItemDidPlayToEndTime,
                             object: player.currentItem,
                             queue: .main
                         ) { _ in
                             player.seek(to: .zero)
-                            if shouldPlay {
-                                player.play()
-                            }
+                            if shouldPlay { player.play() }
                         }
                     }
                     .onChange(of: shouldPlay) { newValue in
-                        if newValue {
-                            player.play()
-                        } else {
-                            player.pause()
-                        }
+                        newValue ? player.play() : player.pause()
                     }
                     .ignoresSafeArea()
             }
             
+            // LEFT SIDE UI
             HStack {
                 VStack(alignment: .leading, spacing: 8) {
                     HStack(spacing: 8) {
-                        // Account image
+                        
+                        // Brand Image
                         Image(reelData.brandImage)
                             .resizable()
                             .scaledToFill()
@@ -65,28 +64,24 @@ struct ReelPlayerView: View {
                             .clipShape(Circle())
                             .overlay(Circle().stroke(Color.stunner, lineWidth: 1))
                         
-                        // Account name
-                        NavigationLink(destination: BrandPage()) {
+                        // BRAND NAME BUTTON (Tap → callback send)
+                        Button(action: {
+                            onBrandTap?()       // 🔥 VERY IMPORTANT
+                        }) {
                             Text(reelData.brandName)
                                 .font(.visbyMedium(size: 16))
                                 .foregroundColor(.stunner)
                         }
-                        .buttonStyle(PlainButtonStyle())
+                        .buttonStyle(.plain)
                         
                         Button(action: {
-                            withAnimation {
-//                                isFollowing.toggle()
-                            }
+                            // your follow logic
                         }) {
                             Text(isFollowing ? "FOLLOWING" : "FOLLOW")
                                 .font(.visbySemibold(size: 10))
                                 .foregroundColor(isFollowing ? .stunner : .black)
-                                .tracking(0.5)
                                 .frame(width: 65, height: 22.65)
-                                .multilineTextAlignment(.center)
-                                .baselineOffset(-1)
                                 .background(isFollowing ? Color.clear : Color.stunner)
-                                
                         }
                     }
                     Spacer()
@@ -97,80 +92,66 @@ struct ReelPlayerView: View {
             }
             .zIndex(100)
             
-            HStack() {
+            // RIGHT SIDE BUTTONS
+            HStack {
                 Spacer()
-                
                 VStack(spacing: 20) {
                     
                     Spacer()
-                    // Like button
+                    
+                    // LIKE
                     VStack(spacing: 0.85) {
-                        Button(action: {
+                        Button {
                             withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) {
                                 isLiked.toggle()
-                                if isLiked {
-                                    likeCount += 1
-                                } else {
-                                    likeCount -= 1
-                                }
+                                likeCount += isLiked ? 1 : -1
                             }
-                        }) {
+                        } label: {
                             Image(systemName: isLiked ? "heart.fill" : "heart")
                                 .font(.system(size: 28))
                                 .foregroundColor(isLiked ? .red : .stunner)
-                                .scaleEffect(isLiked ? 1.2 : 1.0)
                         }
-                        
                         Text("\(likeCount)")
                             .font(.visbySemibold(size: 11))
                             .foregroundColor(.stunner)
                     }
-                    
-                    // Comment button
+
+                    // COMMENT
                     VStack(spacing: 0.85) {
-                        Button(action: {
-                            isCommentSheetPresented = true
-                        }) {
+                        Button { isCommentSheetPresented = true } label: {
                             Image(systemName: "message")
                                 .font(.system(size: 28))
                                 .foregroundColor(.stunner)
                         }
-                        
-                        Text("\(96)")
+                        Text("96")
                             .font(.visbySemibold(size: 11))
                             .foregroundColor(.stunner)
                     }
-                    
-                    // Share button
+
+                    // SHARE
                     VStack(spacing: 0.85) {
-                        Button(action: {
-                            isShareSheetPresented = true
-                        }) {
+                        Button { isShareSheetPresented = true } label: {
                             Image(systemName: "square.and.arrow.up")
                                 .font(.system(size: 28))
                                 .foregroundColor(.stunner)
                         }
-                        
                         Text("Share")
                             .font(.visbySemibold(size: 11))
                             .foregroundColor(.stunner)
                     }
-                    
-                    // Shop button
+
+                    // SHOP
                     VStack(spacing: 0.85) {
-                        Button(action: {
-                            showProductPage = true
-                        }) {
+                        Button { showProductPage = true } label: {
                             Image(systemName: "bag")
                                 .font(.system(size: 28))
                                 .foregroundColor(.stunner)
                         }
-                        
                         Text("Shop")
                             .font(.visbySemibold(size: 11))
                             .foregroundColor(.stunner)
                     }
-                    
+
                     Spacer().frame(height: 20)
                 }
                 .padding(.trailing, 20)
@@ -180,8 +161,7 @@ struct ReelPlayerView: View {
         }
         .onAppear {
             if player == nil {
-                let avPlayer = AVPlayer(url: URL(string: reelData.videoURL)!)
-                self.player = avPlayer
+                player = AVPlayer(url: URL(string: reelData.videoURL)!)
             }
         }
         .sheet(isPresented: $isShareSheetPresented) {
@@ -194,6 +174,7 @@ struct ReelPlayerView: View {
         }
     }
 }
+
 
 struct CommentModalView: View {
     @State private var newComment = ""

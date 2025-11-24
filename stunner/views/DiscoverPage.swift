@@ -1,14 +1,20 @@
 import SwiftUI
 
+import SwiftUI
+
 struct DiscoverPage: View {
     let reelsData: [ReelData] = {
         // Use local SampleVideo.mov file instead of remote URLs
-        if let videoURL = Bundle.main.url(forResource: "SampleVideo", withExtension: "mov"), let videoURL1 = Bundle.main.url(forResource: "SampleVideo1", withExtension: "mov"), let videoURL2 = Bundle.main.url(forResource: "SampleVideo2", withExtension: "mov") {
+        if let videoURL = Bundle.main.url(forResource: "SampleVideo", withExtension: "mov"),
+           let videoURL1 = Bundle.main.url(forResource: "SampleVideo1", withExtension: "mov"),
+           let videoURL2 = Bundle.main.url(forResource: "SampleVideo2", withExtension: "mov") {
+            
             return [
                 ReelData(videoURL: videoURL.absoluteString, brandName: "Miraggio", brandImage: "miraggio"),
                 ReelData(videoURL: videoURL1.absoluteString, brandName: "Comet", brandImage: "comet"),
                 ReelData(videoURL: videoURL2.absoluteString, brandName: "Fraganote", brandImage: "fraganote")
             ]
+            
         } else {
             return [
                 ReelData(videoURL: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Beauty.mp4", brandName: "Miraggio", brandImage: "miraggio"),
@@ -23,6 +29,9 @@ struct DiscoverPage: View {
     @State private var visibleReelIndex: Int = 0
     @State private var isPageVisible: Bool = true
     
+    // IMPORTANT 🔥
+    @State private var selectedBrandIndex: Int? = nil
+    
     var body: some View {
         VStack(spacing: 0) {
             
@@ -31,40 +40,47 @@ struct DiscoverPage: View {
             GeometryReader { geo in
                 ScrollView(.vertical, showsIndicators: false) {
                     LazyVStack(spacing: 0) {
+                        
                         ForEach(Array(reelsData.enumerated()), id: \.element.id) { index, reel in
+                            
                             ReelVisibilityDetector(index: index, visibleReelIndex: $visibleReelIndex, parentSize: geo.size) {
+                                
                                 ReelPlayerView(
                                     reelData: reel,
                                     showProductPage: $showProductPage,
                                     showBrandPage: $showBrandPage,
-                                    shouldPlay: .constant(index == visibleReelIndex && isPageVisible)
+                                    shouldPlay: .constant(index == visibleReelIndex && isPageVisible),
+                                    onBrandTap: {
+                                        selectedBrandIndex = index
+                                        showBrandPage = true
+                                    }
                                 )
                                 .frame(width: geo.size.width, height: geo.size.height)
                             }
                         }
                     }
                 }
+                
+                // BRAND PAGE NAVIGATION
                 .background(
-                    NavigationLink(destination: BrandPage(), isActive: $showBrandPage) {
+                    NavigationLink(
+                        destination: BrandPage(index: visibleReelIndex),
+                        isActive: $showBrandPage
+                    ) {
                         EmptyView()
-                    }
-                        .hidden()
+                    }.hidden()
                 )
+                
+                // PRODUCT PAGE NAVIGATION
                 .background(
-                    NavigationLink(destination: ProductPage(), isActive: $showProductPage) {
+                    NavigationLink(
+                        destination: ProductPage(),
+                        isActive: $showProductPage
+                    ) {
                         EmptyView()
-                    }
-                        .hidden()
+                    }.hidden()
                 )
             }
-            .onAppear {
-                isPageVisible = true
-            }
-            .onDisappear {
-                isPageVisible = false
-            }
-            
-            Spacer()
         }
     }
 }
