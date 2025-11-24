@@ -62,7 +62,7 @@ struct MemberPage: View {
             .ignoresSafeArea(edges: .bottom)
             
             Spacer()
-        }
+        }.statusBarHidden(true)
     }
 }
 

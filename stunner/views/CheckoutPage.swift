@@ -139,5 +139,6 @@ struct CheckoutPage: View {
             }
         }
         .navigationBarHidden(true)
+        .statusBarHidden(true)
     }
 }

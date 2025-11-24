@@ -80,6 +80,7 @@ struct DiscoverPage: View {
                         EmptyView()
                     }.hidden()
                 )
+                .statusBarHidden(true)
             }
         }
     }

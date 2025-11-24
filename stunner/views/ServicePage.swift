@@ -21,7 +21,7 @@ struct ServicePage: View {
         ServiceItem(title: "Korean facials for Women", imageName: "service1", hasSale: false),
         ServiceItem(title: "Hare Dressing & beauty", imageName: "service2", hasSale: false),
         ServiceItem(title: "Cleaning & Pest Control", imageName: "service3", hasSale: false),
-        ServiceItem(title: "Electrician,\nPlumber & Carpenter", imageName: "service4", hasSale: false),
+        ServiceItem(title: "Electrician", imageName: "service4", hasSale: false),
         ServiceItem(title: "Native Water Purifier", imageName: "service5", hasSale: false),
         ServiceItem(title: "Painting & Waterproofing", imageName: "service6", hasSale: false),
         ServiceItem(title: "AC & Appliance Repair", imageName: "service7", hasSale: false),
@@ -31,10 +31,12 @@ struct ServicePage: View {
 
     var body: some View {
         VStack(spacing: 0) {
-
+                
+            StunnerHeader()
+                
             // MARK: - Header (Location + Cart)
             HStack(alignment: .top) {
-                VStack(alignment: .leading, spacing: 2) {
+                VStack(alignment: .leading, spacing: 10) {
                     HStack {
                         Image(systemName: "mappin.and.ellipse")
                             .font(.system(size: 14))
@@ -190,6 +192,7 @@ struct ServicePage: View {
         }
         .background(Color.stunner.ignoresSafeArea())
         .navigationBarHidden(true)
+        .statusBarHidden(true)
     }
 }
 

@@ -51,6 +51,7 @@ struct SplashScreenPage: View {
                 }
             }
         }
+        .statusBarHidden(true)
     }
 }
 

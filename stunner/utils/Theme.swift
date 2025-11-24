@@ -1,5 +1,6 @@
 import SwiftUI
 
+// MARK: - Colors
 extension Color {
     static let primaryColor = Color(hex: "#000000")
     static let main = Color(hex: "#181818")
@@ -22,22 +23,22 @@ extension Color {
     static let stunner = Color(hex: "#fafafafa")
 }
 
+// MARK: - Hex Color Initializers
 extension UIColor {
     convenience init(hex: String) {
         var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         
-        if hexSanitized.hasPrefix("#") {
-            hexSanitized.removeFirst()
-        }
+        if hexSanitized.hasPrefix("#") { hexSanitized.removeFirst() }
 
         var rgb: UInt64 = 0
         Scanner(string: hexSanitized).scanHexInt64(&rgb)
 
-        let r = CGFloat((rgb & 0xFF0000) >> 16) / 255
-        let g = CGFloat((rgb & 0x00FF00) >> 8) / 255
-        let b = CGFloat(rgb & 0x0000FF) / 255
-
-        self.init(red: r, green: g, blue: b, alpha: 1.0)
+        self.init(
+            red: CGFloat((rgb & 0xFF0000) >> 16) / 255,
+            green: CGFloat((rgb & 0x00FF00) >> 8) / 255,
+            blue: CGFloat(rgb & 0x0000FF) / 255,
+            alpha: 1.0
+        )
     }
 }
 
@@ -49,128 +50,66 @@ extension Color {
         var rgb: UInt64 = 0
         scanner.scanHexInt64(&rgb)
         
-        let r = Double((rgb >> 16) & 0xFF) / 255
-        let g = Double((rgb >> 8) & 0xFF) / 255
-        let b = Double(rgb & 0xFF) / 255
-        
-        self.init(red: r, green: g, blue: b)
+        self.init(
+            red: Double((rgb >> 16) & 0xFF) / 255,
+            green: Double((rgb >> 8) & 0xFF) / 255,
+            blue: Double(rgb & 0xFF) / 255
+        )
     }
 }
 
+// MARK: - Font Extensions
 extension Font {
-    static func dmSans(size: CGFloat) -> Font {
-        .custom("DM Sans", size: size)
-    }
-    
-    // Visby Font Family Extensions
-    static func visbyThin(size: CGFloat) -> Font {
-        .custom("VisbyThin", size: size)
-    }
-    
-    static func visbyThinItalic(size: CGFloat) -> Font {
-        .custom("VisbyThin Italic", size: size)
-    }
-    
-    static func visbyLight(size: CGFloat) -> Font {
-        .custom("VisbyLight", size: size)
-    }
-    
-    static func visbyLightItalic(size: CGFloat) -> Font {
-        .custom("VisbyLight Italic", size: size)
-    }
-    
-    static func visbyRegular(size: CGFloat) -> Font {
-        .custom("VisbyRegular", size: size)
-    }
-    
-    static func visbyItalic(size: CGFloat) -> Font {
-        .custom("VisbyItalic", size: size)
-    }
-    
-    static func visbyMedium(size: CGFloat) -> Font {
-        .custom("VisbyMedium", size: size)
-    }
-    
-    static func visbyMediumItalic(size: CGFloat) -> Font {
-        .custom("VisbyMedium Italic", size: size)
-    }
-    
-    static func visbySemibold(size: CGFloat) -> Font {
-        .custom("VisbySemibold", size: size)
-    }
-    
-    static func visbySemiboldItalic(size: CGFloat) -> Font {
-        .custom("VisbySemibold Italic", size: size)
-    }
-    
-    static func visbyBold(size: CGFloat) -> Font {
-        .custom("VisbyBold", size: size)
-    }
-    
-    static func visbyBoldItalic(size: CGFloat) -> Font {
-        .custom("VisbyBold Italic", size: size)
-    }
-    
-    static func visbyExtrabold(size: CGFloat) -> Font {
-        .custom("VisbyExtrabold", size: size)
-    }
-    
-    static func visbyExtraboldItalic(size: CGFloat) -> Font {
-        .custom("VisbyExtrabold Italic", size: size)
-    }
-    
-    static func visbyHeavy(size: CGFloat) -> Font {
-        .custom("VisbyHeavy", size: size)
-    }
-    
-    static func visbyHeavyItalic(size: CGFloat) -> Font {
-        .custom("VisbyHeavy Italic", size: size)
-    }
+    static func dmSans(size: CGFloat) -> Font { .custom("DM Sans", size: size) }
+    static func visbyThin(size: CGFloat) -> Font { .custom("VisbyThin", size: size) }
+    static func visbyLight(size: CGFloat) -> Font { .custom("VisbyLight", size: size) }
+    static func visbyRegular(size: CGFloat) -> Font { .custom("VisbyRegular", size: size) }
+    static func visbyMedium(size: CGFloat) -> Font { .custom("VisbyMedium", size: size) }
+    static func visbySemibold(size: CGFloat) -> Font { .custom("VisbySemibold", size: size) }
+    static func visbyBold(size: CGFloat) -> Font { .custom("VisbyBold", size: size) }
+    static func visbyHeavy(size: CGFloat) -> Font { .custom("VisbyHeavy", size: size) }
 }
 
+// MARK: - HEADER HEIGHT CONSTANT
+let HEADER_HEIGHT_1: CGFloat = 68     // 44 button + 12 padding top + 12 padding bottom
+let HEADER_HEIGHT: CGFloat = 68     // 44 button + 12 padding top + 12 padding bottom
+
+// MARK: - StunnerHeader1
 struct StunnerHeader1: View {
     var onHamburgerTapped: (() -> Void)?
     var onSearchTapped: (() -> Void)?
     
     var body: some View {
         HStack {
-            // Left: Hamburger icon
-            Button(action: {
-                onHamburgerTapped?()
-            }) {
+            Button(action: { onHamburgerTapped?() }) {
                 Image(systemName: "line.horizontal.3")
                     .font(.system(size: 18, weight: .medium))
                     .foregroundColor(.primary)
             }
             .frame(width: 44, height: 44)
-
+            
             Spacer()
-
-            // Center: Logo
+            
             Image("logo1")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 153, height: 15)
-
+            
             Spacer()
-
-            // Right: Search icon
-            Button(action: {
-                onSearchTapped?()
-            }) {
+            
+            Button(action: { onSearchTapped?() }) {
                 Image(systemName: "magnifyingglass")
                     .font(.system(size: 18, weight: .medium))
                     .foregroundColor(.primary)
             }
             .frame(width: 44, height: 44)
         }
-        .padding(.vertical, 12)
+        .frame(height: HEADER_HEIGHT_1)
         .background(Color.stunner)
     }
 }
 
-
-
+// MARK: - StunnerHeader
 struct StunnerHeader: View {
     var showBackButton: Bool = false
     var onBackButtonTapped: (() -> Void)?
@@ -178,17 +117,14 @@ struct StunnerHeader: View {
     var body: some View {
         HStack {
             if showBackButton {
-                Button(action: {
-                    onBackButtonTapped?()
-                }) {
+                Button(action: { onBackButtonTapped?() }) {
                     Image(systemName: "chevron.left")
                         .font(.system(size: 18, weight: .medium))
                         .foregroundColor(.primary)
                 }
                 .frame(width: 44, height: 44)
             } else {
-                Spacer()
-                    .frame(width: 44, height: 44)
+                Spacer().frame(width: 44, height: 44)
             }
             
             Spacer()
@@ -203,7 +139,7 @@ struct StunnerHeader: View {
             Spacer()
                 .frame(width: 44, height: 44)
         }
-        .padding(.vertical, 12)
+        .frame(height: HEADER_HEIGHT)
         .background(Color.stunner)
     }
 }

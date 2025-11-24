@@ -152,6 +152,7 @@ struct BrandPage: View {
         }
         .background(Color.stunner)
         .navigationBarHidden(true)
+        .statusBarHidden(true)
     }
 }
 

@@ -253,6 +253,7 @@ struct ProductPage: View {
                 }.hidden()
             )
         }.background(Color.stunner)
+            .statusBarHidden(true)
     }
     
     // Collapsible Section Component
@@ -292,7 +293,7 @@ struct ProductPage: View {
                     content
                         .padding(.bottom, 16)
                 }
-            }
+            }.statusBarHidden(true)
         }
     }
 }

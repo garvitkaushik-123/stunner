@@ -144,6 +144,7 @@ struct CartPage: View {
                 EmptyView()
             }.hidden()
         )
+        .statusBarHidden(true)
     }
     
     @Environment(\.presentationMode) var presentationMode

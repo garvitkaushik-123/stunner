@@ -64,6 +64,7 @@ struct ShopSectionGrid: View {
                 }
             }.background(Color.stunner)
         }.background(Color.stunner)
+            .statusBarHidden(true)
     }
 }
 
