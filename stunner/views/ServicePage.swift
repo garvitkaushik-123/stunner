@@ -18,7 +18,7 @@ struct ServicePage: View {
     }
 
     private let services: [ServiceItem] = [
-        ServiceItem(title: "Women's Salon & Spa", imageName: "service1", hasSale: false),
+        ServiceItem(title: "Korean facials for Women", imageName: "service1", hasSale: false),
         ServiceItem(title: "Hare Dressing & beauty", imageName: "service2", hasSale: false),
         ServiceItem(title: "Cleaning & Pest Control", imageName: "service3", hasSale: false),
         ServiceItem(title: "Electrician,\nPlumber & Carpenter", imageName: "service4", hasSale: false),
@@ -96,36 +96,68 @@ struct ServicePage: View {
                 LazyVGrid(columns: columns, spacing: 20) {
 
                     ForEach(services) { service in
-                        VStack(spacing: 10) {
+                        NavigationLink(destination: ServiceProductPage()) {
+                            VStack(spacing: 10) {
+                                ZStack(alignment: .topLeading) {
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .fill(Color.gray.opacity(0.1))
 
-                            ZStack(alignment: .topLeading) {
-                                RoundedRectangle(cornerRadius: 12)
-                                    .fill(Color.gray.opacity(0.1))
+                                    Image(service.imageName)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .padding(20)
 
-                                Image(service.imageName)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .padding(20)
-
-                                if service.hasSale {
-                                    Text("Sale")
-                                        .font(.visbySemibold(size: 10))
-                                        .foregroundColor(.white)
-                                        .padding(.horizontal, 8)
-                                        .padding(.vertical, 4)
-                                        .background(Color.green)
-                                        .clipShape(Capsule())
-                                        .padding(8)
+                                    if service.hasSale {
+                                        Text("Sale")
+                                            .font(.visbySemibold(size: 10))
+                                            .foregroundColor(.white)
+                                            .padding(.horizontal, 8)
+                                            .padding(.vertical, 4)
+                                            .background(Color.green)
+                                            .clipShape(Capsule())
+                                            .padding(8)
+                                    }
                                 }
-                            }
-                            .frame(height: 90)
+                                .frame(height: 90)
 
-                            Text(service.title)
-                                .font(.visbyMedium(size: 12))
-                                .foregroundColor(.black)
-                                .multilineTextAlignment(.center)
+                                Text(service.title)
+                                    .font(.visbyMedium(size: 12))
+                                    .foregroundColor(.black)
+                                    .multilineTextAlignment(.center)
+                            }
+                            .padding(.horizontal, 4)
                         }
-                        .padding(.horizontal, 4)
+                        .buttonStyle(PlainButtonStyle())
+//                        VStack(spacing: 10) {
+//
+//                            ZStack(alignment: .topLeading) {
+//                                RoundedRectangle(cornerRadius: 12)
+//                                    .fill(Color.gray.opacity(0.1))
+//
+//                                Image(service.imageName)
+//                                    .resizable()
+//                                    .scaledToFit()
+//                                    .padding(20)
+//
+//                                if service.hasSale {
+//                                    Text("Sale")
+//                                        .font(.visbySemibold(size: 10))
+//                                        .foregroundColor(.white)
+//                                        .padding(.horizontal, 8)
+//                                        .padding(.vertical, 4)
+//                                        .background(Color.green)
+//                                        .clipShape(Capsule())
+//                                        .padding(8)
+//                                }
+//                            }
+//                            .frame(height: 90)
+//
+//                            Text(service.title)
+//                                .font(.visbyMedium(size: 12))
+//                                .foregroundColor(.black)
+//                                .multilineTextAlignment(.center)
+//                        }
+//                        .padding(.horizontal, 4)
                     }
                 }
                 .padding(.horizontal, 12)
