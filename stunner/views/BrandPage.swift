@@ -53,10 +53,12 @@ struct BrandProductCard: View {
 }
 
 struct BrandHeaderBar: View {
+    let index: Int
+    
     var body: some View {
         HStack {
             // Brand Name
-            Text("MIRAGGIO")
+            Text(index == 1 ? "COMET" :"MIRAGGIO")
                 .font(.visbyBold(size: 20))
                 .foregroundColor(.black)
 
@@ -75,7 +77,7 @@ struct BrandHeaderBar: View {
             }
             Spacer()
             // Item Count
-            Text("23 ITEM(s)")
+            Text(index == 1 ? "18 ITEM(s)" : "23 ITEM(s)")
                 .font(.visbyMedium(size: 9))
                 .tracking(0.03 * 9)
                 .foregroundColor(.black)
@@ -85,7 +87,7 @@ struct BrandHeaderBar: View {
 }
 
 #Preview {
-    BrandHeaderBar()
+    BrandHeaderBar(index: 0)
 }
 
 #Preview {
@@ -114,6 +116,16 @@ struct BrandPage: View {
         BrandProduct(imageName: "mg7", name: "CALLIE SATCHEL BAG", price: "₹3,299", originalPrice: "₹5,999", discount: "45% OFF"),
         BrandProduct(imageName: "mg8", name: "CALLIE SATCHEL BAG", price: "₹3,299", originalPrice: "₹5,999", discount: "45% OFF")
     ]
+    
+    let products1 = [
+        BrandProduct(imageName: "com1", name: "URBAN SNEAKER", price: "₹4,499", originalPrice: "₹4,999", discount: "10% OFF"),
+        BrandProduct(imageName: "com2", name: "RETRO RUNNER", price: "₹3,149", originalPrice: "₹4,499", discount: "30% OFF"),
+        BrandProduct(imageName: "com3", name: "CLASSIC COURT SHOES", price: "₹3,299", originalPrice: "₹5,999", discount: "45% OFF"),
+        BrandProduct(imageName: "com4", name: "HYPER SPORT TRAINERS", price: "₹3,299", originalPrice: "₹5,999", discount: "45% OFF"),
+        BrandProduct(imageName: "com5", name: "ELITE RUNNING SHOES", price: "₹3,299", originalPrice: "₹5,999", discount: "45% OFF"),
+        BrandProduct(imageName: "com6", name: "STREET FLEX SNEAKERS", price: "₹3,299", originalPrice: "₹5,999", discount: "45% OFF"),
+        BrandProduct(imageName: "com7", name: "AIRSTRIDE SPORTS SHOES", price: "₹3,299", originalPrice: "₹5,999", discount: "45% OFF")
+    ]
 
     let columns = [
         GridItem(.flexible(), spacing: 12),
@@ -128,10 +140,10 @@ struct BrandPage: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
                     
-                    BrandHeaderBar()
+                    BrandHeaderBar(index: index)
 
                     LazyVGrid(columns: columns, spacing: 40) {
-                        ForEach(products) { product in
+                        ForEach(index == 1 ? products1 : products) { product in
                             BrandProductCard(product: product)
                         }
                     }
@@ -140,9 +152,6 @@ struct BrandPage: View {
         }
         .background(Color.stunner)
         .navigationBarHidden(true)
-        .onAppear {
-            print("BrandPage index:", index)
-        }
     }
 }
 
