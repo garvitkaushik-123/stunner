@@ -10,18 +10,15 @@ struct DiscoverPage: View {
            let videoURL2 = Bundle.main.url(forResource: "SampleVideo2", withExtension: "mov") {
             
             return [
+                ReelData(videoURL: "https://stunnerselfcare.com/cdn/shop/videos/c/vp/c0e9806b497b41d687408d5a58da2731/c0e9806b497b41d687408d5a58da2731.HD-1080p-2.5Mbps-58895584.mp4", brandName: "Clinique", brandImage: "clinique"),
                 ReelData(videoURL: videoURL.absoluteString, brandName: "Miraggio", brandImage: "miraggio"),
                 ReelData(videoURL: videoURL1.absoluteString, brandName: "Comet", brandImage: "comet"),
+                ReelData(videoURL: "https://stunnerselfcare.com/cdn/shop/videos/c/vp/e137a1c486534db286dcb450ec89ce89/e137a1c486534db286dcb450ec89ce89.HD-1080p-2.5Mbps-58895590.mp4", brandName: "Bioderma", brandImage: "bioderma"),
                 ReelData(videoURL: videoURL2.absoluteString, brandName: "Fraganote", brandImage: "fraganote")
             ]
             
-        } else {
-            return [
-                ReelData(videoURL: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Beauty.mp4", brandName: "Miraggio", brandImage: "miraggio"),
-                ReelData(videoURL: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", brandName: "Blair", brandImage: "blair"),
-                ReelData(videoURL: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4", brandName: "Callie", brandImage: "callie")
-            ]
         }
+        return [];
     }()
     
     @State private var showProductPage = false
