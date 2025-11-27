@@ -58,7 +58,7 @@ struct BrandHeaderBar: View {
     var body: some View {
         HStack {
             // Brand Name
-            Text(index == 1 ? "COMET" :"MIRAGGIO")
+            Text(index == 0 ? "Clinique" : (index == 1 ? "MIRAGGIO" :"COMET"))
                 .font(.visbyBold(size: 20))
                 .foregroundColor(.black)
 
@@ -117,6 +117,52 @@ struct BrandPage: View {
         BrandProduct(imageName: "mg8", name: "CALLIE SATCHEL BAG", price: "₹3,299", originalPrice: "₹5,999", discount: "45% OFF")
     ]
     
+    let products2 = [
+        BrandProduct(
+            imageName: "cl1",
+            name: "Clinique Even Better Foundation",
+            price: "₹3,400",
+            originalPrice: "₹4,200",
+            discount: "19% OFF"
+        ),
+        BrandProduct(
+            imageName: "cl2",
+            name: "Clinique Moisture Surge 100H",
+            price: "₹2,950",
+            originalPrice: "₹3,600",
+            discount: "18% OFF"
+        ),
+        BrandProduct(
+            imageName: "cl3",
+            name: "Clinique Take The Day Off Balm",
+            price: "₹2,250",
+            originalPrice: "₹2,900",
+            discount: "22% OFF"
+        ),
+        BrandProduct(
+            imageName: "cl4",
+            name: "Clinique Dramatically Different Lotion",
+            price: "₹2,900",
+            originalPrice: "₹3,700",
+            discount: "21% OFF"
+        ),
+        BrandProduct(
+            imageName: "cl2",
+            name: "Clinique Smart Night Moisturizer",
+            price: "₹3,750",
+            originalPrice: "₹4,800",
+            discount: "22% OFF"
+        ),
+        BrandProduct(
+            imageName: "cl6",
+            name: "Clinique All About Clean Foaming Cleanser",
+            price: "₹2,100",
+            originalPrice: "₹2,600",
+            discount: "19% OFF"
+        )
+    ]
+
+    
     let products1 = [
         BrandProduct(imageName: "com1", name: "URBAN SNEAKER", price: "₹4,499", originalPrice: "₹4,999", discount: "10% OFF"),
         BrandProduct(imageName: "com2", name: "RETRO RUNNER", price: "₹3,149", originalPrice: "₹4,499", discount: "30% OFF"),
@@ -143,7 +189,7 @@ struct BrandPage: View {
                     BrandHeaderBar(index: index)
 
                     LazyVGrid(columns: columns, spacing: 40) {
-                        ForEach(index == 1 ? products1 : products) { product in
+                        ForEach(index == 0 ? products2 : (index == 1 ? products : products1)) { product in
                             BrandProductCard(product: product)
                         }
                     }
