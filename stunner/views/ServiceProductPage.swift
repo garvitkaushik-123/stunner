@@ -1,8 +1,6 @@
 import SwiftUI
 import UIKit
 
-// ServiceProductPage.swift
-
 struct ServiceProductPage: View {
     private let heroImagePath = "/mnt/data/IMG_5862E9A7F324-1.jpeg"
 
@@ -37,23 +35,19 @@ struct ServiceProductPage: View {
                         .padding(.horizontal, 20)
                     }
                 }
-                .navigationBarHidden(true)   // hides nav bar on main screen
+                .navigationBarHidden(true)
             }
-        }.navigationBarHidden(true)
-            .statusBarHidden(true)
+        }
+        .navigationBarHidden(true)
+        .statusBarHidden(true)
     }
 }
-
-// MARK: - Hero Section
 
 struct HeroSection: View {
     let imagePath: String
 
     private func loadUIImage() -> UIImage {
-        if let ui = UIImage(contentsOfFile: imagePath) {
-            return ui
-        }
-        return UIImage()
+        UIImage(contentsOfFile: imagePath) ?? UIImage()
     }
 
     var body: some View {
@@ -65,15 +59,16 @@ struct HeroSection: View {
                 .clipped()
 
             LinearGradient(
-                gradient: Gradient(colors: [Color.black.opacity(0.6), Color.black.opacity(0.0)]),
+                gradient: Gradient(colors: [Color.black.opacity(0.6), .clear]),
                 startPoint: .leading,
                 endPoint: .trailing
             )
             .frame(height: 220)
 
             VStack(alignment: .leading, spacing: 8) {
+
                 Text("New launch")
-                    .font(.system(size: 14, weight: .semibold))
+                    .font(.visbySemibold(size: 14))
                     .padding(.horizontal, 12)
                     .padding(.vertical, 6)
                     .background(Color(red: 0.59, green: 0.10, blue: 0.28))
@@ -81,12 +76,12 @@ struct HeroSection: View {
                     .cornerRadius(8)
 
                 Text("Korean facials\nfor a radiant glow")
-                    .font(.system(size: 34, weight: .bold))
+                    .font(.visbyBold(size: 32))
                     .foregroundColor(.white)
                     .lineLimit(3)
 
                 Text("Starting at ₹1,399")
-                    .font(.system(size: 16, weight: .regular))
+                    .font(.visbyMedium(size: 16))
                     .foregroundColor(.white)
             }
             .padding(.leading, 20)
@@ -95,8 +90,6 @@ struct HeroSection: View {
     }
 }
 
-// MARK: - Service Row
-
 struct ServiceRow: View {
     let avatarName: String
     let title: String
@@ -104,24 +97,25 @@ struct ServiceRow: View {
     let brands: [String]
 
     var body: some View {
-        NavigationLink(destination: ServiceDetailView(title: title)) {
+//        NavigationLink(destination: nil) {
             HStack(alignment: .center, spacing: 16) {
                 
                 RoundedRectangle(cornerRadius: 12)
                     .fill(Color(white: 0.95))
                     .frame(width: 92, height: 116)
                     .overlay(
-                        Image(systemName: "person.fill")
+                        Image(avatarName)
                             .resizable()
-                            .scaledToFit()
-                            .frame(width: 54, height: 54)
-                            .foregroundColor(.gray)
+                            .scaledToFill()
+                            .frame(width: 92, height: 116)
+                            .clipped()
                     )
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
 
                 VStack(alignment: .leading, spacing: 8) {
                     HStack {
                         Text(title)
-                            .font(.system(size: 20, weight: .bold))
+                            .font(.visbySemibold(size: 20))
                         Spacer()
                         Image(systemName: "chevron.right")
                             .foregroundColor(Color(.systemGray3))
@@ -129,7 +123,7 @@ struct ServiceRow: View {
 
                     HStack(spacing: 10) {
                         Text(tag)
-                            .font(.system(size: 12, weight: .semibold))
+                            .font(.visbySemibold(size: 12))
                             .padding(.horizontal, 10)
                             .padding(.vertical, 6)
                             .background(Color(white: 0.92))
@@ -141,7 +135,7 @@ struct ServiceRow: View {
                     HStack(spacing: 20) {
                         ForEach(brands, id: \.self) { b in
                             Text(b)
-                                .font(.system(size: 14))
+                                .font(.visbyMedium(size: 14))
                                 .foregroundColor(Color(.systemGray))
                         }
                     }
@@ -150,31 +144,21 @@ struct ServiceRow: View {
             }
             .padding(.vertical, 10)
         }
-        .buttonStyle(PlainButtonStyle())
-    }
+//        .buttonStyle(PlainButtonStyle())
+//    }
 }
-
-// MARK: - Detail View (Back button removed)
 
 struct ServiceDetailView: View {
     let title: String
     var body: some View {
         VStack {
             Text(title)
-                .font(.largeTitle)
+                .font(.visbyBold(size: 28))
             Spacer()
         }
         .padding()
         .navigationBarTitle("", displayMode: .inline)
-        .navigationBarBackButtonHidden(true)   // 🔥 removes default back button
-        .navigationBarHidden(true)             // 🔥 hides entire nav bar
-    }
-}
-
-// MARK: - Preview
-
-struct ServiceProductPage_Previews: PreviewProvider {
-    static var previews: some View {
-        ServiceProductPage()
+        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
     }
 }

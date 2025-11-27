@@ -7,13 +7,15 @@ struct DiscoverPage: View {
         // Use local SampleVideo.mov file instead of remote URLs
         if let videoURL = Bundle.main.url(forResource: "SampleVideo", withExtension: "mov"),
            let videoURL1 = Bundle.main.url(forResource: "SampleVideo1", withExtension: "mov"),
-           let videoURL2 = Bundle.main.url(forResource: "SampleVideo2", withExtension: "mov") {
+           let videoURL2 = Bundle.main.url(forResource: "SampleVideo2", withExtension: "mov"),
+           let videoURL3 = Bundle.main.url(forResource: "SampleVideo3", withExtension: "mp4"),
+           let videoURL4 = Bundle.main.url(forResource: "SampleVideo4", withExtension: "mp4") {
             
             return [
-                ReelData(videoURL: "https://stunnerselfcare.com/cdn/shop/videos/c/vp/c0e9806b497b41d687408d5a58da2731/c0e9806b497b41d687408d5a58da2731.HD-1080p-2.5Mbps-58895584.mp4", brandName: "Clinique", brandImage: "clinique"),
+                ReelData(videoURL: videoURL3.absoluteString, brandName: "Clinique", brandImage: "clinique"),
                 ReelData(videoURL: videoURL.absoluteString, brandName: "Miraggio", brandImage: "miraggio"),
                 ReelData(videoURL: videoURL1.absoluteString, brandName: "Comet", brandImage: "comet"),
-                ReelData(videoURL: "https://stunnerselfcare.com/cdn/shop/videos/c/vp/e137a1c486534db286dcb450ec89ce89/e137a1c486534db286dcb450ec89ce89.HD-1080p-2.5Mbps-58895590.mp4", brandName: "Bioderma", brandImage: "bioderma"),
+                ReelData(videoURL: videoURL4.absoluteString, brandName: "Bioderma", brandImage: "bioderma"),
                 ReelData(videoURL: videoURL2.absoluteString, brandName: "Fraganote", brandImage: "fraganote")
             ]
             
