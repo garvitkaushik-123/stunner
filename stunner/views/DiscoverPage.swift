@@ -82,6 +82,14 @@ struct DiscoverPage: View {
                 )
                 .statusBarHidden(true)
             }
+            .onAppear {
+                isPageVisible = true
+            }
+            .onDisappear {
+                isPageVisible = false
+            }
+            
+            Spacer()
         }
     }
 }
