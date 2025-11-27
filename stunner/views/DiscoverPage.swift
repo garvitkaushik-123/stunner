@@ -8,8 +8,8 @@ struct DiscoverPage: View {
         if let videoURL = Bundle.main.url(forResource: "SampleVideo", withExtension: "mov"),
            let videoURL1 = Bundle.main.url(forResource: "SampleVideo1", withExtension: "mov"),
            let videoURL2 = Bundle.main.url(forResource: "SampleVideo2", withExtension: "mov"),
-           let videoURL3 = Bundle.main.url(forResource: "SampleVideo3", withExtension: "mp4"),
-           let videoURL4 = Bundle.main.url(forResource: "SampleVideo4", withExtension: "mp4") {
+           let videoURL3 = Bundle.main.url(forResource: "SampleVideo3", withExtension: "mov"),
+           let videoURL4 = Bundle.main.url(forResource: "SampleVideo4", withExtension: "mov") {
             
             return [
                 ReelData(videoURL: videoURL3.absoluteString, brandName: "Clinique", brandImage: "clinique"),
