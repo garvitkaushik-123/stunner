@@ -11,9 +11,7 @@ struct ShopPage: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            StunnerHeader(showBackButton: true) {
-                presentationMode.wrappedValue.dismiss()
-            }
+            StunnerHeader()
             
             HStack {
                 Image(systemName: "magnifyingglass")
