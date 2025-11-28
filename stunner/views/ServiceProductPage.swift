@@ -2,12 +2,16 @@ import SwiftUI
 import UIKit
 
 struct ServiceProductPage: View {
+    @Environment(\.presentationMode) var presentationMode
+    
     private let heroImagePath = "/mnt/data/IMG_5862E9A7F324-1.jpeg"
 
     var body: some View {
         VStack(spacing: 0) {
             
-            StunnerHeader()
+            StunnerHeader(showBackButton: true) {
+                presentationMode.wrappedValue.dismiss()
+            }
             
             NavigationView {
                 ScrollView {
