@@ -85,39 +85,31 @@ struct ServicePage: View {
 
                     ForEach(services) { service in
                         NavigationLink(destination: ServiceProductPage()) {
+                            GeometryReader { geo in
+                                VStack(spacing: 8) {
+                                    
+                                    let side = geo.size.width  // width == height → square
 
-                            VStack(spacing: 10) {
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: 16)
+                                            .fill(Color.gray.opacity(0.1))
 
-                                // CARD WITH SAFE-FIT IMAGE
-                                ZStack(alignment: .topLeading) {
-                                    RoundedRectangle(cornerRadius: 12)
-                                        .fill(Color.gray.opacity(0.1))
-
-                                    Image(service.imageName)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .padding(10)
-                                        .clipShape(RoundedRectangle(cornerRadius: 12))
-
-                                    if service.hasSale {
-                                        Text("Sale")
-                                            .font(.visbySemibold(size: 10))
-                                            .foregroundColor(.white)
-                                            .padding(.horizontal, 8)
-                                            .padding(.vertical, 4)
-                                            .background(Color.green)
-                                            .clipShape(Capsule())
-                                            .padding(8)
+                                        Image(service.imageName)
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: side, height: side)
+                                            .clipShape(RoundedRectangle(cornerRadius: 16))
                                     }
-                                }
-                                .frame(maxWidth: .infinity, minHeight: 90, maxHeight: 100)
+                                    .frame(width: side, height: side)
 
-                                Text(service.title)
-                                    .font(.visbyMedium(size: 12))
-                                    .foregroundColor(.black)
-                                    .multilineTextAlignment(.center)
+                                    Text(service.title)
+                                        .font(.visbyMedium(size: 12))
+                                        .foregroundColor(.black)
+                                        .multilineTextAlignment(.center)
+                                        .frame(maxWidth: .infinity)
+                                }
                             }
-                            .padding(.horizontal, 4)
+                            .frame(height: 140)   // IMPORTANT: same as expected square width per column
                         }
                         .buttonStyle(PlainButtonStyle())
                     }
