@@ -18,15 +18,15 @@ struct ServicePage: View {
     }
 
     private let services: [ServiceItem] = [
-        ServiceItem(title: "Korean facials for Women", imageName: "service1", hasSale: false),
-        ServiceItem(title: "Hare Dressing & beauty", imageName: "service2", hasSale: false),
-        ServiceItem(title: "Cleaning & Pest Control", imageName: "service3", hasSale: false),
-        ServiceItem(title: "Electrician", imageName: "service4", hasSale: false),
-        ServiceItem(title: "Native Water Purifier", imageName: "service5", hasSale: false),
-        ServiceItem(title: "Painting & Waterproofing", imageName: "service6", hasSale: false),
-        ServiceItem(title: "AC & Appliance Repair", imageName: "service7", hasSale: false),
-        ServiceItem(title: "Wall makeover by Revamp", imageName: "service8", hasSale: false),
-        ServiceItem(title: "Native Smart Door Locks", imageName: "service9", hasSale: false)
+        ServiceItem(title: "Hair Care", imageName: "service1", hasSale: false),
+        ServiceItem(title: "Professional Makeup", imageName: "service2", hasSale: false),
+        ServiceItem(title: "Post Workout", imageName: "service3", hasSale: false),
+        ServiceItem(title: "Hair Color", imageName: "service4", hasSale: false),
+        ServiceItem(title: "Nutrition", imageName: "service6", hasSale: false),
+//        ServiceItem(title: "Painting & Waterproofing", imageName: "service6", hasSale: false),
+//        ServiceItem(title: "AC & Appliance Repair", imageName: "service7", hasSale: false),
+//        ServiceItem(title: "Wall makeover by Revamp", imageName: "service8", hasSale: false),
+//        ServiceItem(title: "Native Smart Door Locks", imageName: "service9", hasSale: false)
     ]
 
     var body: some View {
@@ -119,7 +119,7 @@ struct ServicePage: View {
 
                 // MARK: - Offers
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Offers & discounts")
+                    Text("Office Relaxation Pods")
                         .font(.visbySemibold(size: 18))
                         .foregroundColor(.black)
 

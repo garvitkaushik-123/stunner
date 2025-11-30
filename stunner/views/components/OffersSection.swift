@@ -9,9 +9,9 @@ import SwiftUI
 // MARK: - Offers & Discounts Section
 struct OffersSection: View {
     let offers: [OfferItem] = [
-        OfferItem(image: "offer3", title: "Entrance wall makeover", subtitle: "Starts at ₹6,999"),
-        OfferItem(image: "offer2", title: "Smart Door Locks Sale", subtitle: "Flat 15% Off"),
-        OfferItem(image: "offer1", title: "Painting & Waterproofing", subtitle: "Starts at ₹1,299")
+        OfferItem(image: "service5", title: "Office Relaxation Pods", subtitle: "Starts at ₹1,299"),
+        OfferItem(image: "offer2", title: "Entrance wall makeover", subtitle: "Starts at ₹6,999"),
+        OfferItem(image: "offer3", title: "Smart Door Locks Sale", subtitle: "Flat 15% Off"),
     ]
 
     @State private var currentIndex = 0
