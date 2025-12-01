@@ -4,7 +4,7 @@ struct SplashScreenPage: View {
     @Binding var showSplash: Bool
     @State private var animateLetters = false
 
-    private let letters = Array("MARKETPLACE")
+    private let letters = Array("LIVE YOUR WORTH")
     private let fontSize: CGFloat = 12
     private var letterSpacing: CGFloat { fontSize * 0.37 }
 

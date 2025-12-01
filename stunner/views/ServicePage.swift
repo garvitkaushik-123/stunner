@@ -20,8 +20,8 @@ struct ServicePage: View {
     private let services: [ServiceItem] = [
         ServiceItem(title: "Hair Care", imageName: "service1", hasSale: false),
         ServiceItem(title: "Professional Makeup", imageName: "service2", hasSale: false),
-        ServiceItem(title: "Post Workout", imageName: "service3", hasSale: false),
-        ServiceItem(title: "Hair Color", imageName: "service4", hasSale: false),
+//        ServiceItem(title: "Post Workout", imageName: "service3", hasSale: false),
+        ServiceItem(title: "Pedicure", imageName: "service7", hasSale: false),
         ServiceItem(title: "Nutrition", imageName: "service6", hasSale: false),
 //        ServiceItem(title: "Painting & Waterproofing", imageName: "service6", hasSale: false),
 //        ServiceItem(title: "AC & Appliance Repair", imageName: "service7", hasSale: false),
